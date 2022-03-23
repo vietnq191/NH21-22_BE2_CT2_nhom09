@@ -7,7 +7,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>Nhóm 9 - Chiều thứ 2</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="{{asset('/css/font-awesome.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('/css/elegant-icons.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('/css/nice-select.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('/css/jquery-ui.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('/css/owl.carousel.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('/css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('/css/style.css')}}" type="text/css">
@@ -58,14 +57,14 @@
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
+                <li class="active"><a href="{{ url('/') }}">Home</a></li>
+                <li><a href="{{ url('/shop-grid') }}">Shop</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
+                        <li><a href="{{ url('/shop-details') }}">Shop Details</a></li>
+                        <li><a href="{{ url('/shoping-cart') }}">Shoping Cart</a></li>
+                        <li><a href="{{ url('/checkout') }}">Check Out</a></li>
+                        <li><a href="{{ url('/blog-details') }}">Blog Details</a></li>
                     </ul>
                 </li>
                 <li><a href="./blog.html">Blog</a></li>
@@ -136,18 +135,18 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
+                            <li class="active"><a href="{{url('/index')}}">Home</a></li>
+                            <li><a href="shop-grid">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                    <li><a href="{{url('/shop-details')}}">Shop Details</a></li>
+                                    <li><a href="{{url('/shoping-cart')}}">Shoping Cart</a></li>
+                                    <li><a href="{{url('/checkout')}}">Check Out</a></li>
+                                    <li><a href="{{url('/blog-details')}}">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li><a href="{{url('/blog')}}">Blog</a></li>
+                            <li><a href="{{url('/contact')}}">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
