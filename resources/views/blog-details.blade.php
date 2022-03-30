@@ -1,4 +1,5 @@
-@include('header')
+@extends('master')
+@section('content')
 
     <!-- Blog Details Hero Begin -->
     <section class="blog-details-hero set-bg" data-setbg="img/blog/details/details-hero.jpg">
@@ -201,4 +202,4 @@
     </section>
     <!-- Related Blog Section End -->
 
-@include('footer')
+    @endsection

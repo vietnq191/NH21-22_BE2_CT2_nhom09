@@ -1,4 +1,5 @@
-@include('header')
+@extends('master')
+@section('content')
 
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="{{ asset('/img/breadcrumb.jpg')}}">
@@ -204,4 +205,4 @@
     </section>
     <!-- Blog Section End -->
 
-@include('footer')
+    @endsection

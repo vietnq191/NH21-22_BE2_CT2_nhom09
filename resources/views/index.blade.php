@@ -1,5 +1,5 @@
-@include('header')
-
+@extends('master')
+@section('content')
     <!-- Categories Section Begin -->
     <section class="categories">
         <div class="container">
@@ -464,5 +464,4 @@
         </div>
     </section>
     <!-- Blog Section End -->
-
-@include('footer')
+@endsection
