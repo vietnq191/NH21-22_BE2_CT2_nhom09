@@ -19,7 +19,7 @@ class CreateOrders extends Migration
             $table->string('email');
             $table->string('address');
             $table->string('phone', 11);
-            $table->timestamp('order_date');
+            $table->timestamp('order_date')->useCurrent();
             $table->bigInteger('username');
             $table->double('total_money');
         });

@@ -15,7 +15,7 @@ class CreateProducts extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 150);
+            $table->string('name', 255);
             $table->bigInteger('type_id');
             $table->double('price');
             $table->string('image1', 150);
@@ -25,9 +25,9 @@ class CreateProducts extends Migration
             $table->text('description');
             $table->text('infomation');
             $table->double('weight');
-            $table->timestamp('created_at');
-            $table->timestamp('exp');
-            $table->integer('sales');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('exp')->useCurrent();
+            $table->integer('sales')->default(0);
         });
     }
 

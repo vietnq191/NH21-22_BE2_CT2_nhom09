@@ -19,7 +19,7 @@ class CreateRating extends Migration
             $table->bigInteger('user_id');
             $table->smallInteger('rating_value');
             $table->string('comment', 250);
-            $table->timestamp('date');
+            $table->timestamp('date')->useCurrent();
         });
     }
 
