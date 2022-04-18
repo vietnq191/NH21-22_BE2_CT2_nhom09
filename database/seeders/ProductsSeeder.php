@@ -215,8 +215,9 @@ class ProductsSeeder extends Seeder
             'type_id' => 2,
             'price' => 14.99,
             'image1' => '41CGtIyWgML._AC_.jpg',
-            'image2' => '41CGtIyWgML._AC_ (1).jpg',
-            'image3' => NULL, 'image4' => 'bbb.jpg',
+            'image2' => 'fresh-iceberg-lettucek.jpg',
+            'image3' => 'iceberg.jpg', 
+            'image4' => 'bbb.jpg',
             'description' => 'Iceberg Lettuce',
             'infomation' => 'For warranty information about this product',
             'weight' => 0.5,
@@ -924,7 +925,7 @@ class ProductsSeeder extends Seeder
             'image4' => 'coca-dark-4.jpg',
             'description' => '12 Pack | Dark Blend Coffee Zero Sugar | 12 fl oz. Slim Cans - 69 mg of caffeine in each 12 oz serving. Coca-Cola with Coffee, Infused with Brazilian Coffee. Sparking beverage that offers that great Coca-Cola taste infused with rich, luxurious coffee flavor, and provides a unique way to enjoy the everyday coffee experience. 
             Coke With Coffee | Sips like a Coke, finishes like a Coffee. | Grab Coca-Cola with Coffee and refresh your coffee break. Delicious: Whether you’re on-the-go, or looking for that afternoon pick-me-up, Coca-Cola with Coffee is the perfect soft drink for anyone who loves the refreshing Coca-Cola taste and the familiar taste of coffee.
-            Variety: Coke with Coffee comes in three flavor varieties: Dark Blend, Vanilla, Caramel – plus Dark Blend Zero Sugar and Vanilla Zero Sugar. Every sip provides that “ahhh” Coca-Cola moment, with that smooth finish of a delicious coffee.',
+            Variety: Coke with Coffee comes in three flavor varieties: Dark Blend, Vanilla, Caramel - plus Dark Blend Zero Sugar and Vanilla Zero Sugar. Every sip provides that “ahhh” Coca-Cola moment, with that smooth finish of a delicious coffee.',
             'infomation' => 'Item Form: Liquid
             Brand: Coca-Cola
             Flavor: Dark Blend ZERO
@@ -943,18 +944,9 @@ class ProductsSeeder extends Seeder
             'image2' => '71MM7BgSrwL.jpg',
             'image3' => '712EUENnIZL.jpg',
             'image4' => '81sfgS.jpg',
-            'description' => 'The great taste of Coca-Cola has stood the test of time. And whatever you call it, nothing compares to the refreshing, crisp taste of Coca-Cola Original Taste, the delicious soda you know and love. The cool, bubbly taste of Coca-Cola Classic is the perfect partner for sunny days and lunch with friends. Grab a classic Coke to brighten your day at work, at home or out on an adventure with the people who matter most. There\'s never a bad time for a classic Coke. Stock your home pantry or office breakroom. 12-oz Coca-Cola cans come in a case of 24. Best enjoyed ice-cold for maximum refreshment. Grab a Coca-Cola Original Taste, a Diet Coke, or a Coke Zero Sugar, take a sip and find your “ahhh” moment. Enjoy Coca-Cola.', '12 FL OZ in each can 24 cans of Coca-Cola Original Taste—the refreshing, crisp taste you know and love\r\nGreat taste since 1886.
-            This sparkling beverage is best enjoyed ice-cold for maximum refreshment 34 mg of caffeine in each 12 oz serving
-            There\'s never a bad time for a classic Coke.
-            Stock your home pantry or office breakroom.
-            12-oz Coca-Cola cans come in a case of 24.',
-            'infomation' => 'Sips like a Coke, finishes like a Coffee. | Grab Coca-Cola with Coffee and refresh your coffee break. Delicious: Whether you’re on-the-go, or looking for that afternoon pick-me-up, Coca-Cola with Coffee is the perfect soft drink for anyone who loves the refreshing Coca-Cola taste and the familiar taste of coffee.
-            Variety: Coke with Coffee comes in three flavor varieties: Dark Blend, Vanilla.
-            Item Form: Liquid
-            Brand: Coca-Cola
-            Flavor: Dark Blend ZERO
-            Caffeine Content: Caffeinated
-            Package Information: 12 Slim Cans of 12 ounces',
+            'description' => "The great taste of Coca-Cola has stood the test of time. And whatever you call it, nothing compares to the refreshing, crisp taste of Coca-Cola Original Taste, the delicious soda you know and love. The cool, bubbly taste of Coca-Cola Classic is the perfect partner for sunny days and lunch with friends. Grab a classic Coke to brighten your day at work, at home or out on an adventure with the people who matter most. There\'s never a bad time for a classic Coke. Stock your home pantry or office breakroom. 12-oz Coca-Cola cans come in a case of 24. Best enjoyed ice-cold for maximum refreshment. Grab a Coca-Cola Original Taste, a Diet Coke, or a Coke Zero Sugar, take a sip and find your “ahhh” moment. Enjoy Coca-Cola.', '12 FL OZ in each can 24 cans of Coca-Cola Original Taste—the refreshing, crisp taste you know and love Great taste since 1886.
+            This sparkling beverage is best enjoyed ice-cold for maximum refreshment 34 mg of caffeine in each 12 oz serving. There's never a bad time for a classic Coke. Stock your home pantry or office breakroom. 12-oz Coca-Cola cans come in a case of 24.",
+            'infomation' => "Sips like a Coke, finishes like a Coffee. | Grab Coca-Cola with Coffee and refresh your coffee break. Delicious: Whether you're on-the-go, or looking for that afternoon pick-me-up, Coca-Cola with Coffee is the perfect soft drink for anyone who loves the refreshing Coca-Cola taste and the familiar taste of coffee. Variety: Coke with Coffee comes in three flavor varieties: Dark Blend, Vanilla. Item Form: Liquid Brand: Coca-Cola. Flavor: Dark Blend ZERO. Caffeine Content: Caffeinated. Package Information: 12 Slim Cans of 12 ounces",
             'weight' => 9.5,
             'created_at' => '2022-12-09',
             'exp' => '2023-12-09',
