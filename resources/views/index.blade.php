@@ -5,31 +5,16 @@
         <div class="container">
             <div class="row">
                 <div class="categories__slider owl-carousel">
+                    @foreach($getNewProduct as $row)
+                    <?php 
+                        $img = "/img/product/" . $row->image1;
+                    ?>
                     <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="{{asset('/img/categories/cat-1.jpg')}}">
-                            <h5><a href="#">Fresh Fruit</a></h5>
+                        <div class="categories__item set-bg" data-setbg="{{URL::asset($img)}}">
+                            <h5><a style="font-size: 14px!important; background-color: #7fad39" href="#"><?php echo substr($row->name,0,20) ?>...</a></h5>
                         </div>
                     </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="{{asset('/img/categories/cat-2.jpg')}}">
-                            <h5><a href="#">Dried Fruit</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="{{asset('/img/categories/cat-3.jpg')}}">
-                            <h5><a href="#">Vegetables</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="{{asset('/img/categories/cat-4.jpg')}}">
-                            <h5><a href="#">drink fruits</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="{{asset('/img/categories/cat-5.jpg')}}">
-                            <h5><a href="#">drink fruits</a></h5>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

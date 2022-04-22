@@ -3466,3 +3466,7 @@ ol {
 		font-size: 24px;
 	}
 }
+
+.categories__item:hover{
+	border: 2px solid #7fad39;
+}

@@ -16,7 +16,7 @@ class ProductsSeeder extends Seeder
     {
         //Fresh Meat number1
         DB::table('products')->insert([
-            'name' => 'USDA Choice Beef Rib Eye Steak Bone In, 2 pack, 1"',
+            'name' => 'USDA Choice Beef Rib Eye Steak Bone In, 2 pack, 1',
             'type_id' => 1,
             'price' => 50,
             'image1' => '410A1aeA1dL._PIbundle-2,TopRight,0,0_SX500SY334SH20_.jpg',
@@ -94,10 +94,10 @@ class ProductsSeeder extends Seeder
             'name' => 'Aged Angus New York Strip and Premium Ground Beef by Nebraska Star Beef - All Natural Hand Cut and Trimmed and Includes Seasoning - Gourmet Package Delivery to Your Door',
             'type_id' => 1,
             'price' => 166.73,
-            'image1' => '71vFjo+-9+L._SX679_.jpg',
+            'image1' => '71vFjo9L._SX679_.jpg',
             'image2' => '712cXOFRcZL._SX679_.jpg',
             'image3' => '71D4g3qx0GL._SX679_.jpg',
-            'image4' => '8172+gXy52L._SX679_.jpg',
+            'image4' => '8172gXy52L._SX679_.jpg',
             'description' => 'Signature Seasoning We round the package out with a 5 oz bottle of our Signature Seasoning. The seasoning that started it all for Nebraska Star Beef. This is a classic steak house flavor that is bright and vibrant. It adds a new dimension to all meats but is particularly good on steak. 5 packages, each package contains 1 steak. Actual weight may vary, the approximate weight of each package is 24 oz. Perfectly fresh, frozen, packed, and portioned for your needs. Crescent Foods Grass Fed Skirt Steak. All our cattle are Hand Processed Halal, raised humanely, and meet strict standard requirements for quality and transparency.',
             'infomation' => 'Statements regarding dietary supplements have not been evaluated by the FDA and are not intended to diagnose, treat, cure, or prevent any disease or health condition.',
             'weight' => 0.5,
@@ -112,7 +112,7 @@ class ProductsSeeder extends Seeder
             'image1' => '410vulzWTCL._PIbundle-14,TopRight,0,0_AA500SH20_.jpg',
             'image2' => '91nTw0B8lzL._SX679_.jpg',
             'image3' => '91P29nsz2lL._SX679_.jpg',
-            'image4' => '91cX+Kr26vL._SX679_.jpg',
+            'image4' => '91cXKr26vL._SX679_.jpg',
             'description' => 'Bison meat is an excellent lean alternative to other red meats and actually has 1/3 of the calories of a skinless breast of chicken. Bison meat is also high in iron and protein making it an extremely healthy alternative to other meats. In fact, many bodybuilders and health food aficionados have started incorporating bison meat into their diets. 5 packages, each package contains 1 steak. Actual weight may vary, the approximate weight of each package is 24 oz. Perfectly fresh, frozen, packed, and portioned for your needs. Crescent Foods Grass Fed Skirt Steak. All our cattle are Hand Processed Halal, raised humanely, and meet strict standard requirements for quality and transparency.',
             'infomation' => 'Statements regarding dietary supplements have not been evaluated by the FDA and are not intended to diagnose, treat, cure, or prevent any disease or health condition.',
             'weight' => 3,
@@ -140,8 +140,8 @@ class ProductsSeeder extends Seeder
             'type_id' => 1,
             'price' => 99.00,
             'image1' => '41Gaazcn5DL.jpg',
-            'image2' => '91lBDmPg+GL._SX679_.jpg',
-            'image3' => '910Mh+2K+vL._SX679_.jpg',
+            'image2' => '91lBDmPgGL._SX679_.jpg',
+            'image3' => '910Mh2KvL._SX679_.jpg',
             'image4' => 'ELK-STEAK-1_d0c5c835-a813-47aa-8235-aac351dd9bc3.jpg',
             'description' => 'All items are shipped FedEx ground service in a styrofoam cooler with dry ice and will arrive within 1-3 days after shipping based on your location. You will receive a shipping confirmation email with your tracking number so that you know when to expect your package. 5 packages, each package contains 1 steak. Actual weight may vary, the approximate weight of each package is 24 oz. Perfectly fresh, frozen, packed, and portioned for your needs. Crescent Foods Grass Fed Skirt Steak. All our cattle are Hand Processed Halal, raised humanely, and meet strict standard requirements for quality and transparency. 5 packages, each package contains 1 steak. Actual weight may vary, the approximate weight of each package is 24 oz. Perfectly fresh, frozen, packed, and portioned for your needs. Crescent Foods Grass Fed Skirt Steak. All our cattle are Hand Processed Halal, raised humanely, and meet strict standard requirements for quality and transparency.',
             'infomation' => 'Statements regarding dietary supplements have not been evaluated by the FDA and are not intended to diagnose, treat, cure, or prevent any disease or health condition.',
@@ -291,7 +291,7 @@ class ProductsSeeder extends Seeder
             'price' => 16.99,
             'image1' => '513luuAAMuL._AC_SX679_.jpg',
             'image2' => '51PPniH1p9L._AC_SX679_.jpg',
-            'image3' => '51+cUcEEIuL._AC_SX679_.jpg',
+            'image3' => '51cUcEEIuL._AC_SX679_.jpg',
             'image4' => '61deaiQWUxL._AC_SX679_.jpg',
             'description' => 'Materials: Styrofoam
             Color : As picture show
@@ -343,7 +343,7 @@ class ProductsSeeder extends Seeder
             'type_id' => 2,
             'price' => 9.69,
             'image1' => '61KOVWeDojL._AC_SX679_.jpg',
-            'image2' => '51D7ygs+EvL._AC_SX679_.jpg',
+            'image2' => '51D7ygsEvL._AC_SX679_.jpg',
             'image3' => '61lxvqYWMtL._AC_SX679_.jpg',
             'image4' => '61UgbQl6IqL._AC_SX679_.jpg',
             'description' => 'Hagao\'s products are specially designed for home decoration and mini orchards or gardens where children can enjoy the fun of artificial fruits or artificial vegetables, and adults can bring them to learn new things, so happy scenes. There are many kinds of fruits and vegetables in our shop that can dress up at home or in the yard. We are happy to help!',
@@ -449,9 +449,9 @@ class ProductsSeeder extends Seeder
             'name' => 'Cooked Octopus Legs/Tentacles',
             'type_id' => 3,
             'price' => 128.88,
-            'image1' => '81t7qZ+UQDS._SY679_PIbundle-4,TopRight,0,0_SX485SY679SH20_.jpg',
+            'image1' => '81t7qZUQDS._SY679_PIbundle-4,TopRight,0,0_SX485SY679SH20_.jpg',
             'image2' => '81sG6JLCN6L._SX679_.jpg',
-            'image3' => '81ZbTPClF+L._SX679_.jpg',
+            'image3' => '81ZbTPClFL._SX679_.jpg',
             'image4' => '81ae1khgsrL._SX679_.jpg',
             'description' => 'Tenderization: Tenderizing makes the difference. Tenderization is a method using a tumbler, sea salt, and cold water. It’s a natural process where no additives or chemicals are ever used. This process breaks down the muscles of the octopus and gives us what is called “flower octopus”. Flower octopus is a beautifully round curled up octopus in the shape of a flower. Our octopus can be stored at 0 degrees and will last up to two years. Furthermore, it can be thawed and re-frozen without losing any of its succulent flavors. Freezing further tenderizes the octopus. Our products are flash-frozen on-vessel. This process provides a high-yield, significantly higher than non-tenderized products. Non-tenderized octopus and sepia yield around 50% once cooked, whereas the Gullo octopus and sepia yield between 70%-90%, depending on the size.',
             'infomation' => 'Statements regarding dietary supplements have not been evaluated by the FDA and are not intended to diagnose, treat, cure, or prevent any disease or health condition.',
@@ -482,7 +482,7 @@ class ProductsSeeder extends Seeder
             'price' => 119.99,
             'image1' => '51JRtcmyWqL.jpg',
             'image2' => '51cS8xcGqbL.jpg',
-            'image3' => '517+8R06Q3L.jpg',
+            'image3' => '5178R06Q3L.jpg',
             'image4' => '71dG7cFFQmL._SX679_.jpg',
             'description' => 'This listing is for 25 whole shelled live oysters. They are primarily caught in the Chesapeake Bay or local tributaries in Virginia, Maryland or Delaware. “If you don’t love life, you can’t enjoy an Oyster. Our fresh, hearty, full-flavored oysters range in flavor from buttery sweet and slightly salty to rich, briny and slightly metallic.',
             'infomation' => 'Statements regarding dietary supplements have not been evaluated by the FDA and are not intended to diagnose, treat, cure, or prevent any disease or health condition.',
@@ -495,7 +495,7 @@ class ProductsSeeder extends Seeder
             'name' => 'Raw Domestic Soft Shell Crab Frozen',
             'type_id' => 3,
             'price' => 149,
-            'image1' => '81Ek9G+P5ZL._SX679_.jpg',
+            'image1' => '81Ek9GP5ZL._SX679_.jpg',
             'image2' => '514TjDmCeVL.jpg',
             'image3' => '815mSLsFfCL._SX679_.jpg',
             'image4' => '51P7k0aqAuL.jpg',
@@ -525,7 +525,7 @@ class ProductsSeeder extends Seeder
             'name' => 'Louisiana Boiled Crawfish',
             'type_id' => 3,
             'price' => 104.99,
-            'image1' => '61EBrrJL6+L._SX679_.jpg',
+            'image1' => '61EBrrJL6L._SX679_.jpg',
             'image2' => 'nn.jpg',
             'image3' => 'mm.jpg',
             'image4' => 'll.jpg',
@@ -541,9 +541,9 @@ class ProductsSeeder extends Seeder
             'type_id' => 3,
             'price' => 19.80,
             'image1' => '41zN5eh9QaL.jpg',
-            'image2' => '91IaKNu+oYL._SX679_.jpg',
+            'image2' => '91IaKNuoYL._SX679_.jpg',
             'image3' => '71dG7cFFQmL._SX679_.jpg',
-            'image4' => '712dh+DZrmL._SX679_.jpg',
+            'image4' => '712dhDZrmL._SX679_.jpg',
             'description' => 'Description: Dried Qingdao Scallop (青島貝)
             Origin: China
             Net Weight: 0.5lb / 226.8 grams',
@@ -560,7 +560,7 @@ class ProductsSeeder extends Seeder
             'image1' => '181oMSfJ2uXL._SL1500_.jpg',
             'image2' => '191-Zcd8qiEL._SL1500_.jpg',
             'image3' => '18191IsHRBWL._SL1500_.jpg',
-            'image4' => '181YOj6h92+L._SL1500_.jpg',
+            'image4' => '181YOj6h92L._SL1500_.jpg',
             'description' => 'This Dried Whole Egg Powder is a certified gluten free, real egg powder that goes well beyond breakfast and provides endless versatility. Whether used in desserts, casseroles or quiches, the nutritious value and versatility of eggs is always at your fingertips. It’s a powerhouse pantry staple. Unopened shelf life up to 10 years, recipes on can label. Dried whole eggs, less than 2% sodium silicoaluminate (as an anticaking agent).',
             'infomation' => 'Dried whole eggs, less than 2% sodium silicoaluminate (as an anticaking agent). Unopened shelf life up to 10 years, recipes on can label.',
             'weight' => 0.4,
@@ -591,7 +591,7 @@ class ProductsSeeder extends Seeder
             'image1' => 'b51EAeuPP7tL.jpg',
             'image2' => 'b51PGbYFljgL.jpg',
             'image3' => 'b515EDs78ecL.jpg',
-            'image4' => 'b51+4+E9k6HL.jpg',
+            'image4' => 'b514E9k6HL.jpg',
             'description' => "You are in for a treat! Quail eggs are as delicious as they are nutritious. These eggs were laid by lovingly tended quail from Sweet Reasons Farm in North Carolina. They can be used in place of regular eggs in any recipe, but add a unique depth of flavor that can't be matched.. Consider making tiny delectable deviled eggs that will be a hit at your next event. Quail eggs have the highest protein content and the lowest cholesterol of any poultry. These super-food powerhouses have immunity stimulating properties that help keep you well. They are also loaded with vitamins and minerals that help feed your health and your tastebuds!",
             'infomation' => 'Quail Eggs, Sodium Silicoaluminate, egg yolk can be substituted for nearly any baking or cooking needs requiring egg yolks.',
             'weight' => 0.5,
@@ -651,7 +651,7 @@ class ProductsSeeder extends Seeder
             'image1' => 'f6152THom1ZL._SL1500_.jpg',
             'image2' => 'f61j2ZWWDrZL._SL1500_.jpg',
             'image3' => 'f41Ji7c8jOyL.jpg',
-            'image4' => 'f61CJD7+UGfL._SL1500_.jpg',
+            'image4' => 'f61CJD7UGfL._SL1500_.jpg',
             'description' => 'Statements regarding dietary supplements have not been evaluated by the FDA and are not intended to diagnose, treat, cure, or prevent any disease or health condition.',
             'infomation' => 'Quail Eggs, vinegar, water, pikled, jalapenos, salt, garilic and spices',
             'weight' => 0.8,
@@ -678,7 +678,7 @@ class ProductsSeeder extends Seeder
             'name' => 'Vital Farms 1 Dozen Pasture-Raised Eggs, Large, Brown, Grade A Certified Humane, 12 Ct',
             'type_id' => 4,
             'price' => 12.25,
-            'image1' => 'h81AnEgw+12L._SL1500_.jpg',
+            'image1' => 'h81AnEgw12L._SL1500_.jpg',
             'image2' => 'h91GUuvcAX8L._SL1500_.jpg',
             'image3' => 'h813R9W-JrtL._SL1500_.jpg',
             'image4' => 'h81PuE-Lo8SL._SL1500_.jpg',
@@ -693,7 +693,7 @@ class ProductsSeeder extends Seeder
             'name' => 'Organic Valley Smart Eggs Extra Large Free Range Organic Eggs',
             'type_id' => 4,
             'price' => 11.99,
-            'image1' => 'i71-+Pi0TwzL._SL1500_.jpg',
+            'image1' => 'i71Pi0TwzL._SL1500_.jpg',
             'image2' => 'i81izaRVDYcL._SL1500_.jpg',
             'image3' => 'i81M1iENeUEL._SL1500_.jpg',
             'image4' => 'i91mZ6Gw04qL._SL1500_.jpg',
@@ -817,7 +817,7 @@ class ProductsSeeder extends Seeder
             'image1' => 'f51rz-mH9fuL._SL1000_.jpg',
             'image2' => 'f71-4QjfAkqL._SL1000_.jpg',
             'image3' => 'f71DlBUucm0L._SL1000_.jpg',
-            'image4' => 'f716t+WoKOQL._SL1000_.jpg',
+            'image4' => 'f716tWoKOQL._SL1000_.jpg',
             'description' => "When using our products/goat's milk soap bars, rinse to remove excess lather and place it on a soap dish with a drainer to avoid contact with excess water. This helps extend the life of your soap.",
             'infomation' => 'Olive Oil , farm fresh goat milk. , organic coconut oil',
             'weight' => 2.2,
@@ -829,7 +829,7 @@ class ProductsSeeder extends Seeder
             'name' => 'Horizon Organic Shelf-Stable Whole Milk Boxes, 8 oz., 12 Pack',
             'type_id' => 5,
             'price' => 99.87,
-            'image1' => 'g81DMEc7hH+L._SL1500_.jpg',
+            'image1' => 'g81DMEc7hHL._SL1500_.jpg',
             'image2' => 'g81JKfZRCihL._SL1500_.jpg',
             'image3' => 'g817zDfrIszL._SL1500_.jpg',
             'image4' => 'g81QWXsF8I-L._SL1500_.jpg',
@@ -889,7 +889,7 @@ class ProductsSeeder extends Seeder
             'name' => 'fairlife YUP! Low Fat, Ultra-Filtered Milk, Very Strawberry Flavor, All Natural Flavors (Packaging May Vary), 14 Fl Oz, 12 count',
             'type_id' => 5,
             'price' => 33.4,
-            'image1' => 'k71kAMQhBq+L._SL1500_.jpg',
+            'image1' => 'k71kAMQhBqL._SL1500_.jpg',
             'image2' => 'k81jJQLoWFSL._SL1500_.jpg',
             'image3' => 'k71x7nBi6ZEL._SL1500_.jpg',
             'image4' => 'k71YFdw6CHNL._SL1500_.jpg',
@@ -932,8 +932,8 @@ class ProductsSeeder extends Seeder
             Caffeine Content: Caffeinated
             Package Information: 12 Slim Cans of 12 ounces',
             'weight' => 4.2,
-            'created_at' => '2022-11-16',
-            'exp' => '2023-11-16',
+            'created_at' => '2021-11-16',
+            'exp' => '2022-11-16',
         ]);
         //Drinks number2
         DB::table('products')->insert([
@@ -948,8 +948,8 @@ class ProductsSeeder extends Seeder
             This sparkling beverage is best enjoyed ice-cold for maximum refreshment 34 mg of caffeine in each 12 oz serving. There's never a bad time for a classic Coke. Stock your home pantry or office breakroom. 12-oz Coca-Cola cans come in a case of 24.",
             'infomation' => "Sips like a Coke, finishes like a Coffee. | Grab Coca-Cola with Coffee and refresh your coffee break. Delicious: Whether you're on-the-go, or looking for that afternoon pick-me-up, Coca-Cola with Coffee is the perfect soft drink for anyone who loves the refreshing Coca-Cola taste and the familiar taste of coffee. Variety: Coke with Coffee comes in three flavor varieties: Dark Blend, Vanilla. Item Form: Liquid Brand: Coca-Cola. Flavor: Dark Blend ZERO. Caffeine Content: Caffeinated. Package Information: 12 Slim Cans of 12 ounces",
             'weight' => 9.5,
-            'created_at' => '2022-12-09',
-            'exp' => '2023-12-09',
+            'created_at' => '2021-12-09',
+            'exp' => '2022-12-09',
         ]);
         //Drinks number3
         DB::table('products')->insert([
@@ -968,8 +968,8 @@ class ProductsSeeder extends Seeder
             Only 150 calories per can Pepsi-the bold, refreshing, robust cola Perfect for parties, meals and celebrations big and small
             No fat, No cholesterol, Low sodium',
             'weight' => 8.5,
-            'created_at' => '2022-12-09',
-            'exp' => '2023-12-09',
+            'created_at' => '2021-12-09',
+            'exp' => '2022-12-09',
         ]);
         //Drinks number4
         DB::table('products')->insert([
@@ -1010,8 +1010,8 @@ class ProductsSeeder extends Seeder
             Includes (24) 12 oz cans
             Statements regarding dietary supplements have not been evaluated by the FDA and are not intended to diagnose, treat, cure, or prevent any disease or health condition.',
             'weight' => 8,
-            'created_at' => '2022-12-09',
-            'exp' => '2023-12-09',
+            'created_at' => '2021-12-09',
+            'exp' => '2022-12-09',
         ]);
         //Drinks number6
         DB::table('products')->insert([
@@ -1059,8 +1059,8 @@ class ProductsSeeder extends Seeder
             No Caffei e 30 Pack of Mini Cans (7.5 fl oz ea)
             Great for stocking up, parties, on-the-road, and more!',
             'weight' => 9.5,
-            'created_at' => '2022-09-09',
-            'exp' => '2023-09-09',
+            'created_at' => '2021-09-09',
+            'exp' => '2022-09-09',
         ]);
         //Drinks number8
         DB::table('products')->insert([
@@ -1069,7 +1069,7 @@ class ProductsSeeder extends Seeder
             'price' => 29.84,
             'image1' => '815ygbGLXjL._SL1500_.jpg',
             'image2' => '81Cs2OQmfJL._SL1500_.jpg',
-            'image3' => '71zBdSas+qL._SL1200_.jpg',
+            'image3' => '71zBdSasqL._SL1200_.jpg',
             'image4' => '51w94w8pEHL.jpg',
             'description' => '7 UP Cherry Zero (Diet) Soda Soft Drink, 12 oz 24 pack cans (Total of 288 FL OZ)\r\nStatements regarding dietary supplements have not been evaluated by the FDA and are not intended to diagnose, treat, cure, or prevent any disease or health condition. Carbonated soda delivers the satisfying taste of lemon lime flavor every time.\r\nCombine 7UP with your favorite box cake mix and Maraschino cherries for a delicious twist on everyday baking. Top with crushed pineapples and whipped topping for an even better dessert or special occasion treat. Try a new drink recipe like this sweet pineapple-infused cocktail we call the 7UP Side-Down Cake. Combine your favorite cake flavored vodka, fresh orange juice, fresh pineapple juice and your favorite 7UP flavor. Then pour over ice and enjoy! Over 21, please drink responsibly.',
             'infomation' => 'Zero (Diet) 7up Cherry
@@ -1082,8 +1082,8 @@ class ProductsSeeder extends Seeder
             Manufacturer: variety pack
             ASIN: B08LPG61G5',
             'weight' => 5.6,
-            'created_at' => '2022-08-26',
-            'exp' => '2023-08-26',
+            'created_at' => '2022-01-26',
+            'exp' => '2023-01-26',
         ]);
         //Drinks number9
         DB::table('products')->insert([
@@ -1098,8 +1098,8 @@ class ProductsSeeder extends Seeder
             Zero Sugar, Zero Calorie: Zevia offers a platform of naturally sweetened products that include a variety of flavors across Soda, Energy Drinks, Organic Tea, Mixers, Kidz drinks, and Sparkling Water Zevia\'s Mission: We feel strongly about the global health challenges from excess sugar intake and address it with a broad portfolio of delicious zero sugar, zero calorie, naturally sweetened beverages',
             'infomation' => 'Zevia Soda: Bursting with the taste of juicy ripe black cherries Zevia Black Cherry has won the hearts of cherry soda lovers everywhere; This stevia sweetened diet soda is cherrylicious and full of flavor\r\nBetter For You Alternative: Sweetened with plant-derived stevia leaf extract and available in 15 delicious flavors, Zevia sodas are naturally sweetened for you and your entire family to enjoy\r\nReal Ingredients: We use only real, plant-based ingredients, so all of our beverages are Non-GMO Project Verified, gluten-free, Kosher, vegan, and free of added color, artificial sweeteners and sodium.',
             'weight' => 5.8,
-            'created_at' => '2022-06-07',
-            'exp' => '2023-06-07',
+            'created_at' => '2022-01-07',
+            'exp' => '2023-01-07',
         ]);
         //Drinks number10
         DB::table('products')->insert([
@@ -1108,7 +1108,7 @@ class ProductsSeeder extends Seeder
             'price' => 19.86,
             'image1' => '81hU6d3muTL._SL1500_.jpg',
             'image2' => '81n3aDyNOwL._SL1500_.jpg',
-            'image3' => '81tZotljU+L._SL1500_.jpg',
+            'image3' => '81tZotljUL._SL1500_.jpg',
             'image4' => '81MjIkaowxL._SL1500_.jpg',
             'description' => 'When it comes to creating playful memories with bold and exciting fruit flavor, no soft drink satisfies quite like a Crush. The leader of the Crush family, Crush Orange shocks your senses with a sweet and tangy citrus flavor that is 100 percent caffeine free. Crush has been a classic beverage loved by every generation since 1916. With the delicious taste of Crush Orange, this is where fun meets flavor.
             Ingredients: CARBONATED WATER, HIGH FRUCTOSE CORN SYRUP, CITRIC ACID, SODIUM BENZOATE (PRESERVATIVE), NATURAL FLAVORS, MODIFIED CORN STARCH, ESTER GUM, YELLOW 6, SALT, RED 40\r\nStatements regarding dietary supplements have not been evaluated by the FDA and are not intended to diagnose, treat, cure, or prevent any disease or health condition.',
@@ -1122,8 +1122,8 @@ class ProductsSeeder extends Seeder
             Caffeine free
             Where Fun Meets Flavor',
             'weight' => 3.4,
-            'created_at' => '2022-08-07',
-            'exp' => '2023-08-07',
+            'created_at' => '2022-02-07',
+            'exp' => '2023-02-07',
         ]);
 
         //Beers number1
@@ -1132,7 +1132,7 @@ class ProductsSeeder extends Seeder
             'type_id' => 7,
             'price' => 42.50,
             'image1' => '91wGUDjZvOL._SX390SY679SH20_.jpg',
-            'image2' => 'A1e86+wEPNL._SX679_.jpg',
+            'image2' => 'A1e86wEPNL._SX679_.jpg',
             'image3' => '81mcLKDRnSL._SX679_.jpg',
             'image4' => '81D-4nVLISL._SX679_.jpg',
             'description' => "Most drinks on the market are quick, factory mixes that take less than one hour to make. We carefully craft-brew our drinks for as long as it takes to achieve an exceptional taste. If that means taking seven days, we’ll take seven days.
@@ -1240,7 +1240,7 @@ class ProductsSeeder extends Seeder
             'type_id' => 7,
             'price' => 35,
             'image1' => '816P417ew2L._SL1500_.jpg',
-            'image2' => '71+wgcAhpVL._SL1500_.jpg',
+            'image2' => '71wgcAhpVL._SL1500_.jpg',
             'image3' => '71ATodDHB4L._SL1500_.jpg',
             'image4' => '81H0dQFRwOL._SL1500_.jpg',
             'description' => 'By using a unique blend of three of the world’s finest naturally sourced gingers, subtle botanical flavors and English spring water, We have created a delicious ginger Ale with an authentic and refreshing taste and aroma. Perfectly balanced to enhance the flavor notes of the finest whiskies, bourbons and rums. Gluten free. Non-GMO certified. Naturally sourced ingredients, no artificial sweeteners.
@@ -1276,7 +1276,7 @@ class ProductsSeeder extends Seeder
             'image1' => '61ZppoB8-MS._SL1500_.jpg',
             'image2' => '71Sp8506ZZS._SL1500_.jpg',
             'image3' => '71PC1T6sNQS._SL1500_.jpg',
-            'image4' => '81Be6f+CXiS._SL1500_.jpg',
+            'image4' => '81Be6fCXiS._SL1500_.jpg',
             'description' => "Q Elderflower Tonic Water is fragrant, crisp, and clean with high carbonation, so it adds an unmistakable floral edge to your favorite cocktail. Made with real Quinine from Peru, Q Tonic Water is less sweet so the subtleties of a great spirit shine through. Make your drink spectacular. It was a warm summer night in Brooklyn and some good friends were in my backyard for gin & tonics. A few drinks in, my teeth felt sticky. I picked up the bottle of tonic water. 32 grams of high fructose corn syrup! Artificial flavors. And artificial preservatives. Sara was drinking a Sprite. I asked to see the can.
             'Do you know that tonic water is virtually the same thing as Sprite?' 'Really?'   
             Maybe it was the gin, but the idea lingered. Justin brought this great bottle of Tanqueray over. And we were mixing it drink after drink with something lousy. The moon was shining down on the table. The light caught the gin, transforming it into a glowing orb of green goodness. Next to it, the plastic tonic water bottle with its label peeling off and its contents going flat looked particularly decrepit.
@@ -1319,7 +1319,7 @@ class ProductsSeeder extends Seeder
             'name' => 'Corona, Lager Light, 12pk, 12 Fl Oz',
             'type_id' => 7,
             'price' => 42.87,
-            'image1' => '81fwV-hH+bL._AC_SL1500_.jpg',
+            'image1' => '81fwV-hHbL._AC_SL1500_.jpg',
             'image2' => '81Edre5TVyL._AC_SL1500_.jpg',
             'image3' => '91I2fuMoQrL._AC_SL1500_.jpg',
             'image4' => '91mk9A0OGCL._AC_SL1500_.jpg',
@@ -1339,7 +1339,7 @@ class ProductsSeeder extends Seeder
             'name' => "Fresh Organic Bananas Bundle",
             'type_id' => 8,
             'price' => 33.24,
-            'image1' => '61fZ+YAYGaL._SL1500_.jpg',
+            'image1' => '61fZYAYGaL._SL1500_.jpg',
             'image2' => '06-Nov-20-ogp.jpg',
             'image3' => '202ebeef-6657-44ec-8fff-28352e1f5999.jpg',
             'image4' => 'Banana.jpg',
@@ -1493,7 +1493,7 @@ class ProductsSeeder extends Seeder
             'image1' => '71r2Si0ZMSL._SL1500_.jpg',
             'image2' => '71Xy6zskThL._SL1500_.jpg',
             'image3' => '71xuiKxzHOL._SL1024_.jpg',
-            'image4' => '71rrXsA+8mL._SL1201_.jpg',
+            'image4' => '71rrXsA8mL._SL1201_.jpg',
             'description' => "Inspired by an ancient Incan technique, NATIERRA’s Organic Freeze-Dried line offers some of the world’s most delicious organic fruits and vegetables, and preserves them using a sophisticated technique that removes 99% of their moisture, preserving flavor, texture, color, nutrients, and giving them a great crunch! USDA Organic, Kosher, Vegan, Non-GMO Verified and fat free with no preservatives or added sugar*. *Not a low-calorie food; see nutrition information for calorie and sugar content. We source Organic fruit from around the world to bring you farm to pantry crunchy snacks! Treat your family with a plant-based, wholesome and delicious snack that will awake your taste buds without guilt! No sugar added – Why add sugar when fruit is already delicious on its own? We never add any unnecessary sweeteners or colorants to our fruits.",
             'infomation' => 'Great snack – in today’s busy world, it’s important to be prepared with sensible snacks to help us get though the day. Perfect for your desk drawer, your kid’s lunch box and road trips. A great snack is just a crunch away!
             Excellent for snacking on its own, baking, adding color to frosting, topping recipes, adding crunch to salads, smoothies.',
@@ -1509,7 +1509,7 @@ class ProductsSeeder extends Seeder
             'image1' => '618-ihAU5BL._SL1500_.jpg',
             'image2' => '712vt94vxhL._SL1500_.jpg',
             'image3' => '71hEk3UracL._SL1024_.jpg',
-            'image4' => '71rrXsA+8mL._SL1201_.jpg',
+            'image4' => '71rrXsA8mL._SL1201_.jpg',
             'description' => "USDA Organic, Kosher, Vegan, Non-GMO Verified and fat free with no preservatives or added sugar. Not a low-calorie food; see nutrition information for calorie and sugar content. We source Organic fruit from around the world to bring you farm to pantry crunchy snacks! Treat your family with a plant-based, wholesome and delicious snack that will awake your taste buds without guilt!
             No sugar added – Why add sugar when fruit is already delicious on its own? We never add any unnecessary sweeteners or colorants to our fruits. Inspired by an ancient Incan technique, NATIERRA’s Organic Freeze-Dried line offers some of the world’s most delicious organic fruits and vegetables, and preserves them using a sophisticated technique that removes 99% of their moisture, preserving flavor, texture, color, nutrients, and giving them a great crunch!",
             'infomation' => 'Great snack – in today’s busy world, it’s important to be prepared with sensible snacks to help us get though the day. Perfect for your desk drawer, your kid’s lunch box and road trips. A great snack is just a crunch away!
@@ -1524,9 +1524,9 @@ class ProductsSeeder extends Seeder
             'type_id' => 9,
             'price' => 64.52,
             'image1' => '71J547xKpnL._SL1500_.jpg',
-            'image2' => '71N+OfL1hsL._SL1500_.jpg',
+            'image2' => '71NOfL1hsL._SL1500_.jpg',
             'image3' => '71nGU8-TZfL._SL1024_.jpg',
-            'image4' => '71rrXsA+8mL._SL1201_.jpg',
+            'image4' => '71rrXsA8mL._SL1201_.jpg',
             'description' => "USDA Organic, Kosher, Vegan, Non-GMO Verified and fat free with no preservatives or added sugar. Not a low-calorie food; see nutrition information for calorie and sugar content.
             We source Organic fruit from around the world to bring you farm to pantry crunchy snacks! Treat your family with a plant-based, wholesome and delicious snack that will awake your taste buds without guilt!
             No sugar added – Why add sugar when fruit is already delicious on its own? We never add any unnecessary sweeteners or colorants to our fruits. Inspired by an ancient Incan technique, NATIERRA’s Organic Freeze-Dried line offers some of the world’s most delicious organic fruits and vegetables, and preserves them using a sophisticated technique that removes 99% of their moisture, preserving flavor, texture, color, nutrients, and giving them a great crunch!",
@@ -1544,7 +1544,7 @@ class ProductsSeeder extends Seeder
             'image1' => '71f9aQE8K2L._SY679_.jpg',
             'image2' => '71L2Z8tE1XL._SL1500_.jpg',
             'image3' => '816ZuwGNo0L._SL1500_.jpg',
-            'image4' => '71rrXsA+8mL._SL1201_.jpg',
+            'image4' => '71rrXsA8mL._SL1201_.jpg',
             'description' => "USDA Organic, Kosher, Vegan, Non-GMO Verified and fat free with no preservatives or added sugar*. *Not a low-calorie food; see nutrition information for calorie and sugar content.
             We source Organic fruit from around the world to bring you farm to pantry crunchy snacks! Treat your family with a plant-based, wholesome and delicious snack that will awake your taste buds without guilt!
             No sugar added Why add sugar when fruit is already delicious on its own? We never add any unnecessary sweeteners or colorants to our fruits. Inspired by an ancient Incan technique, NATIERRA’s Organic Freeze-Dried line offers some of the world’s most delicious organic fruits and vegetables, and preserves them using a sophisticated technique that removes 99% of their moisture, preserving flavor, texture, color, nutrients, and giving them a great crunch!",
@@ -1562,7 +1562,7 @@ class ProductsSeeder extends Seeder
             'image1' => '61wzLJ2iZHL._SL1500_.jpg',
             'image2' => '71c4C73NUgL._SL1500_.jpg',
             'image3' => '8107SsYdLaL._SL1500_.jpg',
-            'image4' => '71rrXsA+8mL._SL1201_.jpg',
+            'image4' => '71rrXsA8mL._SL1201_.jpg',
             'description' => "USDA Organic, Kosher, Vegan, Non-GMO Verified and fat free with no preservatives or added sugar*. *Not a low-calorie food; see nutrition information for calorie and sugar content.
             We source Organic fruit from around the world to bring you farm to pantry crunchy snacks! Treat your family with a plant-based, wholesome and delicious snack that will awake your taste buds without guilt!
             No sugar added – Why add sugar when fruit is already delicious on its own? We never add any unnecessary sweeteners or colorants to our fruits. Inspired by an ancient Incan technique, NATIERRA’s Organic Freeze-Dried line offers some of the world’s most delicious organic fruits and vegetables, and preserves them using a sophisticated technique that removes 99% of their moisture, preserving flavor, texture, color, nutrients, and giving them a great crunch!",
@@ -1580,7 +1580,7 @@ class ProductsSeeder extends Seeder
             'image1' => '71x4f1EhH5L._SL1500_.jpg',
             'image2' => '71F4fpEoJsL._SL1500_.jpg',
             'image3' => '71-ILcZTbnL._SL1024_.jpg',
-            'image4' => '71rrXsA+8mL._SL1201_.jpg',
+            'image4' => '71rrXsA8mL._SL1201_.jpg',
             'description' => "USDA Organic, Kosher, Vegan, Non-GMO Verified and fat free with no preservatives or added sugar*. *Not a low-calorie food; see nutrition information for calorie and sugar content.
             We source Organic fruit from around the world to bring you farm to pantry crunchy snacks! Treat your family with a plant-based, wholesome and delicious snack that will awake your taste buds without guilt!
             No sugar added – Why add sugar when fruit is already delicious on its own? We never add any unnecessary sweeteners or colorants to our fruits. Inspired by an ancient Incan technique, NATIERRA’s Organic Freeze-Dried line offers some of the world’s most delicious organic fruits and vegetables, and preserves them using a sophisticated technique that removes 99% of their moisture, preserving flavor, texture, color, nutrients, and giving them a great crunch!",
@@ -1598,7 +1598,7 @@ class ProductsSeeder extends Seeder
             'image1' => '71Yiori8cbL._SL1500_.jpg',
             'image2' => '7174yRSosIL._SL1500_.jpg',
             'image3' => '81jZU1-PrTL._SL1500_.jpg',
-            'image4' => '71rrXsA+8mL._SL1201_.jpg',
+            'image4' => '71rrXsA8mL._SL1201_.jpg',
             'description' => "USDA Organic, Kosher, Vegan, Non-GMO Verified and fat free with no preservatives or added sugar . Not a low-calorie food; see nutrition information for calorie and sugar content.
             We source Organic fruit from around the world to bring you farm to pantry crunchy snacks! Treat your family with a plant-based, wholesome and delicious snack that will awake your taste buds without guilt!
             No sugar added – Why add sugar when fruit is already delicious on its own? We never add any unnecessary sweeteners or colorants to our fruits.  Inspired by an ancient Incan technique, NATIERRA’s Organic Freeze-Dried line offers some of the world’s most delicious organic fruits and vegetables, and preserves them using a sophisticated technique that removes 99% of their moisture, preserving flavor, texture, color, nutrients, and giving them a great crunch!",
@@ -1616,7 +1616,7 @@ class ProductsSeeder extends Seeder
             'image1' => '61wDzy9SMQL._SL1500_.jpg',
             'image2' => '71KIUWvQOoL._SL1500_.jpg',
             'image3' => '71fTCJoNfRL._SL1024_.jpg',
-            'image4' => '71rrXsA+8mL._SL1201_.jpg',
+            'image4' => '71rrXsA8mL._SL1201_.jpg',
             'description' => "USDA Organic, Kosher, Vegan, Non-GMO Verified and fat free with no preservatives or added sugar. Not a low-calorie food; see nutrition information for calorie and sugar content.
             We source Organic fruit from around the world to bring you farm to pantry crunchy snacks! Treat your family with a plant-based, wholesome and delicious snack that will awake your taste buds without guilt!
             No sugar added – Why add sugar when fruit is already delicious on its own? We never add any unnecessary sweeteners or colorants to our fruits.
@@ -1635,7 +1635,7 @@ class ProductsSeeder extends Seeder
             'image1' => '71kMZv6NLpL._SL1500_.jpg',
             'image2' => '71JhYIalwTL._SL1500_.jpg',
             'image3' => '815GUSXHc0L._SL1500_.jpg',
-            'image4' => '71rrXsA+8mL._SL1201_.jpg',
+            'image4' => '71rrXsA8mL._SL1201_.jpg',
             'description' => "USDA Organic, Kosher, Vegan, Non-GMO Verified and fat free with no preservatives or added sugar. Not a low-calorie food; see nutrition information for calorie and sugar content.
             We source Organic fruit from around the world to bring you farm to pantry crunchy snacks! Treat your family with a plant-based, wholesome and delicious snack that will awake your taste buds without guilt!
             No sugar added – Why add sugar when fruit is already delicious on its own? We never add any unnecessary sweeteners or colorants to our fruits. Inspired by an ancient Incan technique, NATIERRA’s Organic Freeze-Dried line offers some of the world’s most delicious organic fruits and vegetables, and preserves them using a sophisticated technique that removes 99% of their moisture, preserving flavor, texture, color, nutrients, and giving them a great crunch!",
@@ -1653,7 +1653,7 @@ class ProductsSeeder extends Seeder
             'image1' => '81nBHL5faTL._SL1500_.jpg',
             'image2' => '81Gn4NxyToL._SL1500_.jpg',
             'image3' => '71PoIbp7TQL._SL1024_.jpg',
-            'image4' => '71rrXsA+8mL._SL1201_.jpg',
+            'image4' => '71rrXsA8mL._SL1201_.jpg',
             'description' => "USDA Organic, Kosher, Vegan, Non-GMO Verified and fat free with no preservatives or added sugar. Not a low-calorie food; see nutrition information for calorie and sugar content.
             We source Organic fruit from around the world to bring you farm to pantry crunchy snacks! Treat your family with a plant-based, wholesome and delicious snack that will awake your taste buds without guilt!
             No sugar added – Why add sugar when fruit is already delicious on its own? We never add any unnecessary sweeteners or colorants to our fruits. Inspired by an ancient Incan technique, NATIERRA’s Organic Freeze-Dried line offers some of the world’s most delicious organic fruits and vegetables, and preserves them using a sophisticated technique that removes 99% of their moisture, preserving flavor, texture, color, nutrients, and giving them a great crunch!",
@@ -1668,7 +1668,7 @@ class ProductsSeeder extends Seeder
             'name' => "Campbell's Chunky Savory Chicken with White & Wild Rice Soup, 18.8 oz Can (Pack of 12)",
             'type_id' => 10,
             'price' => 33.24,
-            'image1' => 'a91ZNuIU4+OS._SL1500_.jpg',
+            'image1' => 'a91ZNuIU4OS._SL1500_.jpg',
             'image2' => 'a91Zyrj1cC5S._SL1500_.jpg',
             'image3' => 'a81xNV6uaoPL._SL1500_.jpg',
             'image4' => 'a71CouPDDkXL._SL1500_.jpg',
@@ -1700,7 +1700,7 @@ class ProductsSeeder extends Seeder
             'price' => 25.23,
             'image1' => 'c81Ly-xqYVKL._SL1500_.jpg',
             'image2' => 'c81UKUGHvEjL._SL1500_.jpg',
-            'image3' => 'c91+ywvBowML._SL1500_.jpg',
+            'image3' => 'c91ywvBowML._SL1500_.jpg',
             'image4' => 'c91sbduyHhfL._SL1500_.jpg',
             'description' => 'Armour Star Classic Homestyle Beef Stew delivers a quick and easy canned food meal with great flavor. The canned stew offers a delicious recipe of beef, potatoes and carrots in a rich, hearty gravy. This gluten free beef stew can be eaten right out of the can, so you can enjoy this canned stew as a ready to eat meal or snack.',
             'infomation' => "WATER, BEEF, REHYDRATED POTATOES (WITH SODIUM ACID PYROPHOSPHATE TO MAINTAIN COLOR), CARROTS, TOMATO PUREE (WATER, TOMATO PASTE), MODIFIED FOOD STARCH. CONTAINS 2% OR LESS OF: SALT, SEASONING BLEND (ONION POWDER, SALT, HYDROLYZED CORN PROTEIN, DEXTROSE, MALTODEXTRIN, SPICE EXTRACTIVES, NATURAL FLAVOR, OIL OF PARSLEY, DISODIUM INOSINATE, DISODIUM GUANYLATE), CARAMEL COLOR, SUGAR.",
@@ -1714,7 +1714,7 @@ class ProductsSeeder extends Seeder
             'type_id' => 10,
             'price' => 29.89,
             'image1' => 'e71sfce2PZJS._SL1500_.jpg',
-            'image2' => 'e81+9ccp8hRS._SL1500_.jpg',
+            'image2' => 'e819ccp8hRS._SL1500_.jpg',
             'image3' => 'e81OV4fyMThS._SL1500_.jpg',
             'image4' => 'e91Parb2ZAoS._SL1500_.jpg',
             'description' => 'he Del Monte mandarin oranges, with their sweet flavor, complement all of your favorite recipes and different types of dishes, salads, drinks, and desserts. These slices are immersed in a naturally refreshing light syrup that elevates any dish you make to another level. The delicious fruit is a tasty topping for yogurt, cereal, salads, and can be combined with flavored gelatin for a fun treat.',
@@ -1729,7 +1729,7 @@ class ProductsSeeder extends Seeder
             'type_id' => 10,
             'price' => 29.95,
             'image1' => 'e71sfce2PZJS._SL1500_.jpg',
-            'image2' => 'e81+9ccp8hRS._SL1500_.jpg',
+            'image2' => 'e819ccp8hRS._SL1500_.jpg',
             'image3' => 'e81OV4fyMThS._SL1500_.jpg',
             'image4' => 'e91Parb2ZAoS._SL1500_.jpg',
             'description' => 'The Del Monte mandarin oranges, with their sweet flavor, complement all of your favorite recipes and different types of dishes, salads, drinks, and desserts. These slices are immersed in a naturally refreshing light syrup that elevates any dish you make to another level. The delicious fruit is a tasty topping for yogurt, cereal, salads, and can be combined with flavored gelatin for a fun treat.',
@@ -1788,7 +1788,7 @@ class ProductsSeeder extends Seeder
             'name' => "BUSH'S BEST Canned Dark Red Kidney Beans, Source of Plant Based Protein and Fiber, Low Fat, Gluten Free, 16 oz (Pack of 12)",
             'type_id' => 10,
             'price' => 29.89,
-            'image1' => 'i71Q3Ua+EIqL._SL1500_.jpg',
+            'image1' => 'i71Q3UaEIqL._SL1500_.jpg',
             'image2' => 'i81GbNufJovL._SL1500_.jpg',
             'image3' => 'i51BX5toMUNL._SL1000_.jpg',
             'image4' => 'i81ffQAKd2jL._SL1500_.jpg',
@@ -1806,7 +1806,7 @@ class ProductsSeeder extends Seeder
             'image1' => 'k81R8wpC7xML._SL1500_.jpg',
             'image2' => 'k61cxr1b0e4L._SL1000_.jpg',
             'image3' => 'k61ojNRc6h9L._SL1000_.jpg',
-            'image4' => 'k71nC+a+PdWL._SL1000_.jpg',
+            'image4' => 'k71nCaPdWL._SL1000_.jpg',
             'description' => "Mary Kitchen Corned Beef Hash is all about family, friends that feel like family, and a certain Secret Family Recipe. Since we got our start over 100 years ago in Chestnut Hill, Tennessee, BUSH’S has always maintained that quality is the best policy. We pursue excellence and exceptional taste in our beans, sauces and everything we do. That's why you’re cooking up the best with BUSH’S BEST",
             'infomation' => 'Beef, rehydrated potatoes, water, contains 2 percent or less of salt, sugar, flavoring, spice, sodium nitrate',
             'weight' => 2.4,
@@ -1833,7 +1833,7 @@ class ProductsSeeder extends Seeder
             'name' => 'Del Monte Canned Sliced Peaches in Heavy Syrup, 15.25 Ounce (Pack of 12) Sliced, Cal. Freestone',
             'type_id' => 10,
             'price' => 19.99,
-            'image1' => 'm81wb3+2SLqL._SL1500_.jpg',
+            'image1' => 'm81wb32SLqL._SL1500_.jpg',
             'image2' => 'm81Ewu8B0F9L._SL1500_.jpg',
             'image3' => 'm919-CoMxwvL._SL1500_.jpg',
             'image4' => 'm81m83MnuMBL._SL1500_.jpg',
