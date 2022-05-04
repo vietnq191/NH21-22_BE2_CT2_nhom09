@@ -997,7 +997,8 @@ ol {
 
 .latest-product__item__pic img {
 	height: 110px;
-	width: 110px;
+	width: 110px!important;
+	object-fit: cover;
 }
 
 .latest-product__item__text {
@@ -1669,6 +1670,9 @@ ol {
 
 .product__details__pic__item img {
 	min-width: 100%;
+	object-fit: cover;
+    width: 500px;
+    height: 500px;
 }
 
 .product__details__pic__slider img {
@@ -1676,7 +1680,8 @@ ol {
 }
 
 .product__details__pic__slider.owl-carousel .owl-item img {
-	width: auto;
+	object-fit: cover;
+    height: 120px;
 }
 
 .product__details__text h3 {
