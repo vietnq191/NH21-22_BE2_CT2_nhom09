@@ -185,17 +185,16 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+                            <li><a href="http://127.0.0.1:8000/shop-grid/1">Fresh Meat</a></li>
+                            <li><a href="http://127.0.0.1:8000/shop-grid/2">Vegetables</a></li>
+                            <li><a href="http://127.0.0.1:8000/shop-grid/3">Fruit & Nut Gifts</a></li>
+                            <li><a href="http://127.0.0.1:8000/shop-grid/4">Fresh Berries</a></li>
+                            <li><a href="http://127.0.0.1:8000/shop-grid/5">Ocean Foods</a></li>
+                            <li><a href="http://127.0.0.1:8000/shop-grid/6">Butter & Eggs</a></li>
+                            <li><a href="http://127.0.0.1:8000/shop-grid/7">Fastfood</a></li>
+                            <li><a href="http://127.0.0.1:8000/shop-grid/8">Fresh Onion</a></li>
+                            <li><a href="http://127.0.0.1:8000/shop-grid/9">Papayaya & Crisps</a></li>
+                            <li><a href="http://127.0.0.1:8000/shop-grid/10">Oatmeal</a></li>
                         </ul>
                     </div>
                 </div>

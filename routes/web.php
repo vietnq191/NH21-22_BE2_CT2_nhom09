@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\LoadmoreController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,5 +20,7 @@ Route::get('/shop-details/{id}', [ProductController::class,'product_detail']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-
+//Get product by type_ID
+Route::get('/shop-grid/{typeid?}', [ProductController::class,'drid']);
+// Route::post('/loadmore/load_data', [LoadmoreController::class,'load_data'])->name('loadmore.load_data');
 require __DIR__.'/auth.php';
