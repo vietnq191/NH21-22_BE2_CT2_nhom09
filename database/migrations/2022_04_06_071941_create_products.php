@@ -28,6 +28,7 @@ class CreateProducts extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('exp')->useCurrent();
             $table->integer('sales')->default(0);
+            $table->integer('featured')->default(0);
         });
     }
 
