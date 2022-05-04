@@ -26,4 +26,20 @@ class ProductController extends Controller
             'getNewProduct'=>$get10Products
         ]);
     }
+    function drid(Request $request){
+        //Get product
+        $url = $request->path();
+        $type = explode('/', $url);
+        //Get 15 new products
+        if(isset($type[1])){
+            $protype = Product::orderBy('id', 'desc')->where('type_id',$type[1])->take(15)->get();
+        }else{
+        $protype = Product::orderBy('id', 'desc')->take(15)->get();
+        }
+        return view('shop-grid',
+        [
+            'getProducts'=>$protype
+        ]);
+    }
+    
 }
