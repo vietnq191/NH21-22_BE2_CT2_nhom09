@@ -21,5 +21,5 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 //Get product by type_ID
 Route::get('/shop-grid/{typeid?}', [ProductController::class,'drid']);
-// Route::post('/loadmore/load_data', [LoadmoreController::class,'load_data'])->name('loadmore.load_data');
+/// Route::post('/loadmore/load_data', [LoadmoreController::class,'load_data'])->name('loadmore.load_data');
 require __DIR__.'/auth.php';
