@@ -15,13 +15,16 @@ use App\Http\Controllers\LoadmoreController;
 */
 
 Route::get('/', [ProductController::class,'index']);
+
 Route::get('/shop-details/{id}', [ProductController::class,'product_detail']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
 //Get product by type_ID
 Route::get('/shop-grid/{typeid?}', [ProductController::class,'drid']);
+
 //Get Detail product
 Route::get('/shop-details/{id}', [ProductController::class,'product_detail']);
 require __DIR__.'/auth.php';

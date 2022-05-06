@@ -185,16 +185,6 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <!-- <li><a href="http://127.0.0.1:8000/shop-grid/1">Fresh Meat</a></li>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/2">Vegetables</a></li>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/3">Fruit & Nut Gifts</a></li>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/4">Fresh Berries</a></li>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/5">Ocean Foods</a></li>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/6">Butter & Eggs</a></li>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/7">Fastfood</a></li>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/8">Fresh Onion</a></li>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/9">Papayaya & Crisps</a></li>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/10">Oatmeal</a></li> -->
                             <li><a href="http://127.0.0.1:8000/shop-grid/">All product</a></li>
                             @foreach($getProtypes as $value)
                             <li><a href="http://127.0.0.1:8000/shop-grid/<?php echo $value['id']; ?>"><?php echo $value['name']; ?></a></li>

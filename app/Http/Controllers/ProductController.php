@@ -44,6 +44,9 @@ class ProductController extends Controller
         ]);
     }
     function product_detail($id){
+        //get all protype
+        $protype = Protype::all();
+
         //View product detail
         $detail = Product::find($id);
         $type = Product::select('protypes.name')->join('protypes','protypes.id','=','products.type_id')
@@ -53,6 +56,7 @@ class ProductController extends Controller
         //return
         return view('shop-details', 
         [
+            'getProtypes'=>$protype,
             'productDetail'=>$detail,
             'getType'=>$type,
         ]);
@@ -61,23 +65,23 @@ class ProductController extends Controller
         //Get product
         $url = $request->path();
         $type = explode('/', $url);
+
         // Get all protype
         $protypes = Protype::all();
+
          //Get latest products
          $latestProduts = Product::orderBy('created_at', 'asc')->take(6)->get();
-        //Get 15 new products
+        
+         //Get 6 products
         if(isset($type[1])){
             $product = Product::orderBy('id', 'desc')->where('type_id',$type[1])->paginate(6);
-            // $name = Protype::select('name')->where('id',$type[1])->get();
-        }else{
+        } else {
         $product = Product::orderBy('id', 'desc')->paginate(6);
-        // $name = Protype::select('name')->where('id',$type[1])->get();
         }
         return view('shop-grid',
         [
             'getProtypes'=>$protypes,
             'getProducts'=>$product,
-            // 'getname'=>$name,
             'getLatestProduct'=>$latestProduts,
         ]);
     }
