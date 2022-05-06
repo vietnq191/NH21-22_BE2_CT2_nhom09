@@ -58,6 +58,7 @@ class ProductsSeeder extends Seeder
             'weight' => 1.2,
             'created_at' => '2022-09-04',
             'exp' => '2022-09-10',
+            'featured' => 1,
         ]);
         //Fresh Meat number4
         DB::table('products')->insert([
@@ -118,6 +119,7 @@ class ProductsSeeder extends Seeder
             'weight' => 3,
             'created_at' => '2022-09-04',
             'exp' => '2022-09-16',
+            'featured' => 1,
         ]);
         //Fresh Meat number8
         DB::table('products')->insert([
@@ -133,6 +135,7 @@ class ProductsSeeder extends Seeder
             'weight' => 0.4,
             'created_at' => '2022-09-04',
             'exp' => '2022-09-16',
+            'featured' => 1,
         ]);
         //Fresh Meat number9
         DB::table('products')->insert([
@@ -241,7 +244,7 @@ class ProductsSeeder extends Seeder
         ]);
         //Vegetables number4
         DB::table('products')->insert([
-            'name' => 'Garneck 3Pcs Artificial Cucumber Simulation Fake Vegetable Model Plastic Cabinet Food',
+            'name' => 'Garneck 3Pcs Artificial Cucumber Vegetable Model Plastic Cabinet Food',
             'type_id' => 2,
             'price' => 17.99,
             'image1' => '51l6dYaEqVL._AC_SX679_.jpg',
@@ -253,17 +256,18 @@ class ProductsSeeder extends Seeder
             'weight' => 0.5,
             'created_at' => '2022-04-09',
             'exp' => '2022-04-16',
+            'featured' => 1,
         ]);
         //Vegetables number5
         DB::table('products')->insert([
-            'name' => '5 Pcs Simulated Food Broccoli Slice Fake Artificial Vegetable Broccoli Decoration Model Educational Props for Home Restaurant Decor',
+            'name' => '5 Pcs Food Broccoli Artificial Vegetable Broccoli Decoration Model Educational Props for Home Restaurant Decor',
             'type_id' => 2,
             'price' => 12.99,
             'image1' => '81cgVCEz5JS._AC_SX679_.jpg',
             'image2' => 'ggg.jpg',
             'image3' => 'fff.jpg',
             'image4' => 'ddd.jpg',
-            'description' => 'This is a simulation food prop that is made of PVC material ,and it is really realistic. The Broccolis can be teaching mold, facsimile item for drawing, window display and so on. It is a perfect photo prop which can replace the true item when taking pictures.You will be satisfied with the good effect when you use it.',
+            'description' => 'This is a food prop that is made of PVC material ,and it is really realistic. The Broccolis can be teaching mold, facsimile item for drawing, window display and so on. It is a perfect photo prop which can replace the true item when taking pictures.You will be satisfied with the good effect when you use it.',
             'infomation' => 'Statements regarding dietary supplements have not been evaluated by the FDA and are not intended to diagnose, treat, cure, or prevent any disease or health condition. For warranty information about this product',
             'weight' => 0.5,
             'created_at' => '2022-05-09',
@@ -271,7 +275,7 @@ class ProductsSeeder extends Seeder
         ]);
         //Vegetables number6
         DB::table('products')->insert([
-            'name' => 'Lorigun Artificial Bell Peppers Fake Veggie Colorful Bell Peppers for Decoration, Decorative Vegetables, Red Green Yellow Bell Peppers 6Pcs',
+            'name' => 'Lorigun Artificial Bell Peppers Veggie Colorful Bell Peppers for Decoration, Decorative Vegetables, Red Green Yellow Bell Peppers 6Pcs',
             'type_id' => 2,
             'price' => 13.99,
             'image1' => '610GNbky8HL._AC_SX679_.jpg',
@@ -286,7 +290,7 @@ class ProductsSeeder extends Seeder
         ]);
         //Vegetables number7
         DB::table('products')->insert([
-            'name' => 'Artificial Eggplants Simulation Fake Vegetable Photo Props Home Decoration',
+            'name' => 'Artificial Eggplants Vegetable Photo Props Home Decoration',
             'type_id' => 2,
             'price' => 16.99,
             'image1' => '513luuAAMuL._AC_SX679_.jpg',
@@ -304,10 +308,11 @@ class ProductsSeeder extends Seeder
             'weight' => 0.5,
             'created_at' => '2022-05-09',
             'exp' => '2022-05-16',
+            'featured' => 1,
         ]);
         //Vegetables number8
         DB::table('products')->insert([
-            'name' => 'Simulation Carrots Artificial Vegetables Home&Kitchen Decorations',
+            'name' => 'Carrots Artificial Vegetables Home&Kitchen Decorations',
             'type_id' => 2,
             'price' => 10.87,
             'image1' => '41XW56vYO1L._AC_SX466_.jpg',
@@ -339,7 +344,7 @@ class ProductsSeeder extends Seeder
         ]);
         //Vegetables number10
         DB::table('products')->insert([
-            'name' => 'Hagao Fake Lettuce Leaves Artificial Vegetables Lettuces Simulation Plastic Lifelike for House Kitchen Party Pub Decoration Cabinet Ornament',
+            'name' => 'Hagao Lettuce Leaves Artificial Vegetables Lettuces Lifelike for House Kitchen Party Pub Decoration Cabinet Ornament',
             'type_id' => 2,
             'price' => 9.69,
             'image1' => '61KOVWeDojL._AC_SX679_.jpg',
@@ -358,7 +363,7 @@ class ProductsSeeder extends Seeder
         ]);
         //Vegetables number11
         DB::table('products')->insert([
-            'name' => 'Designer One Artificial Faux Fake Large Cucumber Vegetable',
+            'name' => 'Designer One Artificial Faux Large Cucumber Vegetable',
             'type_id' => 2,
             'price' => 7.9,
             'image1' => '714b-iSWZ1L._AC_SX679_.jpg',
@@ -373,6 +378,7 @@ class ProductsSeeder extends Seeder
             'weight' => 0.5,
             'created_at' => '2022-05-09',
             'exp' => '2022-05-16',
+            'featured' => 1,
         ]);
         //Vegetables number12
         DB::table('products')->insert([
@@ -408,6 +414,7 @@ class ProductsSeeder extends Seeder
             'weight' => 0.5,
             'created_at' => '2022-05-09',
             'exp' => '2022-05-13',
+            'featured' => 1,
         ]);
         //Ocean foods number2
         DB::table('products')->insert([
@@ -489,6 +496,7 @@ class ProductsSeeder extends Seeder
             'weight' => 2,
             'created_at' => '2022-05-09',
             'exp' => '2022-05-20',
+            'featured' => 1,
         ]);
         //Ocean foods number7
         DB::table('products')->insert([
@@ -534,6 +542,7 @@ class ProductsSeeder extends Seeder
             'weight' => 4.5,
             'created_at' => '2022-05-01',
             'exp' => '2022-05-10',
+            'featured' => 1,
         ]);
         //Ocean foods number10
         DB::table('products')->insert([
@@ -597,6 +606,7 @@ class ProductsSeeder extends Seeder
             'weight' => 0.5,
             'created_at' => '2022-04-08',
             'exp' => '2022-05-23',
+            'featured' => 1,
         ]);
         //Egg number4
         DB::table('products')->insert([
@@ -612,6 +622,7 @@ class ProductsSeeder extends Seeder
             'weight' => 0.8,
             'created_at' => '2022-04-05',
             'exp' => '2023-04-05',
+            'featured' => 1,
         ]);
         //Egg number5
         DB::table('products')->insert([
@@ -778,6 +789,7 @@ class ProductsSeeder extends Seeder
             'weight' => 1.2,
             'created_at' => '2022-10-11',
             'exp' => '2023-10-15',
+            'featured' => 1,
         ]);
         //Milk number4
         DB::table('products')->insert([
@@ -868,6 +880,7 @@ class ProductsSeeder extends Seeder
             'weight' => 0.5,
             'created_at' => '2022-09-02',
             'exp' => '2023-09-02',
+            'featured' => 1,
         ]);
         //Milk number10
         DB::table('products')->insert([
@@ -898,6 +911,7 @@ class ProductsSeeder extends Seeder
             'weight' => 1.2,
             'created_at' => '2022-02-09',
             'exp' => '2023-02-09',
+            'featured' => 1,
         ]);
         //Milk number12
         DB::table('products')->insert([
@@ -950,6 +964,7 @@ class ProductsSeeder extends Seeder
             'weight' => 9.5,
             'created_at' => '2021-12-09',
             'exp' => '2022-12-09',
+            'featured' => 1,
         ]);
         //Drinks number3
         DB::table('products')->insert([
@@ -970,6 +985,7 @@ class ProductsSeeder extends Seeder
             'weight' => 8.5,
             'created_at' => '2021-12-09',
             'exp' => '2022-12-09',
+            'featured' => 1,
         ]);
         //Drinks number4
         DB::table('products')->insert([
@@ -1037,6 +1053,7 @@ class ProductsSeeder extends Seeder
             'weight' => 3.6,
             'created_at' => '2022-02-09',
             'exp' => '2023-02-09',
+            'featured' => 1,
         ]);
         //Drinks number7
         DB::table('products')->insert([
@@ -1195,6 +1212,7 @@ class ProductsSeeder extends Seeder
             'weight' => 8.99,
             'created_at' => '2022-05-18',
             'exp' => '2023-05-18',
+            'featured' => 1,
         ]);
         //Beers number4
         DB::table('products')->insert([
@@ -1378,6 +1396,7 @@ class ProductsSeeder extends Seeder
             'weight' => 4,
             'created_at' => '2022-05-01',
             'exp' => '2022-05-15',
+            'featured' => 1,
         ]);
         //Fresh Fruit number4
         DB::table('products')->insert([
@@ -1535,6 +1554,7 @@ class ProductsSeeder extends Seeder
             'weight' => 0.91,
             'created_at' => '2022-02-09',
             'exp' => '2022-08-09',
+            'featured' => 1,
         ]);
         //Dried Fruit number4
         DB::table('products')->insert([
@@ -1589,6 +1609,7 @@ class ProductsSeeder extends Seeder
             'weight' => 0.8,
             'created_at' => '2022-01-10',
             'exp' => '2022-07-10',
+            'featured' => 1,
         ]);
         //Dried Fruit number7
         DB::table('products')->insert([
@@ -1707,6 +1728,7 @@ class ProductsSeeder extends Seeder
             'weight' => 1.4,
             'created_at' => '2022-05-12',
             'exp' => '2024-05-12',
+            'featured' => 1,
         ]);
         //Canned Foods number4
         DB::table('products')->insert([
@@ -1827,6 +1849,7 @@ class ProductsSeeder extends Seeder
             'weight' => 3.5,
             'created_at' => '2022-04-11',
             'exp' => '2024-10-11',
+            'featured' => 1,
         ]);
         //Canned Foods number12
         DB::table('products')->insert([
