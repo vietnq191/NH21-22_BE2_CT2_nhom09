@@ -6,9 +6,10 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>Organi Shop</h2>
+                    <!-- <h2><?php if(isset($getname)){echo $getname[0]['name']; }else{
+                        echo "Shop";}?></h2> -->
                     <div class="breadcrumb__option">
-                        <a href="./index.html">Home</a>
+                        <a href="/">Home</a>
                         <span>Shop</span>
                     </div>
                 </div>
@@ -24,21 +25,6 @@
         <div class="row">
             <div class="col-lg-3 col-md-5">
                 <div class="sidebar">
-                    <div class="sidebar__item">
-                        <h4>Department</h4>
-                        <ul>
-                            <li><a href="/shop-grid/1">Fresh Meat</a></li>
-                            <li><a href="/shop-grid/2">Vegetables</a></li>
-                            <li><a href="/shop-grid/3">Fruit & Nut Gifts</a></li>
-                            <li><a href="/shop-grid/4">Fresh Berries</a></li>
-                            <li><a href="/shop-grid/5">Ocean Foods</a></li>
-                            <li><a href="/shop-grid/6">Butter & Eggs</a></li>
-                            <li><a href="/shop-grid/7">Fastfood</a></li>
-                            <li><a href="/shop-grid/8">Fresh Onion</a></li>
-                            <li><a href="/shop-grid/9">Papayaya & Crisps</a></li>
-                            <li><a href="/shop-grid/10">Oatmeal</a></li>
-                        </ul>
-                    </div>
                     <div class="sidebar__item">
                         <h4>Price</h4>
                         <div class="price-range-wrap">
@@ -126,62 +112,53 @@
                             <h4>Latest Products</h4>
                             <div class="latest-product__slider owl-carousel">
                                 <div class="latest-prdouct__slider__item">
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-1.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-2.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-3.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
-                                        </div>
-                                    </a>
+                                <?php $count = 1 ?>
+                                @foreach($getLatestProduct as $row)
+                                <?php 
+                                    $count++;
+                                    $img = "/img/product/" . $row->image1;
+                                    $id =  '/shop-details/' . $row->id;
+                                ?>
+                                <a href="{{URL($id)}}" class="latest-product__item">
+                                    <div class="latest-product__item__pic">
+                                        <img src="{{URL::asset($img)}}" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6><?php echo substr($row->name,0,20) ?>...</h6>
+                                        <span>$<?php echo number_format($row['price'],2,'.','') ?></span>
+                                    </div>
+                                </a>
+                                <?php if($count > 3) { ?>
+                                @break
+                                <?php } ?>
+                                @endforeach
                                 </div>
                                 <div class="latest-prdouct__slider__item">
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-1.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-2.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-3.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
-                                        </div>
-                                    </a>
+                                <?php $count = 1 ?>
+                                @foreach($getLatestProduct as $row)
+                                <?php 
+                                    $count++;
+                                    if ($count < 5) {
+                                    ?>
+                                    @continue
+                                    <?php
+                                    }
+                                    $img = "/img/product/" . $row->image1;
+                                    $id =  '/shop-details/' . $row->id;
+                                ?>
+                                <a href="{{URL($id)}}" class="latest-product__item">
+                                    <div class="latest-product__item__pic">
+                                        <img src="{{URL::asset($img)}}" alt="">
+                                    </div>
+                                    <div class="latest-product__item__text">
+                                        <h6><?php echo substr($row->name,0,20) ?>...</h6>
+                                        <span>$<?php echo number_format($row['price'],2,'.','') ?></span>
+                                    </div>
+                                </a>
+                                <?php if($count > 6) { ?>
+                                @break
+                                <?php } ?>
+                                @endforeach
                                 </div>
                             </div>
                         </div>
@@ -313,7 +290,7 @@
                         </div>
                         <div class="col-lg-4 col-md-4">
                             <div class="filter__found">
-                                <h6><span>16</span> Products found</h6>
+                                <h6><span>6</span> Products found</h6>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-3">
@@ -339,19 +316,15 @@
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="#"><?php echo $value['name'] ?></a></h6>
+                                <h6><a href="#"><?php echo substr($value->name,0,30) ?>...</a></h6>
                                 <h5>$<?php echo number_format($value['price'], 2, '.', '')  ?></h5>
                             </div>
                         </div>
                     </div>
                     @endforeach
                 </div>
-                <div class="product__pagination">
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#"><i class="fa fa-long-arrow-right"></i></a>
-                </div>
+                <hr>
+                {{$getProducts->links()}}
             </div>
         </div>
     </div>
