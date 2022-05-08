@@ -171,6 +171,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-lg-9 col-md-7">
             <div class="product__discount">
                 <div class="section-title product__discount__title">
@@ -289,55 +290,69 @@
                     </div>
                 </div>
             </div>
-            <div class="filter__item">
-                <div class="row">
-                    <div class="col-lg-4 col-md-5">
-                        <div class="filter__sort">
-                            <span>Sort By</span>
-                            <select>
-                                <option value="0">Default</option>
-                                <option value="0">Default</option>
-                            </select>
+            @if (count($productsearch) == '0')
+                <div style="padding-left: 180px;font-size: 20px">
+                    <span>Sorry, OGANI did not find any results matching your keywords
+                        <strong>{{ $request->key }}</strong>
+                    </span>
+                    <ul>
+                        <li>Check the spelling of the entered keyword</li>
+                        <li>Try again with another keyword</li>
+                        <li>Try again with shorter keywords</li>
+                    </ul>
+                </div>
+            @else
+                <div class="filter__item">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-5">
+                            <div class="filter__sort">
+                                <span>Sort By</span>
+                                <select>
+                                    <option value="0">Default</option>
+                                    <option value="0">Default</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="filter__found">
-                            <h6><span>6</span> Products found</h6>
+                        <div class="col-lg-4 col-md-4">
+                            <div class="filter__found">
+                                <h6><span>{{ count($productsearch) }}</span> Products found</h6>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-3">
-                        <div class="filter__option">
-                            <span class="icon_grid-2x2"></span>
-                            <span class="icon_ul"></span>
+
+                        <div class="col-lg-4 col-md-3">
+                            <div class="filter__option">
+                                <span class="icon_grid-2x2"></span>
+                                <span class="icon_ul"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                @foreach ($getProducts as $value)
-                    <?php
-                    $img = '/img/product/' . $value->image1;
-                    ?>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="featured__item__pic set-bg" data-setbg="{{ URL::asset($img) }}">
-                                <ul class="product__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#"><?php echo substr($value->name, 0, 30); ?>...</a></h6>
-                                <h5>$<?php echo number_format($value['price'], 2, '.', ''); ?></h5>
+                <div class="row">
+                    @foreach ($productsearch as $value)
+                        <?php
+                        $img = '/img/product/' . $value->image1;
+                        ?>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="featured__item__pic set-bg" data-setbg="{{ URL::asset($img) }}">
+                                    <ul class="product__item__pic__hover">
+                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="#"><?php echo substr($value->name, 0, 30); ?>...</a></h6>
+                                    <h5>$<?php echo number_format($value['price'], 2, '.', ''); ?></h5>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
-            </div>
-            <hr>
-            {{ $getProducts->links() }}
+                    @endforeach
+                </div>
+                <hr>
+                {{ $getProducts->links() }}
         </div>
+        @endif
     </div>
 </div>
 </section>
