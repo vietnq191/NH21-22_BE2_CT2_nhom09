@@ -324,7 +324,7 @@
                     @endforeach
                 </div>
                 <hr>
-                {{$getProducts->links()}}
+                {{$getProducts->onEachSide(0)->appends(request()->all())->links()}}
             </div>
         </div>
     </div>

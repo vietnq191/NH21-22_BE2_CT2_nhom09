@@ -67,11 +67,17 @@ class ProductController extends Controller
          $latestProduts = Product::orderBy('created_at', 'asc')->take(6)->get();
         //Get 15 new products
         if(isset($type[1])){
+<<<<<<< Updated upstream
             $product = Product::orderBy('id', 'desc')->where('type_id',$type[1])->paginate(6);
             // $name = Protype::select('name')->where('id',$type[1])->get();
         }else{
         $product = Product::orderBy('id', 'desc')->paginate(6);
         // $name = Protype::select('name')->where('id',$type[1])->get();
+=======
+            $product = Product::orderBy('id', 'desc')->where('type_id',$type[1])->paginate(9);
+        } else {
+        $product = Product::orderBy('id', 'desc')->paginate(9);
+>>>>>>> Stashed changes
         }
         return view('shop-grid',
         [
