@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoadmoreController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,14 +17,29 @@ use App\Http\Controllers\LoadmoreController;
 |
 */
 
-Route::get('/', [ProductController::class,'index']);
-Route::get('/shop-details/{id}', [ProductController::class,'product_detail']);
+Route::get('/', [ProductController::class, 'index']);
+
+Route::get('/shop-details/{id}', [ProductController::class, 'product_detail']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
 //Get product by type_ID
-Route::get('/shop-grid/{typeid?}', [ProductController::class,'drid']);
+Route::get('/shop-grid/{typeid?}', [ProductController::class, 'drid']);
+
 //Get Detail product
-Route::get('/shop-details/{id}', [ProductController::class,'product_detail']);
-require __DIR__.'/auth.php';
+Route::get('/shop-details/{id}', [ProductController::class, 'product_detail']);
+
+// Search
+Route::get('search', [ProductController::class, 'getSearch'])->name('search');
+
+// Log out
+Route::get('logout', [ProductController::class, 'logout'])->name('logout');
+Route::get('logout', function () {
+    auth()->logout();
+    Session()->flush();
+
+    return redirect('/');
+})->name('logout');
+require __DIR__ . '/auth.php';

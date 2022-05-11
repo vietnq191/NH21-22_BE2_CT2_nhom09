@@ -40,7 +40,7 @@
             </div>
             <div class="row featured__filter">
                 @foreach($getProducts as $value)
-                <?php 
+                <?php
                         $img = "/img/product/" . $value->image1;
                         $id =  '/shop-details/' . $value->product_id;
                 ?>
@@ -95,7 +95,7 @@
                             <div class="latest-prdouct__slider__item">
                                 <?php $count = 1 ?>
                                 @foreach($getLatestProduct as $row)
-                                <?php 
+                                <?php
                                     $count++;
                                     $img = "/img/product/" . $row->image1;
                                     $id =  '/shop-details/' . $row->id;
@@ -117,7 +117,7 @@
                             <div class="latest-prdouct__slider__item">
                                 <?php $count = 1 ?>
                                 @foreach($getLatestProduct as $row)
-                                <?php 
+                                <?php
                                     $count++;
                                     if ($count < 5) {
                                     ?>
@@ -151,7 +151,7 @@
                         <div class="latest-prdouct__slider__item">
                                 <?php $count = 1 ?>
                                 @foreach($getLowPriceProduct as $row)
-                                <?php 
+                                <?php
                                     $count++;
                                     $img = "/img/product/" . $row->image1;
                                     $id =  '/shop-details/' . $row->id;
@@ -173,7 +173,7 @@
                         <div class="latest-prdouct__slider__item">
                                 <?php $count = 1 ?>
                                 @foreach($getLowPriceProduct as $row)
-                                <?php 
+                                <?php
                                     $count++;
                                     if ($count < 5) {
                                     ?>
@@ -207,7 +207,7 @@
                         <div class="latest-prdouct__slider__item">
                                 <?php $count = 1 ?>
                                 @foreach($getHighPriceProduct as $row)
-                                <?php 
+                                <?php
                                     $count++;
                                     $img = "/img/product/" . $row->image1;
                                     $id =  '/shop-details/' . $row->id;
@@ -229,7 +229,7 @@
                         <div class="latest-prdouct__slider__item">
                                 <?php $count = 1 ?>
                                 @foreach($getHighPriceProduct as $row)
-                                <?php 
+                                <?php
                                     $count++;
                                     if ($count < 5) {
                                     ?>

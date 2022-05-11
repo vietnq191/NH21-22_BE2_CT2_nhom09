@@ -13,13 +13,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('/css/font-awesome.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('/css/elegant-icons.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('/css/nice-select.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('/css/owl.carousel.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('/css/slicknav.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('/css/style.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('/css/font-awesome.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('/css/elegant-icons.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('/css/nice-select.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('/css/owl.carousel.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('/css/slicknav.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}" type="text/css">
 </head>
 
 <body>
@@ -37,7 +37,7 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="{{asset('/img/logo.png')}}" alt=""></a>
+            <a href="#"><img src="{{ asset('/img/logo.png') }}" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
@@ -48,7 +48,7 @@
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
-                <img src="{{asset('/img/language.png')}}" alt="">
+                <img src="{{ asset('/img/language.png') }}" alt="">
                 <div>English</div>
                 <span class="arrow_carrot-down"></span>
                 <ul>
@@ -62,8 +62,10 @@
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li <?php if ($nameURL == "index.php") { ?> class="active" <?php } ?>><a href="{{ url('/') }}">Home</a></li>
-                <li <?php if ($nameURL == "shop-grid.php") { ?>class="active" <?php } ?>><a href="{{ url('/shop-grid') }}">Shop</a></li>
+                <li <?php if ($nameURL == "index.php") { ?> class="active" <?php } ?>><a
+                        href="{{ url('/') }}">Home</a></li>
+                <li <?php if ($nameURL == "shop-grid.php") { ?>class="active" <?php } ?>><a
+                        href="{{ url('/shop-grid') }}">Shop</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
                         <li><a href="{{ url('/shop-details') }}">Shop Details</a></li>
@@ -114,7 +116,7 @@
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div>
                             <div class="header__top__right__language">
-                                <img src="{{asset('/img/language.png')}}" alt="">
+                                <img src="{{ asset('/img/language.png') }}" alt="">
                                 <div>English</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
@@ -123,7 +125,22 @@
                                 </ul>
                             </div>
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
+
+                                @if (Auth::guest())
+                                    <a href="{{ route('login') }}"><i class="fa fa-user"></i>
+                                        {{ __('Login') }}</a>
+                                @else
+                                    <a style="display: inline" href="#" data-toggle="dropdown" role="button"
+                                        aria-expanded="false">Hello:
+                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                    </a>
+                                    <a style="display: inline" href="{{ route('logout') }}"><i
+                                            class="fa fa-btn fa-sign-out"></i></a>
+
+                                    <form action="{{ route('logout') }}" method="POST" class="hidden">
+                                        {{ csrf_field() }}
+                                    </form>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -134,24 +151,28 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="{{ url('/') }}"><img src="{{asset('/img/logo.png')}}" alt=""></a>
+                        <a href="{{ url('/') }}"><img src="{{ asset('/img/logo.png') }}" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li <?php if ($nameURL == "index.php") { ?> class="active" <?php } ?>><a href="{{url('/')}}">Home</a></li>
-                            <li <?php if ($nameURL == "shop-grid") { ?> class="active" <?php } ?>><a href="{{url('/shop-grid')}}">Shop</a></li>
+                            <li <?php if ($nameURL == "index.php") { ?> class="active" <?php } ?>><a
+                                    href="{{ url('/') }}">Home</a></li>
+                            <li <?php if ($nameURL == "shop-grid") { ?> class="active" <?php } ?>><a
+                                    href="{{ url('/shop-grid') }}">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="{{url('/shop-details')}}">Shop Details</a></li>
-                                    <li><a href="{{url('/shoping-cart')}}">Shoping Cart</a></li>
-                                    <li><a href="{{url('/checkout')}}">Check Out</a></li>
-                                    <li><a href="{{url('/blog-details')}}">Blog Details</a></li>
+                                    <li><a href="{{ url('/shop-details') }}">Shop Details</a></li>
+                                    <li><a href="{{ url('/shoping-cart') }}">Shoping Cart</a></li>
+                                    <li><a href="{{ url('/checkout') }}">Check Out</a></li>
+                                    <li><a href="{{ url('/blog-details') }}">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li <?php if ($nameURL == "blog") { ?> class="active" <?php } ?>><a href="{{url('/blog')}}">Blog</a></li>
-                            <li <?php if ($nameURL == "contact") { ?> class="active" <?php } ?>><a href="{{url('/contact')}}">Contact</a></li>
+                            <li <?php if ($nameURL == "blog") { ?> class="active" <?php } ?>><a
+                                    href="{{ url('/blog') }}">Blog</a></li>
+                            <li <?php if ($nameURL == "contact") { ?> class="active" <?php } ?>><a
+                                    href="{{ url('/contact') }}">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -173,9 +194,9 @@
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
-    <section class="hero <?php if ($nameURL != "index.php") {
-                                echo "hero-normal";
-                            } ?>">
+    <section class="hero <?php if ($nameURL != 'index.php') {
+    echo 'hero-normal';
+} ?>">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -185,19 +206,11 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <!-- <li><a href="http://127.0.0.1:8000/shop-grid/1">Fresh Meat</a></li>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/2">Vegetables</a></li>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/3">Fruit & Nut Gifts</a></li>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/4">Fresh Berries</a></li>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/5">Ocean Foods</a></li>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/6">Butter & Eggs</a></li>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/7">Fastfood</a></li>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/8">Fresh Onion</a></li>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/9">Papayaya & Crisps</a></li>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/10">Oatmeal</a></li> -->
                             <li><a href="http://127.0.0.1:8000/shop-grid/">All product</a></li>
-                            @foreach($getProtypes as $value)
-                            <li><a href="http://127.0.0.1:8000/shop-grid/<?php echo $value['id']; ?>"><?php echo $value['name']; ?></a></li>
+                            @foreach ($getProtypes as $value)
+                                <li><a
+                                        href="http://127.0.0.1:8000/shop-grid/<?php echo $value['id']; ?>"><?php echo $value['name']; ?></a>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
@@ -205,12 +218,12 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
+                            <form action="{{ route('search') }}" method="get">
                                 <div class="hero__search__categories">
                                     All Categories
                                     <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" placeholder="What do yo u need?">
+                                <input type="text" placeholder="What do you need?" name="key">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>
                         </div>
@@ -226,14 +239,14 @@
                     </div>
                     <?php if ($nameURL == "index.php") {
                     ?>
-                        <div class="hero__item set-bg" data-setbg="{{asset('/img/hero/banner.jpg')}}">
-                            <div class="hero__text">
-                                <span>FRUIT FRESH</span>
-                                <h2>Vegetable <br />100% Organic</h2>
-                                <p>Free Pickup and Delivery Available</p>
-                                <a href="#" class="primary-btn">SHOP NOW</a>
-                            </div>
+                    <div class="hero__item set-bg" data-setbg="{{ asset('/img/hero/banner.jpg') }}">
+                        <div class="hero__text">
+                            <span>FRUIT FRESH</span>
+                            <h2>Vegetable <br />100% Organic</h2>
+                            <p>Free Pickup and Delivery Available</p>
+                            <a href="#" class="primary-btn">SHOP NOW</a>
                         </div>
+                    </div>
                     <?php
                     } ?>
                 </div>
@@ -251,10 +264,11 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="{{ url('/')}}"><img src="{{asset('/img/logo.png')}}" alt=""></a>
+                            <a href="{{ url('/') }}"><img src="{{ asset('/img/logo.png') }}" alt=""></a>
                         </div>
                         <ul>
-                            <li>Address: <a href="https://www.google.com/maps/place/60-49 Road 11378 New York" target="_blank">60-49 Road 11378 New York</a></li>
+                            <li>Address: <a href="https://www.google.com/maps/place/60-49 Road 11378 New York"
+                                    target="_blank">60-49 Road 11378 New York</a></li>
                             <li>Phone: +65 11.188.888</li>
                             <li>Email: hello@colorlib.com</li>
                         </ul>
@@ -264,15 +278,15 @@
                     <div class="footer__widget">
                         <h6>Useful Links</h6>
                         <ul>
-                            <li><a href="{{url('/about-us')}}">About Us</a></li>
-                            <li><a href="{{url('/contact')}}">Contact</a></li>
+                            <li><a href="{{ url('/about-us') }}">About Us</a></li>
+                            <li><a href="{{ url('/contact') }}">Contact</a></li>
                             <li><a href="#">Register</a></li>
-                            <li><a href="{{url('/blog')}}">Blog</a></li>
+                            <li><a href="{{ url('/blog') }}">Blog</a></li>
                         </ul>
                         <ul>
                             <li><a href="#">My Account</a></li>
-                            <li><a href="{{url('/shoping-cart')}}">Shopping Cart</a></li>
-                            <li><a href="{{url('/checkout')}}">Checkout</a></li>
+                            <li><a href="{{ url('/shoping-cart') }}">Shopping Cart</a></li>
+                            <li><a href="{{ url('/checkout') }}">Checkout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -299,13 +313,17 @@
                         <div class="footer__copyright__text">
                             <p>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;<script>
+                                Copyright &copy;
+                                <script>
                                     document.write(new Date().getFullYear());
-                                </script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                </script> All rights reserved | This template is made with <i
+                                    class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                                    target="_blank">Colorlib</a>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
-                        <div class="footer__copyright__payment"><img src="{{asset('/img/payment-item.png')}}" alt=""></div>
+                        <div class="footer__copyright__payment"><img src="{{ asset('/img/payment-item.png') }}"
+                                alt=""></div>
                     </div>
                 </div>
             </div>
@@ -314,14 +332,14 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="{{asset('/js/jquery-3.3.1.min.js')}}"></script>
-    <script src="{{asset('/js/jquery.nice-select.min.js')}}"></script>
-    <script src="{{asset('/js/jquery-ui.min.js')}}"></script>
-    <script src="{{asset('/js/jquery.slicknav.js')}}"></script>
-    <script src="{{asset('/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('/js/mixitup.min.js')}}"></script>
-    <script src="{{asset('/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('/js/main.js')}}"></script>
+    <script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('/js/jquery.slicknav.js') }}"></script>
+    <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/js/mixitup.min.js') }}"></script>
+    <script src="{{ asset('/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('/js/main.js') }}"></script>
 
 </body>
 
