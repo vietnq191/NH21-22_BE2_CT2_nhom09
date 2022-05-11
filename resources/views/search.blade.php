@@ -350,7 +350,7 @@
                     @endforeach
                 </div>
                 <hr>
-                {{ $getProducts->links() }}
+                {{$productsearch->onEachSide(0)->appends(request()->all())->links()}}
         </div>
         @endif
     </div>
