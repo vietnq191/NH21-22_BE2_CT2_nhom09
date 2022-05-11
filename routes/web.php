@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoadmoreController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -35,7 +36,6 @@ Route::get('/shop-details/{id}', [ProductController::class, 'product_detail']);
 Route::get('search', [ProductController::class, 'getSearch'])->name('search');
 
 // Log out
-Route::get('logout', [ProductController::class, 'logout'])->name('logout');
 Route::get('logout', function () {
     auth()->logout();
     Session()->flush();
@@ -43,3 +43,9 @@ Route::get('logout', function () {
     return redirect('/');
 })->name('logout');
 require __DIR__ . '/auth.php';
+
+//Contact
+Route::get('/contact', [PageController::class, 'contact']);
+
+//About us
+Route::get('/about-us', [PageController::class, 'about_us']);

@@ -130,16 +130,14 @@
                                     <a href="{{ route('login') }}"><i class="fa fa-user"></i>
                                         {{ __('Login') }}</a>
                                 @else
+                                    <i class="fa fa-user-o"></i>
                                     <a style="display: inline" href="#" data-toggle="dropdown" role="button"
-                                        aria-expanded="false">Hello:
-                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                        aria-expanded="false">
+                                    {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
-                                    <a style="display: inline" href="{{ route('logout') }}"><i
-                                            class="fa fa-btn fa-sign-out"></i></a>
-
-                                    <form action="{{ route('logout') }}" method="POST" class="hidden">
-                                        {{ csrf_field() }}
-                                    </form>
+                                    <a style="display: inline; padding-left: 5px;" href="{{ route('logout') }}">
+                                        <i class="fa fa-btn fa-sign-out"></i>
+                                    </a>
                                 @endif
                             </div>
                         </div>
@@ -280,7 +278,6 @@
                         <ul>
                             <li><a href="{{ url('/about-us') }}">About Us</a></li>
                             <li><a href="{{ url('/contact') }}">Contact</a></li>
-                            <li><a href="#">Register</a></li>
                             <li><a href="{{ url('/blog') }}">Blog</a></li>
                         </ul>
                         <ul>

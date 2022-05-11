@@ -52,9 +52,5 @@
                 </x-button>
             </div>
         </form>
-        
-        <div class="mt-4 text-center">
-        Don't have an account? <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{url('register')}}">Register</a>
-        </div>
     </x-auth-card>
 </x-guest-layout>
