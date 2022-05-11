@@ -333,10 +333,10 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
-            </div>
-            <hr>
-            {{ $getProducts->links() }}
+                    @endforeach
+                </div>
+                <hr>
+                {{$getProducts->onEachSide(0)->appends(request()->all())->links()}}
         </div>
     </div>
 </div>
