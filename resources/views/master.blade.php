@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('/css/font-awesome.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('/css/elegant-icons.css') }}" type="text/css">
@@ -20,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('/css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}" type="text/css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body>
@@ -337,7 +339,8 @@
     <script src="{{ asset('/js/mixitup.min.js') }}"></script>
     <script src="{{ asset('/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('/js/main.js') }}"></script>
-
+    <script src="{{ asset('/js/price.js ') }}"></script>
+    <script src="{{ asset('/js/sort.js ') }}"></script>
 </body>
 
 </html>

@@ -28,23 +28,35 @@
             <div class="row">
                 <div class="col-lg-3 col-md-5">
                     <div class="sidebar">
+                        <form>
                         <div class="sidebar__item">
                             <h4>Price</h4>
                             <div class="price-range-wrap">
-                                <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                    data-min="10" data-max="540">
-                                    <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                </div>
-                                <div class="range-slider">
-                                    <div class="price-input">
-                                        <input type="text" id="minamount">
-                                        <input type="text" id="maxamount">
-                                    </div>
-                                </div>
+                            <li data-min-type="data-min" id="MinProduct" class="hide"><?php if(isset($_GET['Min'])){
+                                echo $_GET['Min'];
+                            } else{
+                               echo 0;
+                            }?></li>
+                            <li data-max-type="data-max" id="MaxProduct"class="hide"><?php if(isset($_GET['Max'])){
+                                echo $_GET['Max'];
+                            } else{
+                               echo $maxproduct;
+                            }?></li>
+                            <li data-min-type="data-minn" id="minProducts" class="hide"><?php echo $minproduct ?></li>
+                            <li data-min-type="data-maxx" id="maxProducts" class="hide"><?php echo $maxproduct ?></li>
+                                <input type="hidden" name="Min" id="min" value="<?php echo 0 ?>">
+                                <input type="hidden" name="Max" id="max" value="<?php echo $maxproduct ?>">
+                                <div id="price_range"></div>
                             </div>
+                            <p id="price_show"><?php if(isset($_GET['Min'])&& isset($_GET['Max'])){
+
+                            echo "$".$_GET['Min']."-$".$_GET['Max'];
+                            }else{
+                               echo "$".$minproduct."- $".$maxproduct;
+                            }?></p>
+                            <input type="submit" value="Filter" name="" >
                         </div>
+                        </form>
                         <div class="sidebar__item sidebar__item__color--option">
                             <h4>Colors</h4>
                             <div class="sidebar__item__color sidebar__item__color--white">
@@ -293,17 +305,46 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-5">
                         <div class="filter__sort">
+                        <form>
+                            @csrf
                             <span>Sort By</span>
-                            <select>
-                                <option value="0">Default</option>
-                                <option value="0">Default</option>
+                            <select id="sort" name="sort" onchange="this.options[this.selectedIndex].value && (window.location=this.options[this.selectedIndex].value);">
+                                <option value="{{Request::url()}}?<?php 
+                                if(isset($_GET['Min'])&&isset($_GET['Max'])){
+                                echo "Min=".$_GET['Min']."&Max=".$_GET['Max']."&" ; 
+                                }else{
+                                }?>field=price&sort=desc" <?php if(isset($_GET['field'])&&isset($_GET['sort'])){
+                                    if($_GET['field']==="price"&&$_GET['sort']==="desc"){
+                                    echo ' selected';}}?>>Price ⬇</option>
+                                <option value="{{Request::url()}}?<?php 
+                                if(isset($_GET['Min'])&&isset($_GET['Max'])){
+                                    echo "Min=".$_GET['Min']."&Max=".$_GET['Max']."&" ; 
+                                    }else{}?>field=price&sort=asc" <?php if(isset($_GET['field'])&&isset($_GET['sort'])){
+                                    if($_GET['field']==="price"&&$_GET['sort']==="asc"){
+                                    echo ' selected';}}?>>Price ⬆</option>
+                                <option value="{{Request::url()}}?<?php 
+                                if(isset($_GET['Min'])&&isset($_GET['Max'])){
+                                    echo "Min=".$_GET['Min']."&Max=".$_GET['Max']."&" ; 
+                                    }else{
+                                    }?>field=name&sort=desc" <?php if(isset($_GET['field'])&&isset($_GET['sort'])){
+                                        if($_GET['field']==="name"&&$_GET['sort']==="desc"){
+                                        echo ' selected';}}?>>Name ⬇</option>
+                                <option value="{{Request::url()}}?<?php 
+                               if(isset($_GET['Min'])&&isset($_GET['Max'])){
+                                echo "Min=".$_GET['Min']."&Max=".$_GET['Max']."&" ; 
+                                }else{
+                                }?>field=name&sort=asc" <?php if(isset($_GET['field'])&&isset($_GET['sort'])){
+                                    if($_GET['field']==="name"&&$_GET['sort']==="asc"){
+                                    echo ' selected';}}?>>Name ⬆</option>
                             </select>
+                            <div style="clear:both;"></div>
+                            </form>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4">
                         <div class="filter__found">
-                            <h6><span>6</span> Products found</h6>
-                        </div>
+                            <h6><span><?php echo count($countAllProduct); ?></span> Products found</h6>
+                        </div1>
                     </div>
                     <div class="col-lg-4 col-md-3">
                         <div class="filter__option">
@@ -313,7 +354,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row pric">
                 @foreach ($getProducts as $value)
                     <?php
                     $img = '/img/product/' . $value->image1;
@@ -336,7 +377,7 @@
                     @endforeach
                 </div>
                 <hr>
-                {{$getProducts->onEachSide(0)->appends(request()->all())->links()}}
+                {{$getProducts->onEachSide(1)->appends(request()->all())->links('vendor.pagination.my-paginate')}}
         </div>
     </div>
 </div>
