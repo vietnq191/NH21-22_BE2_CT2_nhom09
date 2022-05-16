@@ -27,10 +27,10 @@ class ProductController extends Controller
         $latestProduts = Product::orderBy('created_at', 'asc')->take(6)->get();
 
         //Get low price produts
-        $lowPriceProducts = Product::orderBy('price', 'asc')->take(6)->get();
+        $lowPriceProducts = Product::select('*', DB::raw('price - price*sales/100 AS price_discount'))->orderBy('price_discount', 'asc')->take(6)->get();
 
         //Get high price produts
-        $highPriceProducts = Product::orderBy('price', 'desc')->take(6)->get();
+        $highPriceProducts = Product::select('*', DB::raw('price - price*sales/100 AS price_discount'))->orderBy('price_discount', 'desc')->take(6)->get();
 
         //return
         return view('index',
@@ -43,6 +43,7 @@ class ProductController extends Controller
             'getHighPriceProduct'=>$highPriceProducts,
         ]);
     }
+  
     function product_detail($id){
         //View product detail
         $detail = Product::find($id);
@@ -57,7 +58,10 @@ class ProductController extends Controller
             'getType'=>$type,
         ]);
     }
-    function drid(Request $request){
+
+ 
+    function drid(Request $request)
+    {
         //Get product
         $url = $request->path();
         $type = explode('/', $url);
@@ -81,19 +85,80 @@ class ProductController extends Controller
         } else {
         $product = Product::orderBy($orderprice, $ordersort)->whereBetween('price',[$min,$max])->paginate(9);
         $count = Product::orderBy($orderprice, $ordersort)->whereBetween('price',[$min,$max])->get();
+          
         //price Min,Max product
         $minProduct=Product::min('price');
         $maxProduct=Product::max('price');
         }
+      
+      //Get sale off
+        $saleOff = Product::select('*', 'products.name AS product_name', 'products.id AS product_id')
+        ->leftJoin('protypes', 'protypes.id', '=', 'products.type_id')
+        ->where('sales','>','0')
+        ->orderBy('sales','desc')
+        ->take(9)
+        ->get();
         return view('shop-grid',
         [
             'countAllProduct'=>$count,
             'getProtypes'=>$protypes,
             'getProducts'=>$product,
             'getLatestProduct'=>$latestProduts,
+            'saleOff' => $saleOff,
             'type'=>$type,
             'minproduct'=>$minProduct,
             'maxproduct'=>$maxProduct,
         ]);
     }
-}
+
+
+        
+
+    function getSearch(Request $request)
+    {
+        $url = $request->path();
+        $type = explode('/', $url);
+
+        // Get all protype
+        $protypes = Protype::all();
+
+        //Get latest products
+        $latestProduts = Product::orderBy('created_at', 'asc')->take(6)->get();
+
+        //Get 6 products
+        if (isset($type[1])) {
+            $product = Product::orderBy('id', 'desc')->where('type_id', $type[1])->paginate(6);
+        } else {
+            $product = Product::orderBy('id', 'desc')->paginate(6);
+        }
+        // $productsearch = Product::where('name', 'like', '%' . $request->key . '%')
+        //     // ->orWhere('type_id', 'like', '%' . $request->key . '%')
+        //     ->Join('protypes', 'protypes.id', '=', 'products.type_id')
+        //     ->get();
+        $productsearch = Product::select('*', 'products.name AS product_name', 'products.id AS product_id')
+            ->join('protypes', 'protypes.id', '=', 'products.type_id')
+            ->where('products.name', 'like', '%' . $request->key . '%')
+            ->orWhere('products.price', 'like', '%' . $request->key . '%')
+            ->orWhere('protypes.name', 'like', '%' . $request->key . '%')
+            ->paginate(9);;
+
+        //Get sale off
+        $saleOff = Product::select('*', 'products.name AS product_name', 'products.id AS product_id')
+        ->leftJoin('protypes', 'protypes.id', '=', 'products.type_id')
+        ->where('sales','>','0')
+        ->orderBy('sales','desc')
+        ->take(9)
+        ->get();
+
+        return view(
+            'search',
+            [
+                'getProtypes' => $protypes,
+                'getProducts' => $product,
+                'getLatestProduct' => $latestProduts,
+                'productsearch' => $productsearch,
+                'request' => $request,
+                'saleOff' => $saleOff,
+            ]
+        );
+    }}

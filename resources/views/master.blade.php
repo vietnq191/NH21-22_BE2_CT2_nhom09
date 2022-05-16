@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nhóm 9 - Chiều thứ 2</title>
-
+    <link rel="icon" href="{{ asset('/img/link-logo.png') }}">
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
@@ -206,10 +206,11 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/">All product</a></li>
+                            <li><a href="{{ url('shop-grid')}}">All Categories</a></li>
                             @foreach ($getProtypes as $value)
+                            <?php $urlID =  "shop-grid/" . $value['id'];?>
                                 <li><a
-                                        href="http://127.0.0.1:8000/shop-grid/<?php echo $value['id']; ?>"><?php echo $value['name']; ?></a>
+                                    href="{{ url($urlID)}}"><?php echo $value['name']; ?></a>
                                 </li>
                             @endforeach
                         </ul>
@@ -283,7 +284,7 @@
                             <li><a href="{{ url('/blog') }}">Blog</a></li>
                         </ul>
                         <ul>
-                            <li><a href="#">My Account</a></li>
+                            <li><a href="{{ url('/login')}}">My Account</a></li>
                             <li><a href="{{ url('/shoping-cart') }}">Shopping Cart</a></li>
                             <li><a href="{{ url('/checkout') }}">Checkout</a></li>
                         </ul>
