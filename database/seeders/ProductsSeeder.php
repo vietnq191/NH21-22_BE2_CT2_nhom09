@@ -43,12 +43,13 @@ class ProductsSeeder extends Seeder
             'weight' => 0.8,
             'created_at' => '2022-09-04',
             'exp' => '2022-10-06',
+            'sales' => 30,
         ]);
         //Fresh Meat number3
         DB::table('products')->insert([
             'name' => 'Ribeye Steaks + Seasoning from the Texas Roadhouse Butcher Shop',
             'type_id' => 1,
-            'price' => '159.99',
+            'price' => 159.99,
             'image1' => '61ZHFVSuEZL._SX679_.jpg',
             'image2' => '71LWCmKhZ9L._SX679_.jpg',
             'image3' => '61Am74bFdKL._SX679_.jpg',
@@ -59,6 +60,7 @@ class ProductsSeeder extends Seeder
             'created_at' => '2022-09-04',
             'exp' => '2022-09-10',
             'featured' => 1,
+            'sales' => 10,
         ]);
         //Fresh Meat number4
         DB::table('products')->insert([
@@ -89,6 +91,7 @@ class ProductsSeeder extends Seeder
             'weight' => 0.8,
             'created_at' => '2022-09-04',
             'exp' => '2022-09-10',
+            'sales' => 30,
         ]);
         //Fresh Meat number6
         DB::table('products')->insert([
@@ -104,6 +107,7 @@ class ProductsSeeder extends Seeder
             'weight' => 0.5,
             'created_at' => '2022-09-04',
             'exp' => '2022-09-10',
+            'sales' => 10,
         ]);
         //Fresh Meat number7
         DB::table('products')->insert([
@@ -136,6 +140,7 @@ class ProductsSeeder extends Seeder
             'created_at' => '2022-09-04',
             'exp' => '2022-09-16',
             'featured' => 1,
+            'sales' => 10,
         ]);
         //Fresh Meat number9
         DB::table('products')->insert([
@@ -181,6 +186,7 @@ class ProductsSeeder extends Seeder
             'weight' => 0.2,
             'created_at' => '2022-09-04',
             'exp' => '2022-09-12',
+            'sales' => 10,
         ]);
         //Fresh Meat number12
         DB::table('products')->insert([
@@ -272,6 +278,7 @@ class ProductsSeeder extends Seeder
             'weight' => 0.5,
             'created_at' => '2022-05-09',
             'exp' => '2022-05-16',
+            'sales' => 10,
         ]);
         //Vegetables number6
         DB::table('products')->insert([
@@ -311,6 +318,7 @@ class ProductsSeeder extends Seeder
             'created_at' => '2022-05-09',
             'exp' => '2022-05-16',
             'featured' => 1,
+            'sales' => 10,
         ]);
         //Vegetables number8
         DB::table('products')->insert([
@@ -332,7 +340,7 @@ class ProductsSeeder extends Seeder
         ]);
         //Vegetables number9
         DB::table('products')->insert([
-            'name' => 'SNAP BEANS GREEN FRESH PRODUCE FRUIT VEGETABLES',
+            'name' => 'Snap Beans Green Fresh Produce Fruit Vegetables',
             'type_id' => 2,
             'price' => 16.93,
             'image1' => '51qMIU1cQbL.jpg',
@@ -390,7 +398,7 @@ class ProductsSeeder extends Seeder
         ]);
         //Vegetables number12
         DB::table('products')->insert([
-            'name' => 'TURNIP GREENS FRESH PRODUCE FRUIT VEGETABLES',
+            'name' => 'Turnip Greens Fresh Produce Fruit Vegetables',
             'type_id' => 2,
             'price' => 21.55,
             'image1' => '515xyhvn8iL.jpg',
@@ -423,6 +431,7 @@ class ProductsSeeder extends Seeder
             'created_at' => '2022-05-09',
             'exp' => '2022-05-13',
             'featured' => 1,
+            'sales' => 20,
         ]);
         //Ocean foods number2
         DB::table('products')->insert([
@@ -457,6 +466,7 @@ class ProductsSeeder extends Seeder
             'weight' => 1.5,
             'created_at' => '2022-05-14',
             'exp' => '2022-05-25',
+            'sales' => 20,
         ]);
         //Ocean foods number4
         DB::table('products')->insert([
@@ -525,6 +535,7 @@ class ProductsSeeder extends Seeder
             'weight' => 1.5,
             'created_at' => '2022-05-08',
             'exp' => '2022-05-18',
+            'sales' => 30,
         ]);
         //Ocean foods number8
         DB::table('products')->insert([
@@ -540,6 +551,7 @@ class ProductsSeeder extends Seeder
             'weight' => 5,
             'created_at' => '2022-05-08',
             'exp' => '2022-05-25',
+            'sales' => 40,
         ]);
         //Ocean foods number9
         DB::table('products')->insert([
@@ -588,6 +600,7 @@ class ProductsSeeder extends Seeder
             'weight' => 0.4,
             'created_at' => '2022-04-07',
             'exp' => '2023-04-07',
+            'sales' => 20,
         ]);
         //Egg number2
         DB::table('products')->insert([
@@ -628,6 +641,7 @@ class ProductsSeeder extends Seeder
             'created_at' => '2022-04-08',
             'exp' => '2022-05-23',
             'featured' => 1,
+            'sales' => 10,
         ]);
         //Egg number4
         DB::table('products')->insert([
@@ -683,6 +697,7 @@ class ProductsSeeder extends Seeder
             'weight' => 0.5,
             'created_at' => '2022-05-04',
             'exp' => '2022-05-18',
+            'sales' => 10,
         ]);
         //Egg number7
         DB::table('products')->insert([
@@ -822,6 +837,7 @@ class ProductsSeeder extends Seeder
             'weight' => 0.8,
             'created_at' => '2022-10-11',
             'exp' => '2023-10-15',
+            'sales' => 20,
         ]);
         //Milk number3
         DB::table('products')->insert([
@@ -895,6 +911,7 @@ class ProductsSeeder extends Seeder
             'weight' => 2.2,
             'created_at' => '2022-04-12',
             'exp' => '2022-06-12',
+            'sales' => 50,
         ]);
         //Milk number7
         DB::table('products')->insert([
@@ -1136,6 +1153,7 @@ class ProductsSeeder extends Seeder
             'weight' => 8,
             'created_at' => '2021-12-09',
             'exp' => '2022-12-09',
+            'sales' => 10,
         ]);
         //Drinks number6
         DB::table('products')->insert([
@@ -1281,6 +1299,7 @@ class ProductsSeeder extends Seeder
             'weight' => 5.76,
             'created_at' => '2021-08-07',
             'exp' => '2022-08-07',
+            'sales' => 20,
         ]);
         //Beers number2
         DB::table('products')->insert([
@@ -1508,6 +1527,7 @@ class ProductsSeeder extends Seeder
             'weight' => 5.4,
             'created_at' => '2022-03-12',
             'exp' => '2023-03-12',
+            'sales' => 10,
         ]);
         //Fresh Fruit number1
         DB::table('products')->insert([
@@ -1553,10 +1573,11 @@ class ProductsSeeder extends Seeder
             'weight' => 2,
             'created_at' => '2022-05-11',
             'exp' => '2022-05-20',
+            'sales' => 10,
         ]);
         //Fresh Fruit number3
         DB::table('products')->insert([
-            'name' => "NAVEL ORANGES GROWN LARGE FRESH FRUIT",
+            'name' => "Navel Oranges Grown Large Fresh Fruit",
             'type_id' => 8,
             'price' => 28.8,
             'image1' => 'Orange-Fruit-Pieces.jpg',
@@ -1608,7 +1629,7 @@ class ProductsSeeder extends Seeder
         ]);
         //Fresh Fruit number5
         DB::table('products')->insert([
-            'name' => "BLACK SEEDLESS GRAPES FRESH PRODUCE FRUIT PER POUND",
+            'name' => "Black Seedless Grapes Fresh Produce Fruit",
             'type_id' => 8,
             'price' => 33.24,
             'image1' => 'black-seedlees-grapes-560x560.jpg',
@@ -1650,6 +1671,7 @@ class ProductsSeeder extends Seeder
             'weight' => 0.4,
             'created_at' => '2022-05-09',
             'exp' => '2022-05-19',
+            'sales' => 20,
         ]);
         //Fresh Fruit number7
         DB::table('products')->insert([
@@ -1692,6 +1714,7 @@ class ProductsSeeder extends Seeder
             'weight' => 2.5,
             'created_at' => '2022-05-08',
             'exp' => '2022-05-20',
+            'sales' => 20,
         ]);
         //Fresh Fruit number9
         DB::table('products')->insert([
@@ -1734,7 +1757,7 @@ class ProductsSeeder extends Seeder
         ]);
         //Dried Fruit number1
         DB::table('products')->insert([
-            'name' => "NATIERRA Nature's All Foods Organic Freeze-Dried Pineapples (Pack of 12)",
+            'name' => "Natierra Nature's All Foods Organic Freeze-Dried Pineapples (Pack of 12)",
             'type_id' => 9,
             'price' => 75.43,
             'image1' => '71r2Si0ZMSL._SL1500_.jpg',
@@ -1748,6 +1771,7 @@ class ProductsSeeder extends Seeder
             'weight' => 0.93,
             'created_at' => '2022-04-09',
             'exp' => '2022-10-09',
+            'sales' => 10,
         ]);
         //Dried Fruit number2
         DB::table('products')->insert([
@@ -1771,6 +1795,7 @@ class ProductsSeeder extends Seeder
             'weight' => 0.89,
             'created_at' => '2022-03-09',
             'exp' => '2022-09-09',
+            'sales' => 30,
         ]);
         //Dried Fruit number3
         DB::table('products')->insert([
@@ -1796,6 +1821,7 @@ class ProductsSeeder extends Seeder
             'created_at' => '2022-02-09',
             'exp' => '2022-08-09',
             'featured' => 1,
+            'sales' => 20,
         ]);
         //Dried Fruit number4
         DB::table('products')->insert([
@@ -1839,7 +1865,7 @@ class ProductsSeeder extends Seeder
         ]);
         //Dried Fruit number6
         DB::table('products')->insert([
-            'name' => "NATIERRA Nature's All Foods Organic Freeze-Dried Beets (Pack of 12)",
+            'name' => "Natierra Nature's All Foods Organic Freeze-Dried Beets (Pack of 12)",
             'type_id' => 9,
             'price' => 68.55,
             'image1' => '71x4f1EhH5L._SL1500_.jpg',
@@ -1885,6 +1911,7 @@ class ProductsSeeder extends Seeder
             'weight' => 0.48,
             'created_at' => '2022-01-09',
             'exp' => '2022-07-09',
+            'sales' => 40,
         ]);
         //Dried Fruit number8
         DB::table('products')->insert([
@@ -1909,7 +1936,7 @@ class ProductsSeeder extends Seeder
         ]);
         //Dried Fruit number9
         DB::table('products')->insert([
-            'name' => "NATIERRA Nature's All Foods Organic Freeze-Dried Raspberries (Pack of 12)",
+            'name' => "Natierra Nature's All Foods Organic Freeze-Dried Raspberries (Pack of 12)",
             'type_id' => 9,
             'price' => 69.48,
             'image1' => '71kMZv6NLpL._SL1500_.jpg',
@@ -2073,6 +2100,7 @@ class ProductsSeeder extends Seeder
             'weight' => 2.8,
             'created_at' => '2022-04-11',
             'exp' => '2023-04-11',
+            'sales' => 20,
         ]);
         //Canned Foods number7
         DB::table('products')->insert([
@@ -2122,6 +2150,7 @@ class ProductsSeeder extends Seeder
             'weight' => 2.2,
             'created_at' => '2022-03-01',
             'exp' => '2023-03-01',
+            'sales' => 10,
         ]);
         //Canned Foods number9
         DB::table('products')->insert([
@@ -2181,6 +2210,7 @@ class ProductsSeeder extends Seeder
             'created_at' => '2022-04-11',
             'exp' => '2024-10-11',
             'featured' => 1,
+            'sales' => 30,
         ]);
         //Canned Foods number12
         DB::table('products')->insert([
