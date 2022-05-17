@@ -65,8 +65,8 @@
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li <?php if ($nameURL == "index.php") { ?> class="active" <?php } ?>><a
-                        href="{{ url('/') }}">Home</a></li>
+                <li <?php if ($nameURL == "index.php") { ?> class="active" <?php } ?>><a href="{{ url('/') }}">Home</a>
+                </li>
                 <li <?php if ($nameURL == "shop-grid.php") { ?>class="active" <?php } ?>><a
                         href="{{ url('/shop-grid') }}">Shop</a></li>
                 <li><a href="#">Pages</a>
@@ -130,17 +130,17 @@
                             <div class="header__top__right__auth">
 
                                 @if (Auth::guest())
-                                    <a href="{{ route('login') }}"><i class="fa fa-user"></i>
-                                        {{ __('Login') }}</a>
+                                <a href="{{ route('login') }}"><i class="fa fa-user"></i>
+                                    {{ __('Login') }}</a>
                                 @else
-                                    <i class="fa fa-user-o"></i>
-                                    <a style="display: inline" href="#" data-toggle="dropdown" role="button"
-                                        aria-expanded="false">
-                                        {{ Auth::user()->name }} <span class="caret"></span>
-                                    </a>
-                                    <a style="display: inline; padding-left: 5px;" href="{{ route('logout') }}">
-                                        <i class="fa fa-btn fa-sign-out"></i>
-                                    </a>
+                                <i class="fa fa-user-o"></i>
+                                <a style="display: inline" href="#" data-toggle="dropdown" role="button"
+                                    aria-expanded="false">
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+                                <a style="display: inline; padding-left: 5px;" href="{{ route('logout') }}">
+                                    <i class="fa fa-btn fa-sign-out"></i>
+                                </a>
                                 @endif
                             </div>
                         </div>
@@ -187,9 +187,9 @@
                             <li><a id="change-item-cart" href="{{ route('shoppingCart') }}"><i
                                         class="fa fa-shopping-bag"></i>
                                     @if (Session::has('cart'))
-                                        <span>{{ Session::get('cart')->totalQty }}</span>
+                                    <span>{{ Session::get('cart')->totalQty }}</span>
                                     @else
-                                        <span>0</span>
+                                    <span>0</span>
                                     @endif
                                 </a>
 
@@ -223,9 +223,8 @@
                             <li><a href="{{ url('shop-grid')}}">All Categories</a></li>
                             @foreach ($getProtypes as $value)
                             <?php $urlID =  "shop-grid/" . $value['id'];?>
-                                <li><a
-                                    href="{{ url($urlID)}}"><?php echo $value['name']; ?></a>
-                                </li>
+                            <li><a href="{{ url($urlID)}}"><?php echo $value['name']; ?></a>
+                            </li>
                             @endforeach
                         </ul>
                     </div>
@@ -325,15 +324,15 @@
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;
                                 <script>
-                                    document.write(new Date().getFullYear());
-                                </script> All rights reserved | This template is made with <i
-                                    class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                                document.write(new Date().getFullYear());
+                                </script> All rights reserved | This template is made with <i class="fa fa-heart"
+                                    aria-hidden="true"></i> by <a href="https://colorlib.com"
                                     target="_blank">Colorlib</a>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
-                        <div class="footer__copyright__payment"><img src="{{ asset('/img/payment-item.png') }}"
-                                alt=""></div>
+                        <div class="footer__copyright__payment"><img src="{{ asset('/img/payment-item.png') }}" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -353,6 +352,12 @@
     <script src="{{ asset('js/ajax.js') }}"></script>
     <script src="{{ asset('/js/price.js ') }}"></script>
     <script src="{{ asset('/js/sort.js ') }}"></script>
+    <script src="{{ asset('js/ajax.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
 </body>
 
 </html>
