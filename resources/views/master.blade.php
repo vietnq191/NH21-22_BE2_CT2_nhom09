@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}" type="text/css">
 </head>
 
+
 <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -133,7 +134,7 @@
                                     <i class="fa fa-user-o"></i>
                                     <a style="display: inline" href="#" data-toggle="dropdown" role="button"
                                         aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                        {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
                                     <a style="display: inline; padding-left: 5px;" href="{{ route('logout') }}">
                                         <i class="fa fa-btn fa-sign-out"></i>
@@ -174,15 +175,28 @@
                         </ul>
                     </nav>
                 </div>
+
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="#"><i class="fa fa-heart"></i>
+                                    <span>0</span></a>
+                            </li>
+                            <li><a id="change-item-cart" href="{{ route('shoppingCart') }}"><i
+                                        class="fa fa-shopping-bag"></i>
+                                    @if (Session::has('cart'))
+                                        <span>{{ Session::get('cart')->totalQty }}</span>
+                                    @else
+                                        <span>0</span>
+                                    @endif
+                                </a>
+
+                            </li>
                         </ul>
                         <div class="header__cart__price">item: <span>$150.00</span></div>
                     </div>
                 </div>
+
             </div>
             <div class="humberger__open">
                 <i class="fa fa-bars"></i>
@@ -193,8 +207,8 @@
 
     <!-- Hero Section Begin -->
     <section class="hero <?php if ($nameURL != 'index.php') {
-    echo 'hero-normal';
-} ?>">
+        echo 'hero-normal';
+    } ?>">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -337,7 +351,7 @@
     <script src="{{ asset('/js/mixitup.min.js') }}"></script>
     <script src="{{ asset('/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('/js/main.js') }}"></script>
-
+    <script src="{{ asset('js/ajax.js') }}"></script>
 </body>
 
 </html>
