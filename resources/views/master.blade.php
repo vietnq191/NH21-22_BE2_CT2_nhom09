@@ -8,11 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nhóm 9 - Chiều thứ 2</title>
-
+    <link rel="icon" href="{{ asset('/img/link-logo.png') }}">
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('/css/font-awesome.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('/css/elegant-icons.css') }}" type="text/css">
@@ -20,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('/css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}" type="text/css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 
@@ -218,10 +220,11 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/">All product</a></li>
+                            <li><a href="{{ url('shop-grid')}}">All Categories</a></li>
                             @foreach ($getProtypes as $value)
+                            <?php $urlID =  "shop-grid/" . $value['id'];?>
                                 <li><a
-                                        href="http://127.0.0.1:8000/shop-grid/<?php echo $value['id']; ?>"><?php echo $value['name']; ?></a>
+                                    href="{{ url($urlID)}}"><?php echo $value['name']; ?></a>
                                 </li>
                             @endforeach
                         </ul>
@@ -231,10 +234,6 @@
                     <div class="hero__search">
                         <div class="hero__search__form">
                             <form action="{{ route('search') }}" method="get">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
                                 <input type="text" placeholder="What do you need?" name="key">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>
@@ -295,7 +294,7 @@
                             <li><a href="{{ url('/blog') }}">Blog</a></li>
                         </ul>
                         <ul>
-                            <li><a href="#">My Account</a></li>
+                            <li><a href="{{ url('/login')}}">My Account</a></li>
                             <li><a href="{{ url('/shoping-cart') }}">Shopping Cart</a></li>
                             <li><a href="{{ url('/checkout') }}">Checkout</a></li>
                         </ul>
@@ -352,6 +351,8 @@
     <script src="{{ asset('/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('/js/main.js') }}"></script>
     <script src="{{ asset('js/ajax.js') }}"></script>
+    <script src="{{ asset('/js/price.js ') }}"></script>
+    <script src="{{ asset('/js/sort.js ') }}"></script>
 </body>
 
 </html>

@@ -7,6 +7,11 @@ use App\Http\Controllers\LoadmoreController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProductDetailsController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,13 +30,13 @@ Route::get('/shop-details/{id}', [ProductController::class, 'product_detail']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth','verified'])->name('dashboard');
 
 //Get product by type_ID
 Route::get('/shop-grid/{typeid?}', [ProductController::class, 'drid']);
 
 //Get Detail product
-Route::get('/shop-details/{id}', [ProductController::class, 'product_detail']);
+Route::get('/shop-details/{id}', [ProductDetailsController::class, 'product_detail']);
 
 // Search
 Route::get('search', [ProductController::class, 'getSearch'])->name('search');
@@ -57,3 +62,20 @@ Route::get('shopping-cart', [ProductController::class, 'getCart'])->name('shoppi
 
 // Xoa san pham ra gio hang
 Route::get('delete-to-cart/{id}', [ProductController::class, 'deleteItemCart']);
+
+//Verify Email
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+ 
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+ 
+    return redirect('/');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+ 
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
