@@ -58,7 +58,9 @@
                         <ul class="featured__item__pic__hover">
                             <li><a href="#"><i class="fa fa-heart"></i></a></li>
                             <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a onclick="AddCart({{ $value->product_id }})" href="javascript:"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                    {{-- {{ route('product.addToCart', ['id' => $value->product_id]) }} --}}
                         </ul>
                     </div>
                     <div class="product__discount__item__text">
@@ -430,4 +432,12 @@
     </div>
 </section>
 <!-- Blog Section End -->
+
+<script src="{{ asset('js/ajax.js') }}"></script>
+
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
 @endsection

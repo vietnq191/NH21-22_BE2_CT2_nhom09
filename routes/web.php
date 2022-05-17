@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoadmoreController;
@@ -23,7 +24,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', [ProductController::class, 'index']);
+Route::get('/', [ProductController::class, 'index'])->name('index');
 
 Route::get('/shop-details/{id}', [ProductController::class, 'product_detail']);
 
@@ -54,6 +55,13 @@ Route::get('/contact', [PageController::class, 'contact']);
 
 //About us
 Route::get('/about-us', [PageController::class, 'about_us']);
+
+// Them san pham vao gio hang
+Route::get('add-to-cart/{id}', [ProductController::class, 'getAddToCart'])->name('product.addToCart');
+Route::get('shopping-cart', [ProductController::class, 'getCart'])->name('shoppingCart');
+
+// Xoa san pham ra gio hang
+Route::get('delete-to-cart/{id}', [ProductController::class, 'deleteItemCart']);
 
 //Verify Email
 Route::get('/email/verify', function () {
