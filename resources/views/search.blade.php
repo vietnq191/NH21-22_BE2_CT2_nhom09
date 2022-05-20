@@ -315,7 +315,7 @@
                         </div>
                         <div class="col-lg-4 col-md-4">
                             <div class="filter__found">
-                                <h6><span>{{ count($productsearch) }}</span> Products found</h6>
+                                <h6><span>{{ count($countAllProduct) }}</span> Products found</h6>
                             </div>
                         </div>
 
@@ -350,7 +350,13 @@
                     @endforeach
                 </div>
                 <hr>
+<<<<<<< Updated upstream
                 {{ $getProducts->links() }}
+=======
+                {{$productsearch->onEachSide(1)->appends(request()->all())->links('vendor.pagination.my-paginate')}}
+            </div>
+            @endif
+>>>>>>> Stashed changes
         </div>
         @endif
     </div>

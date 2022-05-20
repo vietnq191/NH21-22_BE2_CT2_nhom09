@@ -45,6 +45,7 @@
                                 </div>
                             </div>
                         </div>
+<<<<<<< Updated upstream
                         <div class="sidebar__item sidebar__item__color--option">
                             <h4>Colors</h4>
                             <div class="sidebar__item__color sidebar__item__color--white">
@@ -64,6 +65,51 @@
                                     Red
                                     <input type="radio" id="red">
                                 </label>
+=======
+                    </form>    
+                </div>
+                <div class="sidebar__item d-none d-md-block">
+                    <div class="latest-product__text">
+                        <h4>Latest Products</h4>
+                        <div class="latest-product__slider owl-carousel">
+                            <div class="latest-prdouct__slider__item">
+                                <?php $count = 1; ?>
+                                @foreach($getLatestProduct as $row)
+                                <?php
+                                    $count++;
+                                    $img = "/img/product/" . $row->image1;
+                                    $id =  '/shop-details/' . $row->id;
+                                ?>
+                                <a href="{{URL($id)}}" class="latest-product__item">
+                                    <div class="latest-product__item__pic small_item">
+                                        <img src="{{URL::asset($img)}}" alt="">
+                                        <?php if ($row->sales > 0) :?>
+                                        <div class="product__discount__percent">-{{$row->sales}}%</div>
+                                        <?php endif ?>
+                                    </div>
+                                    <div class="latest-product__item__text product__discount__item__text text-left">
+                                        <h6><?php if(strlen($row->name) > 25) { echo substr($row->name, 0, 25) . "..."; } else { echo $row->name; } ?>
+                                        </h6>
+                                        <div class="product__item__price text-dark font-weight-bold">
+                                            <?php if ($row->sales > 0) : 
+                                        $moneySales = $row['price'] * $row['sales'] / 100;
+                                        $moneySales = $row['price'] - $moneySales; 
+                                    ?>
+                                            $<?php echo number_format($moneySales, 2, '.', ''); ?>
+                                            <br>
+                                            <span
+                                                class="ml-0">$<?php echo number_format($row['price'], 2, '.', ''); ?></span>
+                                            <?php else : ?>
+                                            $<?php echo number_format($row['price'], 2, '.', ''); ?>
+                                            <?php endif ?>
+                                        </div>
+                                    </div>
+                                </a>
+                                <?php if($count > 3) { ?>
+                                @break
+                                <?php } ?>
+                                @endforeach
+>>>>>>> Stashed changes
                             </div>
                             <div class="sidebar__item__color sidebar__item__color--black">
                                 <label for="black">
