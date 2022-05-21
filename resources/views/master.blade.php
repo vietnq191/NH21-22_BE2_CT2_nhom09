@@ -8,11 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nhóm 9 - Chiều thứ 2</title>
-
+    <link rel="icon" href="{{ asset('/img/link-logo.png') }}">
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('/css/font-awesome.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('/css/elegant-icons.css') }}" type="text/css">
@@ -20,7 +21,9 @@
     <link rel="stylesheet" href="{{ asset('/css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}" type="text/css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
+
 
 <body>
     <!-- Page Preloder -->
@@ -63,7 +66,8 @@
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
                 <li <?php if ($nameURL == "index.php") { ?> class="active" <?php } ?>><a
-                        href="{{ url('/') }}">Home</a></li>
+                        href="{{ url('/') }}">Home</a>
+                </li>
                 <li <?php if ($nameURL == "shop-grid.php") { ?>class="active" <?php } ?>><a
                         href="{{ url('/shop-grid') }}">Shop</a></li>
                 <li><a href="#">Pages</a>
@@ -130,16 +134,14 @@
                                     <a href="{{ route('login') }}"><i class="fa fa-user"></i>
                                         {{ __('Login') }}</a>
                                 @else
+                                    <i class="fa fa-user-o"></i>
                                     <a style="display: inline" href="#" data-toggle="dropdown" role="button"
-                                        aria-expanded="false">Hello:
+                                        aria-expanded="false">
                                         {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
-                                    <a style="display: inline" href="{{ route('logout') }}"><i
-                                            class="fa fa-btn fa-sign-out"></i></a>
-
-                                    <form action="{{ route('logout') }}" method="POST" class="hidden">
-                                        {{ csrf_field() }}
-                                    </form>
+                                    <a style="display: inline; padding-left: 5px;" href="{{ route('logout') }}">
+                                        <i class="fa fa-btn fa-sign-out"></i>
+                                    </a>
                                 @endif
                             </div>
                         </div>
@@ -148,6 +150,7 @@
             </div>
         </div>
         <div class="container">
+
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
@@ -176,13 +179,29 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 " id="change-item-cart">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="#"><i class="fa fa-heart"></i>
+                                    <span>0</span></a>
+                            </li>
+                            <li><a href="{{ route('shoppingCart') }}"><i class="fa fa-shopping-bag"></i>
+                                    @if (Session::has('cart'))
+                                        <span>{{ Session::get('cart')->totalQty }}</span>
+                                    @else
+                                        <span>0</span>
+                                    @endif
+                                </a>
+
+                            </li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
+                        @if (Session::has('cart'))
+                            <div class="header__cart__price">item:
+                                <span>${{ Session::get('cart')->totalPrice }}</span>
+                            </div>
+                        @else
+                            <div class="header__cart__price">item: <span>$0</span></div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -195,8 +214,8 @@
 
     <!-- Hero Section Begin -->
     <section class="hero <?php if ($nameURL != 'index.php') {
-    echo 'hero-normal';
-} ?>">
+        echo 'hero-normal';
+    } ?>">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -206,10 +225,10 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <li><a href="http://127.0.0.1:8000/shop-grid/">All product</a></li>
+                            <li><a href="{{ url('shop-grid') }}">All Categories</a></li>
                             @foreach ($getProtypes as $value)
-                                <li><a
-                                        href="http://127.0.0.1:8000/shop-grid/<?php echo $value['id']; ?>"><?php echo $value['name']; ?></a>
+                                <?php $urlID = 'shop-grid/' . $value['id']; ?>
+                                <li><a href="{{ url($urlID) }}"><?php echo $value['name']; ?></a>
                                 </li>
                             @endforeach
                         </ul>
@@ -219,10 +238,6 @@
                     <div class="hero__search">
                         <div class="hero__search__form">
                             <form action="{{ route('search') }}" method="get">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
                                 <input type="text" placeholder="What do you need?" name="key">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>
@@ -280,11 +295,10 @@
                         <ul>
                             <li><a href="{{ url('/about-us') }}">About Us</a></li>
                             <li><a href="{{ url('/contact') }}">Contact</a></li>
-                            <li><a href="#">Register</a></li>
                             <li><a href="{{ url('/blog') }}">Blog</a></li>
                         </ul>
                         <ul>
-                            <li><a href="#">My Account</a></li>
+                            <li><a href="{{ url('/login') }}">My Account</a></li>
                             <li><a href="{{ url('/shoping-cart') }}">Shopping Cart</a></li>
                             <li><a href="{{ url('/checkout') }}">Checkout</a></li>
                         </ul>
@@ -323,7 +337,8 @@
                             </p>
                         </div>
                         <div class="footer__copyright__payment"><img src="{{ asset('/img/payment-item.png') }}"
-                                alt=""></div>
+                                alt="">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -340,7 +355,15 @@
     <script src="{{ asset('/js/mixitup.min.js') }}"></script>
     <script src="{{ asset('/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('/js/main.js') }}"></script>
-
+    <script src="{{ asset('js/ajax.js') }}"></script>
+    <script src="{{ asset('/js/price.js ') }}"></script>
+    <script src="{{ asset('/js/sort.js ') }}"></script>
+    <script src="{{ asset('js/ajax.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
 </body>
 
 </html>

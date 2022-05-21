@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Redirect;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -17,6 +18,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
+        Redirect::setIntendedUrl(url()->previous());
         return view('auth.login');
     }
 
@@ -32,7 +34,12 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $role = $request->user()->role;
+        if ($role === 1) {
+            return redirect('/dashboard');
+        }
+        
+        return redirect()->intended(RouteServiceProvider::DASHBOARD);
     }
 
     /**

@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            <img src="{{ asset('/img/logo.png') }}" alt="">
             </a>
         </x-slot>
 
@@ -52,5 +52,9 @@
                 </x-button>
             </div>
         </form>
+        
+        <div class="mt-4 text-center">
+        Don't have an account? <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{url('register')}}">Register</a>
+        </div>
     </x-auth-card>
 </x-guest-layout>

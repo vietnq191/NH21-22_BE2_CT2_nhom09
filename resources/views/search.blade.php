@@ -7,10 +7,10 @@
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
                         <!-- <h2><?php if (isset($getname)) {
-    echo $getname[0]['name'];
-} else {
-    echo 'Shop';
-} ?></h2> -->
+                            echo $getname[0]['name'];
+                        } else {
+                            echo 'Shop';
+                        } ?></h2> -->
                         <div class="breadcrumb__option">
                             <a href="/">Home</a>
                             <span>Shop</span>
@@ -124,12 +124,32 @@
                                             $id = '/shop-details/' . $row->id;
                                             ?>
                                             <a href="{{ URL($id) }}" class="latest-product__item">
-                                                <div class="latest-product__item__pic">
+                                                <div class="latest-product__item__pic small_item">
                                                     <img src="{{ URL::asset($img) }}" alt="">
+                                                    <?php if ($row->sales > 0) :?>
+                                                    <div class="product__discount__percent">-{{ $row->sales }}%</div>
+                                                    <?php endif ?>
                                                 </div>
-                                                <div class="latest-product__item__text">
-                                                    <h6><?php echo substr($row->name, 0, 20); ?>...</h6>
-                                                    <span>$<?php echo number_format($row['price'], 2, '.', ''); ?></span>
+                                                <div
+                                                    class="latest-product__item__text product__discount__item__text text-left">
+                                                    <h6><?php if (strlen($row->name) > 25) {
+                                                        echo substr($row->name, 0, 25) . '...';
+                                                    } else {
+                                                        echo $row->name;
+                                                    } ?>
+                                                    </h6>
+                                                    <div class="product__item__price text-dark font-weight-bold">
+                                                        <?php if ($row->sales > 0) :
+                                        $moneySales = $row['price'] * $row['sales'] / 100;
+                                        $moneySales = $row['price'] - $moneySales;
+                                    ?>
+                                                        $<?php echo number_format($moneySales, 2, '.', ''); ?>
+                                                        <br>
+                                                        <span class="ml-0">$<?php echo number_format($row['price'], 2, '.', ''); ?></span>
+                                                        <?php else : ?>
+                                                        $<?php echo number_format($row['price'], 2, '.', ''); ?>
+                                                        <?php endif ?>
+                                                    </div>
                                                 </div>
                                             </a>
                                             <?php if($count > 3) { ?>
@@ -152,12 +172,32 @@
                                     $id =  '/shop-details/' . $row->id;
                                 ?>
                                         <a href="{{ URL($id) }}" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
+                                            <div class="latest-product__item__pic small_item">
                                                 <img src="{{ URL::asset($img) }}" alt="">
+                                                <?php if ($row->sales > 0) :?>
+                                                <div class="product__discount__percent">-{{ $row->sales }}%</div>
+                                                <?php endif ?>
                                             </div>
-                                            <div class="latest-product__item__text">
-                                                <h6><?php echo substr($row->name, 0, 20); ?>...</h6>
-                                                <span>$<?php echo number_format($row['price'], 2, '.', ''); ?></span>
+                                            <div
+                                                class="latest-product__item__text product__discount__item__text text-left">
+                                                <h6><?php if (strlen($row->name) > 25) {
+                                                    echo substr($row->name, 0, 25) . '...';
+                                                } else {
+                                                    echo $row->name;
+                                                } ?>
+                                                </h6>
+                                                <div class="product__item__price text-dark font-weight-bold">
+                                                    <?php if ($row->sales > 0) :
+                                        $moneySales = $row['price'] * $row['sales'] / 100;
+                                        $moneySales = $row['price'] - $moneySales;
+                                    ?>
+                                                    $<?php echo number_format($moneySales, 2, '.', ''); ?>
+                                                    <br>
+                                                    <span class="ml-0">$<?php echo number_format($row['price'], 2, '.', ''); ?></span>
+                                                    <?php else : ?>
+                                                    $<?php echo number_format($row['price'], 2, '.', ''); ?>
+                                                    <?php endif ?>
+                                                </div>
                                             </div>
                                         </a>
                                         <?php if($count > 6) { ?>
@@ -179,114 +219,45 @@
                 </div>
                 <div class="row">
                     <div class="product__discount__slider owl-carousel">
-                        <div class="col-lg-4">
-                            <div class="product__discount__item">
-                                <div class="product__discount__item__pic set-bg"
-                                    data-setbg="img/product/discount/pd-1.jpg">
-                                    <div class="product__discount__percent">-20%</div>
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__discount__item__text">
-                                    <span>Dried Fruit</span>
-                                    <h5><a href="#">Raisin’n’nuts</a></h5>
-                                    <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="product__discount__item">
-                                <div class="product__discount__item__pic set-bg"
-                                    data-setbg="img/product/discount/pd-2.jpg">
-                                    <div class="product__discount__percent">-20%</div>
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__discount__item__text">
-                                    <span>Vegetables</span>
-                                    <h5><a href="#">Vegetables’package</a></h5>
-                                    <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="product__discount__item">
-                                <div class="product__discount__item__pic set-bg"
-                                    data-setbg="img/product/discount/pd-3.jpg">
-                                    <div class="product__discount__percent">-20%</div>
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__discount__item__text">
-                                    <span>Dried Fruit</span>
-                                    <h5><a href="#">Mixed Fruitss</a></h5>
-                                    <div class="product__item__price">$30.00 <span>$36.00</span></div>
+                        @foreach ($saleOff as $value)
+                            <?php
+                            $img = '/img/product/' . $value->image1;
+                            $id = '/shop-details/' . $value->product_id;
+                            ?>
+                            <div class="col-lg-4">
+                                <div class="product__discount__item">
+                                    <div class="product__discount__item__pic set-bg"
+                                        data-setbg="{{ asset($img) }}">
+                                        <div class="product__discount__percent">-{{ $value->sales }}%</div>
+                                        <ul class="product__item__pic__hover">
+                                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                            <li><a onclick="AddCart({{ $value->product_id }})"
+                                                    href="javascript:"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product__discount__item__text">
+                                        <span>{{ $value->name }}</span>
+                                        <h5><a href="{{ URL($id) }}"><?php if (strlen($value->product_name) > 25) {
+                                            echo substr($value->product_name, 0, 25) . '...';
+                                        } else {
+                                            echo $value->product_name;
+                                        } ?></a>
+                                        </h5>
+                                        <div class="product__item__price">
+                                            <?php if ($value->sales > 0) :
+                                        $moneySales = $value['price'] * $value['sales'] / 100;
+                                        $moneySales = $value['price'] - $moneySales;
+                                    ?>
+                                            $<?php echo number_format($moneySales, 2, '.', ''); ?><span>$<?php echo number_format($value['price'], 2, '.', ''); ?></span>
+                                            <?php else : ?>
+                                            $<?php echo number_format($value['price'], 2, '.', ''); ?>
+                                            <?php endif ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="product__discount__item">
-                                <div class="product__discount__item__pic set-bg"
-                                    data-setbg="img/product/discount/pd-4.jpg">
-                                    <div class="product__discount__percent">-20%</div>
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__discount__item__text">
-                                    <span>Dried Fruit</span>
-                                    <h5><a href="#">Raisin’n’nuts</a></h5>
-                                    <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="product__discount__item">
-                                <div class="product__discount__item__pic set-bg"
-                                    data-setbg="img/product/discount/pd-5.jpg">
-                                    <div class="product__discount__percent">-20%</div>
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__discount__item__text">
-                                    <span>Dried Fruit</span>
-                                    <h5><a href="#">Raisin’n’nuts</a></h5>
-                                    <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="product__discount__item">
-                                <div class="product__discount__item__pic set-bg"
-                                    data-setbg="img/product/discount/pd-6.jpg">
-                                    <div class="product__discount__percent">-20%</div>
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__discount__item__text">
-                                    <span>Dried Fruit</span>
-                                    <h5><a href="#">Raisin’n’nuts</a></h5>
-                                    <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -331,34 +302,48 @@
                     @foreach ($productsearch as $value)
                         <?php
                         $img = '/img/product/' . $value->image1;
+                        $id = '/shop-details/' . $value->product_id;
                         ?>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="featured__item__pic set-bg" data-setbg="{{ URL::asset($img) }}">
-                                    <ul class="product__item__pic__hover">
+                        <div class="col-lg-4 col-md-4 col-sm-6 mix type-<?php echo $value['id']; ?>">
+                            <div class="featured__item">
+                                <div class="featured__item__pic product__discount__item__pic set-bg"
+                                    data-setbg="{{ URL::asset($img) }}">
+                                    <?php if ($value->sales > 0) :?>
+                                    <div class="product__discount__percent">-{{ $value->sales }}%</div>
+                                    <?php endif ?>
+                                    <ul class="featured__item__pic__hover">
                                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                        <li><a onclick="AddCart({{ $value->product_id }})" href="javascript:"><i
+                                                    class="fa fa-shopping-cart"></i></a></li>
                                     </ul>
                                 </div>
-                                <div class="product__item__text">
-                                    <h6><a href="#"><?php echo substr($value->name, 0, 30); ?>...</a></h6>
-                                    <h5>$<?php echo number_format($value['price'], 2, '.', ''); ?></h5>
+                                <div class="product__discount__item__text">
+                                    <h5><a href="{{ URL($id) }}"><?php if (strlen($value->product_name) > 30) {
+                                        echo substr($value->product_name, 0, 30) . '...';
+                                    } else {
+                                        echo $value->product_name;
+                                    } ?></a>
+                                    </h5>
+                                    <div class="product__item__price">
+                                        <?php if ($value->sales > 0) :
+                                        $moneySales = $value['price'] * $value['sales'] / 100;
+                                        $moneySales = $value['price'] - $moneySales;
+                                    ?>
+                                        $<?php echo number_format($moneySales, 2, '.', ''); ?><span>$<?php echo number_format($value['price'], 2, '.', ''); ?></span>
+                                        <?php else : ?>
+                                        $<?php echo number_format($value['price'], 2, '.', ''); ?>
+                                        <?php endif ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
                 <hr>
-<<<<<<< Updated upstream
-                {{ $getProducts->links() }}
-=======
                 {{$productsearch->onEachSide(1)->appends(request()->all())->links('vendor.pagination.my-paginate')}}
             </div>
             @endif
->>>>>>> Stashed changes
-        </div>
-        @endif
     </div>
 </div>
 </section>
