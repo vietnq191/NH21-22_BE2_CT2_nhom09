@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Product;
 use App\Models\Protype;
 use App\Category;
@@ -11,17 +12,18 @@ use App\Cart;
 
 class ProductController extends Controller
 {
-    function index(){
+    function index()
+    {
         //get all protype
         $protype = Protype::all();
 
         //Get product to filter
-        $products = Product::select('*','products.name AS product_name', 'products.id AS product_id')
-        ->leftJoin('protypes','protypes.id','=','products.type_id')
-        ->where('featured','=','1')
-        ->orderBy('products.name', 'desc')
-        ->take(20)
-        ->get();
+        $products = Product::select('*', 'products.name AS product_name', 'products.id AS product_id')
+            ->leftJoin('protypes', 'protypes.id', '=', 'products.type_id')
+            ->where('featured', '=', '1')
+            ->orderBy('products.name', 'desc')
+            ->take(20)
+            ->get();
 
         //Get 10 new products
         $get10Products = Product::orderBy('created_at', 'desc')->take(10)->get();
@@ -36,33 +38,44 @@ class ProductController extends Controller
         $highPriceProducts = Product::select('*', DB::raw('price - price*sales/100 AS price_discount'))->orderBy('price_discount', 'desc')->take(6)->get();
 
         //return
-        return view('index',
-        [
-            'getProtypes'=>$protype,
-            'getProducts'=>$products,
-            'getNewProduct'=>$get10Products,
-            'getLatestProduct'=>$latestProduts,
-            'getLowPriceProduct'=>$lowPriceProducts,
-            'getHighPriceProduct'=>$highPriceProducts,
-        ]);
+        return view(
+            'index',
+            [
+                'getProtypes' => $protype,
+                'getProducts' => $products,
+                'getNewProduct' => $get10Products,
+                'getLatestProduct' => $latestProduts,
+                'getLowPriceProduct' => $lowPriceProducts,
+                'getHighPriceProduct' => $highPriceProducts,
+            ]
+        );
     }
-  
-    function product_detail($id){
+
+    function product_detail($id)
+    {
         //View product detail
         $detail = Product::find($id);
-        $type = Product::select('protypes.name')->join('protypes','protypes.id','=','products.type_id')
-        ->where('products.id',$id)
-        ->get()->toArray();
-
+        $type = Product::select('protypes.name')->join('protypes', 'protypes.id', '=', 'products.type_id')
+            ->where('products.id', $id)
+            ->get()->toArray();
+        $products = Product::select('*', 'products.name AS product_name', 'products.id AS product_id')
+            ->leftJoin('protypes', 'protypes.id', '=', 'products.type_id')
+            ->where('featured', '=', '1')
+            ->orderBy('products.name', 'desc')
+            ->take(20)
+            ->get();
         //return
-        return view('shop-details', 
-        [
-            'productDetail'=>$detail,
-            'getType'=>$type,
-        ]);
+        return view(
+            'shop-details',
+            [
+                'productDetail' => $detail,
+                'getType' => $type,
+                'getProducts' => $products,
+            ]
+        );
     }
 
- 
+
     function drid(Request $request)
     {
         //Get product
@@ -73,89 +86,89 @@ class ProductController extends Controller
         $protypes = Protype::all();
 
         // Get product by prince
-        $orderprice=isset($_GET['field'] )? $_GET['field']:"price";
-        $ordersort=isset($_GET['sort'] )? $_GET['sort']:"desc";
+        $orderprice = isset($_GET['field']) ? $_GET['field'] : "price";
+        $ordersort = isset($_GET['sort']) ? $_GET['sort'] : "desc";
 
-         //Get latest products
+        //Get latest products
         $latestProduts = Product::orderBy('created_at', 'asc')->take(6)->get();
 
         //Get price
-        $min = isset($_GET['Min'])? $_GET['Min']:"0";
-        $max = isset($_GET['Max'])? $_GET['Max']:"500";
-        
+        $min = isset($_GET['Min']) ? $_GET['Min'] : "0";
+        $max = isset($_GET['Max']) ? $_GET['Max'] : "500";
+
         //Get 9 new products
-        if(isset($type[1])){
+        if (isset($type[1])) {
             if ($orderprice == "price") {
-                $product = Product::select('*','products.name AS product_name', 'products.id AS product_id', DB::raw('price - price*sales/100 AS price_discount'))
-                ->leftJoin('protypes','protypes.id','=','products.type_id')
-                ->orderBy('price_discount', $ordersort)
-                ->where('type_id',$type[1])
-                ->whereBetween('price',[$min,$max])
-                ->paginate(9);
+                $product = Product::select('*', 'products.name AS product_name', 'products.id AS product_id', DB::raw('price - price*sales/100 AS price_discount'))
+                    ->leftJoin('protypes', 'protypes.id', '=', 'products.type_id')
+                    ->orderBy('price_discount', $ordersort)
+                    ->where('type_id', $type[1])
+                    ->whereBetween('price', [$min, $max])
+                    ->paginate(9);
+            } else {
+                $product = Product::select('*', 'products.name AS product_name', 'products.id AS product_id', DB::raw('price - price*sales/100 AS price_discount'))
+                    ->leftJoin('protypes', 'protypes.id', '=', 'products.type_id')
+                    ->orderBy($orderprice, $ordersort)
+                    ->where('type_id', $type[1])
+                    ->whereBetween('price', [$min, $max])
+                    ->paginate(9);
             }
-            else {
-                $product = Product::select('*','products.name AS product_name', 'products.id AS product_id', DB::raw('price - price*sales/100 AS price_discount'))
-                ->leftJoin('protypes','protypes.id','=','products.type_id')
-                ->orderBy($orderprice, $ordersort)
-                ->where('type_id',$type[1])
-                ->whereBetween('price',[$min,$max])
-                ->paginate(9);
-            }
-            
+
             $count = Product::orderBy($orderprice, $ordersort)
-            ->where('type_id',$type[1])
-            ->whereBetween('price',[$min,$max])
-            ->get();
+                ->where('type_id', $type[1])
+                ->whereBetween('price', [$min, $max])
+                ->get();
 
             //price Min,Max product
-            $minProduct=Product::where('type_id',$type[1])
-            ->min('price');
-            $maxProduct=Product::where('type_id',$type[1])
-            ->max('price');
+            $minProduct = Product::where('type_id', $type[1])
+                ->min('price');
+            $maxProduct = Product::where('type_id', $type[1])
+                ->max('price');
         } else {
             if ($orderprice == "price") {
-                $product = Product::select('*','products.name AS product_name', 'products.id AS product_id', DB::raw('price - price*sales/100 AS price_discount'))
-                ->leftJoin('protypes','protypes.id','=','products.type_id')
-                ->orderBy('price_discount', $ordersort)
-                ->whereBetween('price',[$min,$max])
-                ->paginate(9);
-            }
-            else {
-                $product = Product::select('*','products.name AS product_name', 'products.id AS product_id', DB::raw('price - price*sales/100 AS price_discount'))
-            ->leftJoin('protypes','protypes.id','=','products.type_id')
-            ->orderBy($orderprice, $ordersort)
-            ->whereBetween('price',[$min,$max])
-            ->paginate(9);
+                $product = Product::select('*', 'products.name AS product_name', 'products.id AS product_id', DB::raw('price - price*sales/100 AS price_discount'))
+                    ->leftJoin('protypes', 'protypes.id', '=', 'products.type_id')
+                    ->orderBy('price_discount', $ordersort)
+                    ->whereBetween('price', [$min, $max])
+                    ->paginate(9);
+            } else {
+                $product = Product::select('*', 'products.name AS product_name', 'products.id AS product_id', DB::raw('price - price*sales/100 AS price_discount'))
+                    ->leftJoin('protypes', 'protypes.id', '=', 'products.type_id')
+                    ->orderBy($orderprice, $ordersort)
+                    ->whereBetween('price', [$min, $max])
+                    ->paginate(9);
             }
 
-        $count = Product::orderBy($orderprice, $ordersort)
-        ->whereBetween('price',[$min,$max])
-        ->get();
-          
-        //price Min,Max product
-        $minProduct=Product::min('price');
-        $maxProduct=Product::max('price');
+            $count = Product::orderBy($orderprice, $ordersort)
+                ->whereBetween('price', [$min, $max])
+                ->get();
+
+            //price Min,Max product
+            $minProduct = Product::min('price');
+            $maxProduct = Product::max('price');
         }
-      
-      //Get sale off
+
+        //Get sale off
         $saleOff = Product::select('*', 'products.name AS product_name', 'products.id AS product_id')
-        ->leftJoin('protypes', 'protypes.id', '=', 'products.type_id')
-        ->where('sales','>','0')
-        ->orderBy('sales','desc')
-        ->take(9)
-        ->get();
-        
-        return view('shop-grid',
-        [
-            'countAllProduct'=>$count,
-            'getProtypes'=>$protypes,
-            'getProducts'=>$product,
-            'getLatestProduct'=>$latestProduts,
-            'saleOff' => $saleOff,
-            'type'=>$type,
-            'minproduct'=>$minProduct,
-            'maxproduct'=>$maxProduct,
-        ]);
+            ->leftJoin('protypes', 'protypes.id', '=', 'products.type_id')
+            ->where('sales', '>', '0')
+            ->orderBy('sales', 'desc')
+            ->take(9)
+            ->get();
+
+        return view(
+            'shop-grid',
+            [
+                'countAllProduct' => $count,
+                'getProtypes' => $protypes,
+                'getProducts' => $product,
+                'getLatestProduct' => $latestProduts,
+                'saleOff' => $saleOff,
+                'type' => $type,
+                'minproduct' => $minProduct,
+                'maxproduct' => $maxProduct,
+            ]
+        );
     }
 
     function getSearch(Request $request)
@@ -181,19 +194,19 @@ class ProductController extends Controller
         //     ->get();
 
         $productsearch = Product::select('*', 'products.name AS product_name', 'products.id AS product_id')
-        ->join('protypes', 'protypes.id', '=', 'products.type_id')
-        ->where('products.name', 'like', '%' . $request->key . '%')
-        ->orWhere('products.price', 'like', '%' . $request->key . '%')
-        ->orWhere('protypes.name', 'like', '%' . $request->key . '%')
-        ->paginate(9);
+            ->join('protypes', 'protypes.id', '=', 'products.type_id')
+            ->where('products.name', 'like', '%' . $request->key . '%')
+            ->orWhere('products.price', 'like', '%' . $request->key . '%')
+            ->orWhere('protypes.name', 'like', '%' . $request->key . '%')
+            ->paginate(9);
 
         //Get sale off
         $saleOff = Product::select('*', 'products.name AS product_name', 'products.id AS product_id')
-        ->leftJoin('protypes', 'protypes.id', '=', 'products.type_id')
-        ->where('sales','>','0')
-        ->orderBy('sales','desc')
-        ->take(9)
-        ->get();
+            ->leftJoin('protypes', 'protypes.id', '=', 'products.type_id')
+            ->where('sales', '>', '0')
+            ->orderBy('sales', 'desc')
+            ->take(9)
+            ->get();
 
         return view(
             'search',
@@ -206,7 +219,6 @@ class ProductController extends Controller
                 'saleOff' => $saleOff,
             ]
         );
-
     }
     public function getAddToCart(Request $request, $id)
     {
@@ -267,5 +279,54 @@ class ProductController extends Controller
         }
         return view('deleteCart');
     }
-}
 
+
+    public function saveAllItemCart(Request $request)
+    {
+        foreach ($request->data as $item) {
+            $oldCart = Session::has('cart') ? Session::get('cart') : null;
+            $newCart = new Cart($oldCart);
+            $newCart->updateAllCart($item["key"], $item["value"]);
+            $request->session()->put('cart', $newCart);
+        }
+    }
+
+    public function checkOut()
+    {
+        $protypes = Protype::all();
+        return view('checkout', [
+            'getProtypes' => $protypes,
+        ]);
+    }
+
+    public function saveCheckOut(Request $request)
+    {
+        $data = array();
+        $data['user_id'] = auth()->user()->id;
+        $data['email'] = $request->email;
+        $data['address'] = $request->address;
+        $data['phone'] = $request->phone;
+        $data['order_date'] = $request->order_date;
+        $data['username'] = $request->username;
+        if ($data['total_money'] = Session::get('cart')->totalPrice > 99) {
+            $data['total_money'] = Session::get('cart')->totalPrice;
+        } else {
+            $data['total_money'] = Session::get('cart')->totalPrice + 10;
+        }
+        $id = DB::table('orders')->insertGetId($data);
+        Session::put('id', $id);
+        foreach ((array) Session::get('cart')->items as $product) {
+            $data = array();
+            $data['order_id'] = $id;
+            $data['product_id'] = $product['item']->id;
+            $data['quantity'] = $product['qty'];
+
+            $data['price'] = $product['price'];
+            DB::table('orders_list')->insertGetId($data);
+        }
+
+        $request->session()->forget('cart');
+        $request->session()->flash('alert-success', 'Order payment successful');
+        return redirect('/');
+    }
+}

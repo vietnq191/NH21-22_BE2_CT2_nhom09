@@ -18,18 +18,18 @@ class ProductDetailsController extends Controller
         $detail = Product::find($id);
 
         //Type of product
-        $type = Product::select('protypes.name','protypes.id')->join('protypes', 'protypes.id', '=', 'products.type_id')
+        $type = Product::select('protypes.name', 'protypes.id')->join('protypes', 'protypes.id', '=', 'products.type_id')
             ->where('products.id', $id)
             ->get()->toArray();
 
         //Share social media
         $url = "http://127.0.0.1:8000/shop-details/" . $detail->id;
         $socialShare = Share::page($url, $detail->name)
-        ->facebook()
-        ->twitter()
-        ->telegram()
-        ->pinterest()
-        ->getRawLinks();
+            ->facebook()
+            ->twitter()
+            ->telegram()
+            ->pinterest()
+            ->getRawLinks();
 
         //Related product
         $relatedProduct = Product::select('*', 'products.name AS product_name', 'products.id AS product_id')
