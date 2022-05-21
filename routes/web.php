@@ -10,8 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductDetailsController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
-
-
+use App\Http\Controllers\AdminProtype;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +31,24 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 
 })->middleware(['auth','verified','isAdmin'])->name('dashboard');
+
+//get list protype
+Route::get('/dashboard/protype', [AdminProtype::class,'protype'])->name('admin.listprotype');
+
+//add protype
+Route::post('/dashboard/protype/add', [AdminProtype::class,'add'])->name('admin.addprotype');;
+//get from add protype
+Route::get('/dashboard/protype/addprotype',function () {
+    return view('admin-addprotype');
+})->name('protype.add');
+//get from edit protype
+Route::get('/dashboard/protype/edit/{id}',[AdminProtype::class,'edit'])->name('admin.editprotype');
+
+//update protype
+Route::put('/dashboard/protype/update/{id}',[AdminProtype::class,'update'])->name('admin.update');
+
+//Delete protype
+Route::delete('/dashboard/protype/{protype}', [AdminProtype::class,'destroy'])->name('admin.protype');
 
 //Get product by type_ID
 Route::get('/shop-grid/{typeid?}', [ProductController::class, 'drid']);
