@@ -31,6 +31,14 @@ class ProductDetailsController extends Controller
             ->pinterest()
             ->getRawLinks();
 
+        //Related product
+        $relatedProduct = Product::select('*', 'products.name AS product_name', 'products.id AS product_id')
+        ->leftJoin('protypes', 'protypes.id', '=', 'products.type_id')
+        ->whereNotIn('products.id', [$id])
+        ->where('products.type_id', $detail->type_id)
+        ->take(9)
+        ->get();
+
         // DD($socialShare);
         //return
         return view(
@@ -40,6 +48,7 @@ class ProductDetailsController extends Controller
                 'productDetail' => $detail,
                 'getType' => $type,
                 'shareSocial' => $socialShare,
+                'relatedProduct' => $relatedProduct,
             ]
         );
     }

@@ -30,7 +30,8 @@ Route::get('/shop-details/{id}', [ProductController::class, 'product_detail']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+})->middleware(['auth','verified','isAdmin'])->name('dashboard');
 
 //Get product by type_ID
 Route::get('/shop-grid/{typeid?}', [ProductController::class, 'drid']);
