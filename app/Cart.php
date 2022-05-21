@@ -5,6 +5,7 @@ namespace App;
 class Cart
 {
     public $items = null;
+    public $sales = 0;
     public $totalQty = 0;
     public $totalPrice = 0;
 
@@ -12,6 +13,7 @@ class Cart
     {
         if ($oldCart) {
             $this->items = $oldCart->items;
+            $this->sales = $oldCart->sales;
             $this->totalQty = $oldCart->totalQty;
             $this->totalPrice = $oldCart->totalPrice;
         }
@@ -28,13 +30,26 @@ class Cart
         $storedItem['qty']++;
         $storedItem['price'] = $item->price * $storedItem['qty'];
         $this->items[$id] = $storedItem;
-        $this->totalPrice += $item->price;
+        $this->totalPrice += $item->price - ($item->price * $item->sales / 100);
         $this->totalQty++;
     }
     public function deleteItem($id)
     {
+        $newTotal = $this->items[$id]['price'] -  $this->items[$id]['price'] *  $this->items[$id]['item']->sales / 100;
+        $this->totalQty -= $this->items[$id]['qty'];
+        $this->totalPrice -=  $newTotal;
+        unset($this->items[$id]);
+    }
+
+    public function updateAllCart($id, $qty)
+    {
         $this->totalQty -= $this->items[$id]['qty'];
         $this->totalPrice -= $this->items[$id]['price'];
-        unset($this->items[$id]);
+
+        $this->items[$id]['qty'] = $qty;
+        $this->items[$id]['price'] = $qty * $this->items[$id]['item']->price;
+
+        $this->totalQty += $this->items[$id]['qty'];
+        $this->totalPrice += $this->items[$id]['price'];
     }
 }

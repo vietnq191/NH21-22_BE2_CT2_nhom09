@@ -10,7 +10,6 @@
                         <th>Total</th>
                     </tr>
                 </thead>
-
                 @foreach ((array) Session::get('cart')->items as $product)
                     <tbody>
                         <tr>
@@ -20,17 +19,18 @@
                                 <h5>{{ Str::substr($product['item']->name, 0, 50) }}</h5>
                             </td>
                             <td class="shoping__cart__price">
-                                {{ $product['item']->price }}
+                                ${{ $product['item']->price - ($product['item']->price * $product['item']->sales) / 100 }}
                             </td>
                             <td class="shoping__cart__quantity">
                                 <div class="quantity">
                                     <div class="pro-qty">
-                                        <input type="text" value="{{ $product['qty'] }}">
+                                        <input data-id="{{ $product['item']->id }}" type="text"
+                                            value="{{ $product['qty'] }}">
                                     </div>
                                 </div>
                             </td>
                             <td class="shoping__cart__total">
-                                {{ $product['price'] }}
+                                ${{ $product['price'] - (($product['item']->price * $product['item']->sales) / 100) * $product['qty'] }}
                             </td>
                             <td class="shoping__cart__item__close">
                                 <span class="icon_close"
@@ -48,7 +48,8 @@
         <div class="col-lg-12">
             <div class="shoping__cart__btns">
                 <a href="{{ url('/') }}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                <a href="javascript:" class="primary-btn cart-btn cart-btn-right edit-all"><span
+                        class="icon_loading"></span>
                     Upadate Cart</a>
             </div>
         </div>
@@ -70,7 +71,12 @@
                     <li>Subtotal <span></span></li>
                     <li>Total <span>{{ Session::get('cart')->totalPrice }}</span></li>
                 </ul>
-                <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                @if (Auth::guest())
+                    <a onclick="alert('To complete this payment, please login to your account')"
+                        href="{{ url('/login') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
+                @else
+                    <a href="{{ url('/checkout') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
+                @endif
             </div>
         </div>
     </div>
@@ -81,7 +87,7 @@
                 <div class="shoping__cart__table">
                     <div id="change-item-cart">
                         <i class="cartnew-empty"></i>
-                        <h2 style="text-align: center">Your Cart is Empty</h2>
+                        <h2 style="text-align: center;padding:70px 0">Your Cart is Empty</h2>
                     </div>
                 </div>
             </div>
@@ -89,11 +95,12 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="shoping__cart__btns">
-                    <a href="{{ url('/') }}" class="primary-btn cart-btn">SHOPPING NOW</a>
+                    <a href="{{ url('/') }}" class="primary-btn cart-btn ">SHOPPING
+                        NOW</a>
 
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class=" col-lg-6">
                 <div class="shoping__continue">
                     <div class="shoping__discount">
 

@@ -21,9 +21,9 @@
 
         <!-- Shoping Cart Section Begin -->
         <section class="shoping-cart spad">
-            <div class="container" id="delete-cart">
+            <div class="container delete-cart">
                 <div class="row">
-                    <div class="col-lg-12" id="delete-cart">
+                    <div class="col-lg-12">
                         <div class="shoping__cart__table">
                             <div id="change-item-cart">
                                 <table>
@@ -46,24 +46,25 @@
                                                     <h5>{{ Str::substr($product['item']->name, 0, 50) }}</h5>
                                                 </td>
                                                 <td class="shoping__cart__price">
-                                                    {{ $product['item']->price }}
+                                                    ${{ $product['item']->price - ($product['item']->price * $product['item']->sales) / 100 }}
                                                 </td>
                                                 <td class="shoping__cart__quantity">
                                                     <div class="quantity">
                                                         <div class="pro-qty">
-                                                            <input type="text" value="{{ $product['qty'] }}">
+                                                            <input oninput="javascript:updateQuantity(this.value)"
+                                                                data-id="{{ $product['item']->id }}" type="text"
+                                                                value="{{ $product['qty'] }}">
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="shoping__cart__total">
-                                                    {{ $product['price'] }}
+                                                    ${{ $product['price'] - (($product['item']->price * $product['item']->sales) / 100) * $product['qty'] }}
                                                 </td>
                                                 <td class="shoping__cart__item__close">
                                                     <span class="icon_close"
                                                         onclick="DeleteItemCart({{ $product['item']->id }});"></span>
                                                 </td>
                                             </tr>
-                                        </tbody>
                                     @endforeach
 
                                 </table>
@@ -75,7 +76,8 @@
                     <div class="col-lg-12">
                         <div class="shoping__cart__btns">
                             <a href="{{ url('/') }}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                            <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                            <a href="javascript:" class="primary-btn cart-btn cart-btn-right edit-all"><span
+                                    class="icon_loading"></span>
                                 Upadate Cart</a>
                         </div>
                     </div>
@@ -95,9 +97,14 @@
                             <h5>Cart Total</h5>
                             <ul>
                                 <li>Subtotal <span></span></li>
-                                <li>Total <span>{{ Session::get('cart')->totalPrice }}</span></li>
+                                <li>Total <span>${{ Session::get('cart')->totalPrice }}</span></li>
                             </ul>
-                            <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                            @if (Auth::guest())
+                                <a onclick="alert('To complete this payment, please login to your account')"
+                                    href="{{ url('/login') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
+                            @else
+                                <a href="{{ url('/checkout') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -106,11 +113,11 @@
         @else
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12" id="delete-cart">
+                    <div class="col-lg-12 delete-cart">
                         <div class="shoping__cart__table">
                             <div id="change-item-cart">
                                 <i class="cartnew-empty"></i>
-                                <h2 style="text-align: center">Your Cart is Empty</h2>
+                                <h2 style="text-align: center;padding:70px 0">Your Cart is Empty</h2>
                             </div>
                         </div>
                     </div>
@@ -118,7 +125,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="shoping__cart__btns">
-                            <a href="{{ url('/') }}" class="primary-btn cart-btn">SHOPPING NOW</a>
+                            <a href="{{ url('/') }}" class="primary-btn cart-btn">SHOPPING
+                                NOW</a>
 
                         </div>
                     </div>
@@ -136,6 +144,9 @@
             </div>
     @endif
     </section>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
@@ -144,4 +155,5 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
     <!-- Shoping Cart Section End -->
     <script src="{{ asset('js/ajax.js') }}"></script>
+    <script src="{{ asset('js/edit.all.js') }}"></script>
 @endsection

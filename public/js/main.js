@@ -9,19 +9,19 @@
 
 'use strict';
 
-(function ($) {
+(function($) {
 
     /*------------------
         Preloader
     --------------------*/
-    $(window).on('load', function () {
+    $(window).on('load', function() {
         $(".loader").fadeOut();
         $("#preloder").delay(200).fadeOut("slow");
 
         /*------------------
             Gallery filter
         --------------------*/
-        $('.featured__controls li').on('click', function () {
+        $('.featured__controls li').on('click', function() {
             $('.featured__controls li').removeClass('active');
             $(this).addClass('active');
         });
@@ -34,19 +34,19 @@
     /*------------------
         Background Set
     --------------------*/
-    $('.set-bg').each(function () {
+    $('.set-bg').each(function() {
         var bg = $(this).data('setbg');
         $(this).css('background-image', 'url(' + bg + ')');
     });
 
     //Humberger Menu
-    $(".humberger__open").on('click', function () {
+    $(".humberger__open").on('click', function() {
         $(".humberger__menu__wrapper").addClass("show__humberger__menu__wrapper");
         $(".humberger__menu__overlay").addClass("active");
         $("body").addClass("over_hid");
     });
 
-    $(".humberger__menu__overlay").on('click', function () {
+    $(".humberger__menu__overlay").on('click', function() {
         $(".humberger__menu__wrapper").removeClass("show__humberger__menu__wrapper");
         $(".humberger__menu__overlay").removeClass("active");
         $("body").removeClass("over_hid");
@@ -96,7 +96,7 @@
     });
 
 
-    $('.hero__categories__all').on('click', function(){
+    $('.hero__categories__all').on('click', function() {
         $('.hero__categories ul').slideToggle(400);
     });
 
@@ -172,7 +172,7 @@
         min: minPrice,
         max: maxPrice,
         values: [minPrice, maxPrice],
-        slide: function (event, ui) {
+        slide: function(event, ui) {
             minamount.val('$' + ui.values[0]);
             maxamount.val('$' + ui.values[1]);
         }
@@ -188,7 +188,7 @@
     /*------------------
 		Single Product
 	--------------------*/
-    $('.product__details__pic__slider img').on('click', function () {
+    $('.product__details__pic__slider img').on('click', function() {
 
         var imgurl = $(this).data('imgbigurl');
         var bigImg = $('.product__details__pic__item--large').attr('src');
@@ -202,23 +202,30 @@
     /*-------------------
 		Quantity change
 	--------------------- */
+    var price = $('.shoping__cart__price');
+    var totalPrice = $('.shoping__cart__total');
     var proQty = $('.pro-qty');
+
     proQty.prepend('<span class="dec qtybtn">-</span>');
     proQty.append('<span class="inc qtybtn">+</span>');
-    proQty.on('click', '.qtybtn', function () {
+    proQty.on('click', '.qtybtn', function() {
         var $button = $(this);
         var oldValue = $button.parent().find('input').val();
         if ($button.hasClass('inc')) {
             var newVal = parseFloat(oldValue) + 1;
         } else {
             // Don't allow decrementing below zero
-            if (oldValue > 0) {
+            if (oldValue > 1) {
                 var newVal = parseFloat(oldValue) - 1;
             } else {
-                newVal = 0;
+                newVal = 1;
             }
         }
+        var newPrice = price * newVal;
+        totalPrice
+
         $button.parent().find('input').val(newVal);
+
     });
 
 })(jQuery);
