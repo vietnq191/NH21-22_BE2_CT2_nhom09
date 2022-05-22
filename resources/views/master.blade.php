@@ -44,10 +44,10 @@
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                <li><a href="#"><i class="fa fa-history"></i> <span>1</span></a></li>
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
+            <div class="header__cart__price">item: <span>$0</span></div>
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
@@ -182,7 +182,7 @@
                 <div class="col-lg-3 " id="change-item-cart">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i>
+                            <li><a href="#"><i class="fa fa-history"></i>
                                     <span>0</span></a>
                             </li>
                             <li><a href="{{ route('shoppingCart') }}"><i class="fa fa-shopping-bag"></i>
