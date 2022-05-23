@@ -29,26 +29,25 @@ Route::get('/shop-details/{id}', [ProductController::class, 'product_detail']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-
-})->middleware(['auth','verified','isAdmin'])->name('dashboard');
+})->middleware(['auth', 'verified', 'isAdmin'])->name('dashboard');
 
 //get list protype
-Route::get('/dashboard/protype', [AdminProtype::class,'protype'])->name('admin.listprotype');
+Route::get('/dashboard/protype', [AdminProtype::class, 'protype'])->name('admin.listprotype');
 
 //add protype
-Route::post('/dashboard/protype/add', [AdminProtype::class,'add'])->name('admin.addprotype');;
+Route::post('/dashboard/protype/add', [AdminProtype::class, 'add'])->name('admin.addprotype');;
 //get from add protype
-Route::get('/dashboard/protype/addprotype',function () {
+Route::get('/dashboard/protype/addprotype', function () {
     return view('admin-addprotype');
 })->name('protype.add');
 //get from edit protype
-Route::get('/dashboard/protype/edit/{id}',[AdminProtype::class,'edit'])->name('admin.editprotype');
+Route::get('/dashboard/protype/edit/{id}', [AdminProtype::class, 'edit'])->name('admin.editprotype');
 
 //update protype
-Route::put('/dashboard/protype/update/{id}',[AdminProtype::class,'update'])->name('admin.update');
+Route::put('/dashboard/protype/update/{id}', [AdminProtype::class, 'update'])->name('admin.update');
 
 //Delete protype
-Route::delete('/dashboard/protype/{protype}', [AdminProtype::class,'destroy'])->name('admin.protype');
+Route::delete('/dashboard/protype/{protype}', [AdminProtype::class, 'destroy'])->name('admin.protype');
 
 //Get product by type_ID
 Route::get('/shop-grid/{typeid?}', [ProductController::class, 'drid']);
@@ -105,3 +104,7 @@ Route::post('save-all', [ProductController::class, 'saveAllItemCart']);
 //Checkout
 Route::get('checkout', [ProductController::class, 'checkOut'])->name('checkOut');
 Route::post('save-checkout', [ProductController::class, 'saveCheckOut'])->name('saveCheckOut');
+
+//Transaction history
+Route::get('transaction-history', [ProductController::class, 'transactionHistory'])->name('transactionHistory');
+Route::get('transaction-detail/{id}', [ProductController::class, 'transactionDetail'])->name('transactionDetail');
