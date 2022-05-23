@@ -7,6 +7,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Nhóm 9 - Chiều thứ 2</title>
     <link rel="icon" href="{{ asset('/img/link-logo.png') }}">
     <!-- Google Font -->
@@ -44,10 +45,10 @@
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                <li><a href="#"><i class="fa fa-history"></i> <span>1</span></a></li>
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
+            <div class="header__cart__price">item: <span>$0</span></div>
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
@@ -135,8 +136,7 @@
                                         {{ __('Login') }}</a>
                                 @else
                                     <i class="fa fa-user-o"></i>
-                                    <a style="display: inline" href="#" data-toggle="dropdown" role="button"
-                                        aria-expanded="false">
+                                    <a style="display: inline" href="{{ route('view-account')}}">
                                         {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
                                     <a style="display: inline; padding-left: 5px;" href="{{ route('logout') }}">
@@ -182,7 +182,7 @@
                 <div class="col-lg-3 " id="change-item-cart">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i>
+                            <li><a href="#"><i class="fa fa-history"></i>
                                     <span>0</span></a>
                             </li>
                             <li><a href="{{ route('shoppingCart') }}"><i class="fa fa-shopping-bag"></i>
@@ -295,11 +295,10 @@
                         <ul>
                             <li><a href="{{ url('/about-us') }}">About Us</a></li>
                             <li><a href="{{ url('/contact') }}">Contact</a></li>
-                            <li><a href="{{ url('/blog') }}">Blog</a></li>
+                            <li><a href="{{ route('view-account')}}">My Account</a></li>
                         </ul>
                         <ul>
-                            <li><a href="{{ url('/login') }}">My Account</a></li>
-                            <li><a href="{{ url('/shoping-cart') }}">Shopping Cart</a></li>
+                        <li><a href="{{ route('shoppingCart') }}">Shopping Cart</a></li>
                             <li><a href="{{ url('/checkout') }}">Checkout</a></li>
                         </ul>
                     </div>

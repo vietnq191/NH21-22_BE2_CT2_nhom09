@@ -54,15 +54,6 @@
             </div>
         </div>
         <div class="col-lg-6">
-            <div class="shoping__continue">
-                <div class="shoping__discount">
-                    <h5>Discount Codes</h5>
-                    <form action="#">
-                        <input type="text" placeholder="Enter your coupon code">
-                        <button type="submit" class="site-btn">APPLY COUPON</button>
-                    </form>
-                </div>
-            </div>
         </div>
         <div class="col-lg-6">
             <div class="shoping__checkout">
@@ -113,3 +104,31 @@
         </div>
     </div>
 @endif
+
+<script> 
+$(".edit-all").on("click", function() {
+       var lists = [];
+       $("table tbody tr td").each(function() {
+           $(this).find("input").each(function() {
+               var element = { key: $(this).data("id"), value: $(this).val() };
+               lists.push(element);
+           })
+       });
+       $.ajaxSetup({
+           headers: {
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+           }
+       });
+       $.ajax({
+           url: 'save-all',
+           type: 'POST',
+           data: {
+               //    "_token": "{{ csrf_token() }}",
+               "data": lists,
+           }
+       }).done(function(response) {
+           location.reload();
+           alertify.warning('Update successfully');
+       });
+   });
+</script>
