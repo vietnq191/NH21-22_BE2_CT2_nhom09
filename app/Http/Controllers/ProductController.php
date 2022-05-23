@@ -302,10 +302,10 @@ class ProductController extends Controller
     public function saveAllItemCart(Request $request)
     {
         foreach ($request->data as $item) {
-            $oldCart = Session::has('cart') ? Session::get('cart') : null;
+            $oldCart = Session('cart') ?  Session('cart') : null; // cart current
             $newCart = new Cart($oldCart);
-            $newCart->updateAllCart($item["key"], $item["value"]);
-            $request->session()->put('cart', $newCart);
+            $newCart->updateAllCart($item['key'],$item['value']);
+            $request->Session()->put('cart', $newCart);
         }
     }
 

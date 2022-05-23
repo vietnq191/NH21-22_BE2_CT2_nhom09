@@ -240,23 +240,20 @@
                             "1" => array(
                               "name" => "Products",
                               "icon" => "fas fa-shopping-bag",
-                              "path_view" => "view-products",
-                              "path_add" => "",
-                              "path_edit" => "",
+                              "path_view" => "admin.listuser",
+                              "path_add" => "admin.addprotype",
                             ),
                             "2" => array(
                               "name" => "Protypes",
                               "icon" => "fas fa-box",
-                              "path_view" => "",
-                              "path_add" => "",
-                              "path_edit" => "",
+                              "path_view" => "admin.listprotype",
+                              "path_add" => "protype.add",
                             ),
                             "3" => array(
                               "name" => "Users",
                               "icon" => "fas fa-users",
-                              "path_view" => "",
-                              "path_add" => "",
-                              "path_edit" => "",
+                              "path_view" => "admin.listuser",
+                              "path_add" => "user.add",
                             ),
                           );
                         ?>
@@ -276,22 +273,17 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{url($row['path_view'])}}"
+                                    <a href="{{ route($row['path_view'])}}"
                                         class="nav-link <?php if($nameURL == $row['path_view']) echo "active" ?>">
+
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>View {{$row['name']}}</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./index2.html" class="nav-link">
+                                    <a href="{{ route($row['path_add'])}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Add {{$row['name']}}</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./index3.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Edit {{$row['name']}}</p>
                                     </a>
                                 </li>
                             </ul>
