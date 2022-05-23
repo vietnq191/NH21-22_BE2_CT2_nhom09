@@ -1,8 +1,8 @@
 @extends('master-admin')
 @section('content')
-<?php if(session('usuccess')) { ?>
+<?php if(session('error')) { ?>
         <div class ="alert alert-danger">
-          <?php echo session('usuccess');?>
+          {{session('error')}}
         </div>
         <?php }?>
  <!-- Content Header (Page header) -->
@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Project Add</h1>
+            <h1>User Add</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-              <li class="breadcrumb-item active">Protype Add</li>
+              <li class="breadcrumb-item active">User Add</li>
             </ol>
           </div>
         </div>
@@ -24,7 +24,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <form action="{{route('admin.addprotype')}}" method="post" enctype="multipart/form-data">
+      <form action="{{route('admin.adduser')}}" method="post" enctype="multipart/form-data">
           @csrf
       <div class="row">
         <div class="col-md-12">
@@ -32,9 +32,13 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName">Name</label>
-                <input type="text" id="inputName" class="form-control" value="<?php if(session('name')) { 
-                    echo session('name');
-                }?>" name="name">
+                <input type="text" id="name" class="form-control" value="<?php if(session('Name')){echo session('Name');}?>" name="name" required>
+                <label for="inputPassword">Password</label>
+                <input type="password" id="password" class="form-control" value="" name="password"  required>
+                <label for="inputName">Phone</label>
+                <input type="number" id="phone" class="form-control" value="<?php if(session('Phone')){echo session('Phone');}?>" name="phone"  required>
+                <label for="inputEmail">Email</label>
+                <input type="email" id="email" class="form-control" value="<?php if(session('Email')){echo session('Email');}?>" name="email" require> 
               </div>
             </div>
             <!-- /.card-body -->
@@ -44,8 +48,8 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <a href="{{route('admin.listprotype')}}" class="btn btn-secondary">Cancel</a>
-          <button type="submit" class="btn btn-success float-right">Add</button>
+          <a href="{{route('admin.listuser')}}" class="btn btn-secondary">Cancel</a>
+          <button type="submit" class="btn btn-success float-right">Add User</button>
         </div>
       </div>
       </form>

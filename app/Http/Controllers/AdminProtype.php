@@ -31,7 +31,7 @@ class AdminProtype extends Controller
         $protype=Protype::where('id',$id)->get();
         return view('admin-editProtype',compact('protype'));
     }
-    function update(Request $request, $id){
+    function update(Request $request){
         DB::Table('protypes')->where('id',$request->id)->update(['name'=>$request->name]);
         return redirect()->route('admin.listprotype')->with('success','Edit Success');
     }
