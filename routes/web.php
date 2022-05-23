@@ -105,3 +105,15 @@ Route::post('save-all', [ProductController::class, 'saveAllItemCart']);
 //Checkout
 Route::get('checkout', [ProductController::class, 'checkOut'])->name('checkOut');
 Route::post('save-checkout', [ProductController::class, 'saveCheckOut'])->name('saveCheckOut');
+
+//View account
+Route::get('view-account', [PageController::class, 'view_account'])->name('view-account');
+Route::get('setting-profile', [PageController::class, 'update_profile'])->name('update-profile');
+
+//user update account
+Route::put('/setting-profile/{id}',[PageController::class,'update'])->name('update.user_profile');
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/change-password',[App\Http\Controllers\ChangePasswordController::class, 'showChangePasswordGet'])->name('changePasswordGet');
+    Route::post('/change-password',[App\Http\Controllers\ChangePasswordController::class, 'changePasswordPost'])->name('changePasswordPost');
+});
