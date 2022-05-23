@@ -37,11 +37,11 @@ class AdminUser extends Controller
                 return redirect()->route('admin.edituser',['id'=>$request->id])->with(['error' => 'Invalid phone number', 'Name' => $request->name, 'Email' => $request->email, 'Phone' => $request->phone]);
             }
             if($request->password == ""){
-            DB::Table('users')->where('id',$request->id)->update(['name'=>$request->name,'email'=>$request->email,'phone'=>$request->phone]);
+            DB::Table('users')->where('id',$request->id)->update(['name'=>$request->name,'phone'=>$request->phone]);
             return redirect()->route('admin.listuser')->with('success','Edit Success');
             }else{
             $pass = Hash::make($request->password);
-            DB::Table('users')->where('id',$request->id)->update(['name'=>$request->name,'email'=>$request->email,'password'=>$pass,'phone'=>$request->phone]);
+            DB::Table('users')->where('id',$request->id)->update(['name'=>$request->name,'password'=>$pass,'phone'=>$request->phone]);
             return redirect()->route('admin.listuser')->with('success','Edit Success');
             }
         }
