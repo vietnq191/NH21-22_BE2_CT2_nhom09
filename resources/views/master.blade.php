@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('/css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}" type="text/css">
+    <script src="https://kit.fontawesome.com/42ee89e4a1.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
@@ -182,9 +183,17 @@
                 <div class="col-lg-3 " id="change-item-cart">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-history"></i>
-                                    <span>0</span></a>
-                            </li>
+                            @if (Auth::guest())
+                                <li><a onclick="alert('To view transaction history, please login to your account')"
+                                        href="{{ url('/login') }}"><i class="fa fa-history"></i>
+                                        <span>0</span></a>
+                                </li>
+                            @else
+                                <li><a href="{{ route('transactionHistory') }}"><i class="fa fa-history"></i>
+                                        <span>0</span></a>
+                                </li>
+                            @endif
+
                             <li><a href="{{ route('shoppingCart') }}"><i class="fa fa-shopping-bag"></i>
                                     @if (Session::has('cart'))
                                         <span>{{ Session::get('cart')->totalQty }}</span>

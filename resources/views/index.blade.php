@@ -406,6 +406,10 @@
 </section>
 <!-- Latest Product Section End -->
 
+<div class="zalo-chat-widget" data-oaid="3373087579354014952" data-welcome-message="Rất vui khi được hỗ trợ bạn!"
+data-autopopup="0" data-width="310" data-height="310"></div>
+
+<script src="https://sp.zalo.me/plugins/sdk.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>.
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
