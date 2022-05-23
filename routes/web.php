@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductDetailsController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AdminProtype;
+use App\Http\Controllers\AdminUser;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,10 +38,12 @@ Route::get('/dashboard/protype', [AdminProtype::class,'protype'])->name('admin.l
 
 //add protype
 Route::post('/dashboard/protype/add', [AdminProtype::class,'add'])->name('admin.addprotype');;
+
 //get from add protype
 Route::get('/dashboard/protype/addprotype',function () {
     return view('admin-addprotype');
 })->name('protype.add');
+
 //get from edit protype
 Route::get('/dashboard/protype/edit/{id}',[AdminProtype::class,'edit'])->name('admin.editprotype');
 
@@ -49,6 +52,26 @@ Route::put('/dashboard/protype/update/{id}',[AdminProtype::class,'update'])->nam
 
 //Delete protype
 Route::delete('/dashboard/protype/{protype}', [AdminProtype::class,'destroy'])->name('admin.protype');
+
+//get from list user
+Route::get('/dashboard/user', [AdminUser::class,'user'])->name('admin.listuser');
+
+//Delete user
+Route::delete('/dashboard/user/{user}', [AdminUser::class,'destroy'])->name('admin.user');
+
+//add user
+Route::post('/dashboard/user/add', [AdminUser::class,'add'])->name('admin.adduser');
+
+//get from add user
+Route::get('/dashboard/user/adduser',function () {
+    return view('admin-addUser');
+})->name('user.add');
+
+//get from edit user
+Route::get('/dashboard/user/edit/{id}',[AdminUser::class,'edit'])->name('admin.edituser');
+
+//update user
+Route::put('/dashboard/protype/update',[AdminUser::class,'update'])->name('admin.updateuser');
 
 //Get product by type_ID
 Route::get('/shop-grid/{typeid?}', [ProductController::class, 'drid']);
