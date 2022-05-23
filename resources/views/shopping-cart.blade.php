@@ -9,7 +9,7 @@
                         <div class="breadcrumb__text">
                             <h2>Shopping Cart</h2>
                             <div class="breadcrumb__option">
-                                <a href="./index.html">Home</a>
+                                <a href="{{ url('/')}}">Home</a>
                                 <span>Shopping Cart</span>
                             </div>
                         </div>
@@ -38,26 +38,26 @@
 
                                     @foreach ((array) Session::get('cart')->items as $product)
                                         <tbody>
-                                            <tr>
+                                            <tr class="cart__item-{{$product['item']->id}}">
                                                 <td class="shoping__cart__item">
                                                     <img style="width: 100px"
                                                         src="{{ asset('img/product/' . $product['item']->image1) }} "
                                                         alt="">
                                                     <h5>{{ Str::substr($product['item']->name, 0, 50) }}</h5>
                                                 </td>
-                                                <td class="shoping__cart__price">
+                                                <td class="shoping__cart__price" id="price-{{$product['item']->id }}">
                                                     ${{ $product['item']->price - ($product['item']->price * $product['item']->sales) / 100 }}
                                                 </td>
                                                 <td class="shoping__cart__quantity">
                                                     <div class="quantity">
                                                         <div class="pro-qty">
-                                                            <input oninput="javascript:updateQuantity(this.value)"
+                                                            <input oninput="this.value = !!this.value && Math.abs(this.value) > 0 ? Math.abs(this.value) : 1"
                                                                 data-id="{{ $product['item']->id }}" type="text"
                                                                 value="{{ $product['qty'] }}">
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td class="shoping__cart__total">
+                                                <td class="shoping__cart__total" id="total-price-{{$product['item']->id }}">
                                                     ${{ $product['price'] - (($product['item']->price * $product['item']->sales) / 100) * $product['qty'] }}
                                                 </td>
                                                 <td class="shoping__cart__item__close">
@@ -82,15 +82,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="shoping__continue">
-                            <div class="shoping__discount">
-                                <h5>Discount Codes</h5>
-                                <form action="#">
-                                    <input type="text" placeholder="Enter your coupon code">
-                                    <button type="submit" class="site-btn">APPLY COUPON</button>
-                                </form>
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="col-lg-6">
                         <div class="shoping__checkout">
