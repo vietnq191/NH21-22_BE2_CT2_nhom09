@@ -191,10 +191,18 @@
                         </li>
                         @endforeach
                         <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
+                            <a href="{{ route('admin-view-orders')}}" class="nav-link <?php if($nameURL == "orders" || $nameURL == "") echo "active" ?>">
+                                <i class="nav-icon fa fa-shopping-basket"></i>
                                 <p>
-                                    Widgets
+                                    Order
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.email-letter')}}" class="nav-link <?php if($nameURL == "email-newsletter" || $nameURL == "send-all-email") echo "active" ?>">
+                                <i class="nav-icon fa fa-envelope"></i>
+                                <p>
+                                    Email Newsletter
                                     <span class="right badge badge-danger">New</span>
                                 </p>
                             </a>

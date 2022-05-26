@@ -3517,3 +3517,18 @@ ol {
     padding: 5px 20px;
 	font-weight: 400;
 }
+
+.hero__search__form form input{
+	width: 80%!important;
+}
+
+.pageLoader{
+    background: url(../img/loader.gif) no-repeat center center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999999;
+    background-color: #ffffff8c;
+}

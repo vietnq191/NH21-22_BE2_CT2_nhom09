@@ -82,16 +82,23 @@
                 </div>
             </div>
         </div>
-        <form action="#">
+        @if(Session::has('success'))
+        <div class="alert alert-success">
+            {{Session::get('success')}}
+        </div>
+            
+        @endif
+        <form action="{{ route('send.email')}}" method="POST">
+            @csrf
             <div class="row">
                 <div class="col-lg-6 col-md-6">
-                    <input type="text" placeholder="Your name">
+                    <input type="text" name="name" placeholder="Your name">
                 </div>
                 <div class="col-lg-6 col-md-6">
-                    <input type="text" placeholder="Your Email">
+                    <input type="text" name="email" placeholder="Your Email">
                 </div>
                 <div class="col-lg-12 text-center">
-                    <textarea placeholder="Your message"></textarea>
+                    <textarea name="message" placeholder="Your message"></textarea>
                     <button type="submit" class="site-btn">SEND MESSAGE</button>
                 </div>
             </div>
