@@ -1,5 +1,10 @@
 @extends('master-admin')
 @section('content')
+        <?php if(session('error')) { ?>
+        <div class ="alert alert-danger">
+          {{session('error')}}
+        </div>
+        <?php }?>
  <!-- Content Header (Page header) -->
  <section class="content-header">
       <div class="container-fluid">
@@ -28,7 +33,7 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName">Name</label>
-                <input type="text" id="inputName" class="form-control" value="<?php echo $protype[0]['name'] ?>" name="name">
+                <input type="text" id="inputName" class="form-control" value="<?php if(session('name')) { echo session('name');}else{echo $protype[0]['name'];} ?>" name="name" required>
               </div>
             </div>
             <!-- /.card-body -->

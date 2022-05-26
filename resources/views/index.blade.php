@@ -93,14 +93,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
+                    <a href="{{ url('shop-grid')}}">
+                        <div class="banner__pic">
                         <img src="{{ asset('/img/banner/banner-1.jpg') }}" alt="">
                     </div>
+                    </a>
+                    
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
+                    <a href="{{ url('shop-grid')}}">
+                        <div class="banner__pic">
                         <img src="{{ asset('/img/banner/banner-2.jpg') }}" alt="">
                     </div>
+                    </a>
+                    
                 </div>
             </div>
         </div>
@@ -403,12 +409,4 @@
 </div>
 </section>
 <!-- Latest Product Section End -->
-
-@if (Session::has('alert-success'))
-<script>
-    swal("Payment successful !", "{!! session('alert-success') !!}", "success", {
-        button: "Continue Shopping"
-    });
-</script>
-@endif
 @endsection

@@ -32,6 +32,10 @@ class AdminProtype extends Controller
         return view('admin-editProtype',compact('protype'));
     }
     function update(Request $request){
+        $protype=Protype::where('name',$request->name)->count();
+        if($protype>0){
+            return redirect()->route('admin.editprotype',['id'=>$request['id']])->with(['error'=>'Edit Unsuccessful because the name already exists','name'=>$request->name]);
+        }
         DB::Table('protypes')->where('id',$request->id)->update(['name'=>$request->name]);
         return redirect()->route('admin.listprotype')->with('success','Edit Success');
     }

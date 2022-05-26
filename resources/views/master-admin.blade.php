@@ -131,11 +131,11 @@
                             "1" => array(
                               "name" => "Products",
                               "icon" => "fas fa-shopping-bag",
-                              "path_view" => "admin.listuser",
-                              "path_add" => "admin.addprotype",
-                              "selected_view" => "",
-                              "selected_add" => "",
-                              "selected_edit" => "",
+                              "path_view" => "admin.listproduct",
+                              "path_add" => "admin.addproduct",
+                              "selected_view" => "product",
+                              "selected_add" => "add",
+                              "selected_edit" => "product/edit",
                             ),
                             "2" => array(
                               "name" => "Protypes",
@@ -191,10 +191,18 @@
                         </li>
                         @endforeach
                         <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
+                            <a href="{{ route('admin-view-orders')}}" class="nav-link <?php if($nameURL == "orders" || $nameURL == "") echo "active" ?>">
+                                <i class="nav-icon fa fa-shopping-basket"></i>
                                 <p>
-                                    Widgets
+                                    Order
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.email-letter')}}" class="nav-link <?php if($nameURL == "email-newsletter" || $nameURL == "send-all-email") echo "active" ?>">
+                                <i class="nav-icon fa fa-envelope"></i>
+                                <p>
+                                    Email Newsletter
                                     <span class="right badge badge-danger">New</span>
                                 </p>
                             </a>

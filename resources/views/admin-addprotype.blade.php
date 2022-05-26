@@ -34,7 +34,7 @@
                 <label for="inputName">Name</label>
                 <input type="text" id="inputName" class="form-control" value="<?php if(session('name')) { 
                     echo session('name');
-                }?>" name="name">
+                }?>" name="name" required>
               </div>
             </div>
             <!-- /.card-body -->

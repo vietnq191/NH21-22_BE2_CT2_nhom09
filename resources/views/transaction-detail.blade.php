@@ -1,15 +1,16 @@
 @extends('master')
 @section('content')
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="{{ asset('img/breadcrumb.jpg')}}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Shopping Cart</h2>
+                        <h2>Oder details</h2>
                         <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
-                            <span>Shopping Cart</span>
+                            <a href="{{ url('/')}}">Home</a>
+                            <a href="{{ route('transactionHistory')}}">Order History</a>
+                            <span>Oder details</span>
                         </div>
                     </div>
                 </div>

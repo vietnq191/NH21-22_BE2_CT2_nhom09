@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -12,6 +13,9 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AdminProtype;
 use App\Http\Controllers\AdminUser;
+use App\Http\Controllers\SendEmailController;
+use App\Http\Controllers\EmailController;
+use App\Http\Controllers\OrdersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +75,24 @@ Route::get('/dashboard/user/edit/{id}', [AdminUser::class, 'edit'])->name('admin
 
 //update user
 Route::put('/dashboard/protype/update', [AdminUser::class, 'update'])->name('admin.updateuser');
+
+//get from list product
+Route::get('/dashboard/product', [AdminProductController::class,'product'])->name('admin.listproduct');
+
+//get from add product
+Route::get('/dashboard/product/add', [AdminProductController::class,'add'])->name('admin.addproduct');
+
+// add product
+Route::post('/dashboard/product/add', [AdminProductController::class,'addproduct'])->name('product.add');
+
+//get from edit product
+Route::get('/dashboard/product/edit/{id}',[AdminProductController::class,'edit'])->name('admin.editproduct');
+
+//get update product
+Route::put('/dashboard/product/edit',[AdminProductController::class,'update'])->name('product.update');
+
+//Delete user
+Route::delete('/dashboard/product/{product}', [AdminProductController::class,'destroy'])->name('delete.product');
 
 //Get product by type_ID
 Route::get('/shop-grid/{typeid?}', [ProductController::class, 'drid']);
@@ -144,6 +166,35 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/change-password', [App\Http\Controllers\ChangePasswordController::class, 'changePasswordPost'])->name('changePasswordPost');
 });
 
-
 //Rating
 Route::post('add-rating', [ProductDetailsController::class, 'addRating']);
+
+Route::post('/send',[SendEmailController::class,'send'])->name('send.email');
+
+Route::post('/receive-email',[SendEmailController::class,'receiveEmail'])->name('receiveEmail.email');
+
+//get list email newsletter 
+Route::get('/dashboard/email-newsletter', [EmailController::class, 'getAllEmails'])->name('admin.email-letter');
+
+//Delete email newsletter
+Route::delete('/dashboard/email-newsletter/{email}', [EmailController::class,'destroy'])->name('admin.delete-email-letter');
+
+//View form send all email
+Route::get('/dashboard/email-newsletter/send-all-email', function () {
+    return view('admin-send-all-mails');
+})->name('form-send-all-emails');
+
+//Send all emails
+Route::post('/dashboard/sendAllMails',[SendEmailController::class,'send_all'])->name('admin-send-all-email');
+
+//View form send 1 email
+Route::get('/dashboard/email-newsletter/send-email/{email}', [EmailController::class,'find'])->name('form-send-emails');
+
+//Send 1 email
+Route::post('/dashboard/sendMail',[SendEmailController::class,'send'])->name('admin-send-email');
+
+//View all orders of Admin
+Route::get('/dashboard/orders', [OrdersController::class, 'index'])->name('admin-view-orders');
+
+//View details orders of admin
+Route::get('/dashboard/orders/{id}', [OrdersController::class, 'find'])->name('admin-view-details-order');

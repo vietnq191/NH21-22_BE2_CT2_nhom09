@@ -15,12 +15,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Users</h1>
+          <h1>Email Receive Newsletter</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-            <li class="breadcrumb-item active"><a href="{{route('user.add')}}">Create New User</a></li>
+            <li class="breadcrumb-item active"><a href="{{route('form-send-all-emails')}}">Send All Mails</a></li>
           </ol>
         </div>
       </div>
@@ -33,8 +33,7 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Users</h3>
-
+        <h3 class="card-title">Total Emails: {{ count($mails)}}</h3>
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
             <i class="fas fa-minus"></i>
@@ -46,26 +45,24 @@
           <thead>
             <tr>
               <th style="width: 10%">ID</th>
-              <th style="width: 20%">Name</th>
-              <th style="width: 30%">Email</th>
-              <th style="width: 20%">Phone</th>
+              <th style="width: 40%">Email</th>
+              <th style="width: 30%">Date Join Newsletter</th>
               <th style="width: 20%">Action</th>
             </tr>
           </thead>
           <tbody>
             <?php
-            foreach ($user as $value) { ?>
+            foreach ($mails as $value) { ?>
               <tr>
-                <td><?php echo $value['id'] ?></td>
-                <td><?php echo $value['name'] ?></td>
-                <td><?php echo $value['email'] ?></td>
-                <td><?php echo $value['phone'] ?></td>
+                <td><?php echo $value->id ?></td>
+                <td><?php echo $value->email ?></td>
+                <td><?php echo $value->date ?></td>
                 <td class="project-actions text-left">
-                <form method="POST" action="{{route('admin.user',['user'=>$value])}}">
-                  <a class="btn btn-info btn-sm modify-icon" href="{{route('admin.edituser',['id'=>$value['id']])}}">
-                    <i class="fas fa-pencil-alt ">
+                <form method="POST" action="{{route('admin.delete-email-letter',[$value->email])}}">
+                  <a class="btn btn-warning btn-sm modify-icon" href="{{ route('form-send-emails',[$value->email])}}">
+                    <i class="fa fa-paper-plane">
                     </i>
-                    Edit
+                    Send Email
                   </a>
                     @csrf
                     @method('DELETE')
@@ -80,7 +77,7 @@
             <?php } ?>
           </tbody>
         </table>
-        {{$user->onEachSide(1)->appends(request()->all())->links('vendor.pagination.my-paginate')}}
+        {{$mails->onEachSide(1)->appends(request()->all())->links('vendor.pagination.my-paginate')}}
       </div>
       <!-- /.card-body -->
     </div>

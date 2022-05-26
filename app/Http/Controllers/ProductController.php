@@ -171,6 +171,10 @@ class ProductController extends Controller
                 'type' => $type,
                 'minproduct' => $minProduct,
                 'maxproduct' => $maxProduct,
+                'min'=>$min,
+                'max'=>$max,
+                'field'=>$orderprice,
+                'sort'=>$ordersort,
             ]
         );
     }
@@ -201,12 +205,21 @@ class ProductController extends Controller
             $product = Product::orderBy('id', 'desc')->paginate(6);
         }
 
-        $productsearch = Product::select('*', 'products.name AS product_name', 'products.id AS product_id')
+        if ($orderprice == "price") {
+        $productsearch = Product::select('*', 'products.name AS product_name', 'products.id AS product_id',DB::raw('price - price*sales/100 AS price_discount'))
             ->join('protypes', 'protypes.id', '=', 'products.type_id')
+            ->orderBy('price_discount', $ordersort)
             ->where('products.name', 'like', '%' . $request->key . '%')
-            ->orWhere('products.price', 'like', '%' . $request->key . '%')
-            ->orWhere('protypes.name', 'like', '%' . $request->key . '%')
+            ->whereBetween('price', [$min, $max])
             ->paginate(9);
+        }else{
+            $productsearch = Product::select('*', 'products.name AS product_name', 'products.id AS product_id',DB::raw('price - price*sales/100 AS price_discount'))
+            ->join('protypes', 'protypes.id', '=', 'products.type_id')
+            ->orderBy($orderprice, $ordersort)
+            ->where('products.name', 'like', '%' . $request->key . '%')
+            ->whereBetween('price', [$min, $max])
+            ->paginate(9);
+        }
 
         //Count product
         $count = Product::orderBy($orderprice, $ordersort)
@@ -225,7 +238,8 @@ class ProductController extends Controller
             ->orderBy('sales', 'desc')
             ->take(9)
             ->get();
-
+        $key=$request->key;
+      
         return view(
             'search',
             [
@@ -238,9 +252,10 @@ class ProductController extends Controller
                 'saleOff' => $saleOff,
                 'minproduct' => $minProduct,
                 'maxproduct' => $maxProduct,
-
-            ]
-        );
+                'key'=>$key,
+                'field'=>$orderprice,
+                'sort'=>$ordersort,
+            ]);
     }
     public function getAddToCart(Request $request, $id)
     {
@@ -350,14 +365,13 @@ class ProductController extends Controller
 
         $request->session()->forget('cart');
 
-        return redirect('/transaction-history');
+        return redirect('/transaction-history')->with('alert-success', 'Thank you for your purchase');;
     }
 
     public function transactionHistory()
     {
         $protypes = Protype::all();
         $items = DB::table('orders')->where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
-        session()->flash('alert-success', 'Order payment successful');
         return view('transaction-history', [
             'getProtypes' => $protypes,
             'items' => $items

@@ -38,7 +38,7 @@
                 <label for="inputName">Phone</label>
                 <input type="number" id="phone" class="form-control" value="<?php if(session('Phone')){echo session('Phone');}?>" name="phone"  required>
                 <label for="inputEmail">Email</label>
-                <input type="email" id="email" class="form-control" value="<?php if(session('Email')){echo session('Email');}?>" name="email" require> 
+                <input type="email" id="email" class="form-control" value="<?php if(session('Email')){echo session('Email');}?>" name="email" required> 
               </div>
             </div>
             <!-- /.card-body -->
