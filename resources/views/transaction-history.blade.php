@@ -57,8 +57,8 @@
 
                                             </td>
                                             <td class="shoping__cart__item__close">
-                                                <a href="{{ route('transactionDetail', $product->id) }}"> <span
-                                                        class="icon_close"></span></a>
+                                                <a href="{{ route('transactionDetail', $product->id) }}">
+                                                    <span>Detail</span></a>
                                             </td>
                                         </tr>
                                 @endforeach

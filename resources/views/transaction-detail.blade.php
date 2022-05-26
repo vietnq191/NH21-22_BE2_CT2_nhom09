@@ -57,7 +57,8 @@
 
                                             </td>
                                             <td class="shoping__cart__item__close">
-                                                <span class="icon_close"></span>
+                                                <a
+                                                    href="{{ route('shop.details', [$product->product_id]) }}"><span>Review</span></a>
                                             </td>
                                         </tr>
                                 @endforeach

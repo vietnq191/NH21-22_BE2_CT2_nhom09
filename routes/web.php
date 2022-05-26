@@ -36,7 +36,7 @@ Route::get('/dashboard', function () {
 Route::get('/dashboard/protype', [AdminProtype::class, 'protype'])->name('admin.listprotype');
 
 //add protype
-Route::post('/dashboard/protype/add', [AdminProtype::class,'add'])->name('admin.addprotype');
+Route::post('/dashboard/protype/add', [AdminProtype::class, 'add'])->name('admin.addprotype');
 
 //get from add protype
 Route::get('/dashboard/protype/addprotype', function () {
@@ -53,30 +53,30 @@ Route::put('/dashboard/protype/update/{id}', [AdminProtype::class, 'update'])->n
 Route::delete('/dashboard/protype/{protype}', [AdminProtype::class, 'destroy'])->name('admin.protype');
 
 //get from list user
-Route::get('/dashboard/user', [AdminUser::class,'user'])->name('admin.listuser');
+Route::get('/dashboard/user', [AdminUser::class, 'user'])->name('admin.listuser');
 
 //Delete user
-Route::delete('/dashboard/user/{user}', [AdminUser::class,'destroy'])->name('admin.user');
+Route::delete('/dashboard/user/{user}', [AdminUser::class, 'destroy'])->name('admin.user');
 
 //add user
-Route::post('/dashboard/user/add', [AdminUser::class,'add'])->name('admin.adduser');
+Route::post('/dashboard/user/add', [AdminUser::class, 'add'])->name('admin.adduser');
 
 //get from add user
-Route::get('/dashboard/user/adduser',function () {
+Route::get('/dashboard/user/adduser', function () {
     return view('admin-addUser');
 })->name('user.add');
 
 //get from edit user
-Route::get('/dashboard/user/edit/{id}',[AdminUser::class,'edit'])->name('admin.edituser');
+Route::get('/dashboard/user/edit/{id}', [AdminUser::class, 'edit'])->name('admin.edituser');
 
 //update user
-Route::put('/dashboard/protype/update',[AdminUser::class,'update'])->name('admin.updateuser');
+Route::put('/dashboard/protype/update', [AdminUser::class, 'update'])->name('admin.updateuser');
 
 //Get product by type_ID
 Route::get('/shop-grid/{typeid?}', [ProductController::class, 'drid']);
 
 //Get Detail product
-Route::get('/shop-details/{id}', [ProductDetailsController::class, 'product_detail']);
+Route::get('/shop-details/{id}', [ProductDetailsController::class, 'product_detail'])->name('shop.details');
 
 // Search
 Route::get('search', [ProductController::class, 'getSearch'])->name('search');
@@ -137,9 +137,13 @@ Route::get('view-account', [PageController::class, 'view_account'])->name('view-
 Route::get('setting-profile', [PageController::class, 'update_profile'])->name('update-profile');
 
 //user update account
-Route::put('/setting-profile/{id}',[PageController::class,'update'])->name('update.user_profile');
+Route::put('/setting-profile/{id}', [PageController::class, 'update'])->name('update.user_profile');
 
-Route::group(['middleware' => 'auth'], function() {
-    Route::get('/change-password',[App\Http\Controllers\ChangePasswordController::class, 'showChangePasswordGet'])->name('changePasswordGet');
-    Route::post('/change-password',[App\Http\Controllers\ChangePasswordController::class, 'changePasswordPost'])->name('changePasswordPost');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/change-password', [App\Http\Controllers\ChangePasswordController::class, 'showChangePasswordGet'])->name('changePasswordGet');
+    Route::post('/change-password', [App\Http\Controllers\ChangePasswordController::class, 'changePasswordPost'])->name('changePasswordPost');
 });
+
+
+//Rating
+Route::post('add-rating', [ProductDetailsController::class, 'addRating']);
