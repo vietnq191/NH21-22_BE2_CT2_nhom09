@@ -57,8 +57,6 @@
                                 <div class="product__discount__percent">-{{ $value->sales }}%</div>
                                 <?php endif ?>
                                 <ul class="featured__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
                                     <li><a onclick="AddCart({{ $value->product_id }})" href="javascript:"><i
                                                 class="fa fa-shopping-cart"></i></a></li>
                                     {{-- {{ route('product.addToCart', ['id' => $value->product_id]) }} --}}
@@ -95,14 +93,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
+                    <a href="{{ url('shop-grid')}}">
+                        <div class="banner__pic">
                         <img src="{{ asset('/img/banner/banner-1.jpg') }}" alt="">
                     </div>
+                    </a>
+                    
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
+                    <a href="{{ url('shop-grid')}}">
+                        <div class="banner__pic">
                         <img src="{{ asset('/img/banner/banner-2.jpg') }}" alt="">
                     </div>
+                    </a>
+                    
                 </div>
             </div>
         </div>
@@ -405,15 +409,4 @@
 </div>
 </section>
 <!-- Latest Product Section End -->
-
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>.
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-@if (Session::has('alert-success'))
-<script>
-    swal("Payment successful !", "{!! session('alert-success') !!}", "success", {
-        button: "Continue Shopping"
-    });
-</script>
-@endif
 @endsection

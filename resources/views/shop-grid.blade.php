@@ -166,8 +166,6 @@
                                     <div class="product__discount__item__pic set-bg" data-setbg="{{asset($img)}}">
                                         <div class="product__discount__percent">-{{ $value->sales}}%</div>
                                         <ul class="product__item__pic__hover">
-                                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
                                             <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
@@ -247,14 +245,11 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4">
-                        <div class="filter__found">
-                            <h6><span><?php echo count($countAllProduct); ?></span> Products found</h6>
-                            </div>
+                        
                         </div>
                         <div class="col-lg-4 col-md-3">
-                            <div class="filter__option">
-                                <span class="icon_grid-2x2"></span>
-                                <span class="icon_ul"></span>
+                        <div class="filter__found">
+                            <h6><span><?php echo count($countAllProduct); ?></span> Products found</h6>
                             </div>
                         </div>
                     </div>
@@ -273,8 +268,6 @@
                                 <div class="product__discount__percent">-{{$value->sales}}%</div>
                                 <?php endif ?>
                                 <ul class="featured__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
                                     <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
                                 </ul>
                             </div>
