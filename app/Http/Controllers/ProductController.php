@@ -346,14 +346,13 @@ class ProductController extends Controller
 
         $request->session()->forget('cart');
 
-        return redirect('/transaction-history');
+        return redirect('/transaction-history')->with('alert-success', 'Thank you for your purchase');;
     }
 
     public function transactionHistory()
     {
         $protypes = Protype::all();
         $items = DB::table('orders')->where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
-        session()->flash('alert-success', 'Order payment successful');
         return view('transaction-history', [
             'getProtypes' => $protypes,
             'items' => $items

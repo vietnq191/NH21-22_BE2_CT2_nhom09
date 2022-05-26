@@ -28,11 +28,6 @@
 
 
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-
     <?php $link = $_SERVER['PHP_SELF'];
     $link_array = explode('/', $link);
     $nameURL = end($link_array);
@@ -318,8 +313,9 @@
                     <div class="footer__widget">
                         <h6>Join Our Newsletter Now</h6>
                         <p>Get E-mail updates about our latest shop and special offers.</p>
-                        <form action="#">
-                            <input type="text" placeholder="Enter your mail">
+                        <form action="{{ route('receiveEmail.email')}}" method="post">
+                            @csrf
+                            <input type="email" name="email" placeholder="Enter your mail" required>
                             <button type="submit" class="site-btn">Subscribe</button>
                         </form>
                     </div>
@@ -346,8 +342,9 @@
                 </div>
             </div>
         </div>
-        <div class="zalo-chat-widget" data-oaid="3373087579354014952" data-welcome-message="Rất vui khi được hỗ trợ bạn!"
-        data-autopopup="0" data-width="310" data-height="310"></div>
+        <div class="zalo-chat-widget d-none d-md-block" data-oaid="3373087579354014952"
+            data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="310" data-height="310">
+        </div>
     </footer>
     <!-- Footer Section End -->
 
@@ -373,6 +370,29 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
+    @if (Session::has('alert-success'))
+    <script>
+    swal("Payment successful !", "{!! Session('alert-success') !!}", "success", {
+        button: "Continue Shopping"
+    });
+    </script>
+    @endif
+
+    @if(Session::has('receiveEmailSuccess'))
+    <script>
+    swal("Thank you for subscribing !", "{!! Session::get('receiveEmailSuccess') !!}", "success", {
+        button: "OK",
+    })
+    </script>
+    @endif
+
+    @if(Session::has('receiveEmailError'))
+    <script>
+    swal("Your email is already exits !", "{!! Session::get('receiveEmailError') !!}", "error", {
+        button: "OK",
+    })
+    </script>
+    @endif
 </body>
 
 </html>
