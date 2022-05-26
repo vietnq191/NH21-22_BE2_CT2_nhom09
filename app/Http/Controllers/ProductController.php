@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Cart;
+use App\Models\Rating;
+use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Stmt\Else_;
 
 class ProductController extends Controller
 {
@@ -64,7 +67,8 @@ class ProductController extends Controller
             ->orderBy('products.name', 'desc')
             ->take(20)
             ->get();
-        //return
+
+
         return view(
             'shop-details',
             [
@@ -319,7 +323,7 @@ class ProductController extends Controller
         foreach ($request->data as $item) {
             $oldCart = Session('cart') ?  Session('cart') : null; // cart current
             $newCart = new Cart($oldCart);
-            $newCart->updateAllCart($item['key'],$item['value']);
+            $newCart->updateAllCart($item['key'], $item['value']);
             $request->Session()->put('cart', $newCart);
         }
     }
@@ -375,11 +379,11 @@ class ProductController extends Controller
     }
     public function transactionDetail($order_id)
     {
-        // DB::enableQueryLog();
+
         $protypes = Protype::all();
 
         $orderProducts = DB::table('orders_list')->join('products', 'product_id', '=', 'id')->where('order_id', $order_id)->get();
-        // dd(DB::getQueryLog());
+
 
         // dd($orderProducts);
         return view('transaction-detail', [
@@ -387,4 +391,5 @@ class ProductController extends Controller
             'orderProducts' => $orderProducts
         ]);
     }
+
 }

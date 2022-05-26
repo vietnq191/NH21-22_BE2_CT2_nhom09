@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}" type="text/css">
     <script src="https://kit.fontawesome.com/42ee89e4a1.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </head>
 
 
@@ -42,29 +43,29 @@
         <div class="humberger__menu__cart">
             <ul>
                 @if (Auth::guest())
-                <li><a onclick="alert('To view transaction history, please login to your account')"
-                        href="{{ url('/login') }}"><i class="fa fa-history"></i>
-                </li>
+                    <li><a onclick="alert('To view transaction history, please login to your account')"
+                            href="{{ url('/login') }}"><i class="fa fa-history"></i>
+                    </li>
                 @else
-                <li><a href="{{ route('transactionHistory') }}"><i class="fa fa-history"></i></a>
-                </li>
+                    <li><a href="{{ route('transactionHistory') }}"><i class="fa fa-history"></i></a>
+                    </li>
                 @endif
 
                 <li><a href="{{ route('shoppingCart') }}"><i class="fa fa-shopping-bag"></i>
                         @if (Session::has('cart'))
-                        <span>{{ Session::get('cart')->totalQty }}</span>
+                            <span>{{ Session::get('cart')->totalQty }}</span>
                         @else
-                        <span>0</span>
+                            <span>0</span>
                         @endif
                     </a>
                 </li>
             </ul>
             @if (Session::has('cart'))
-            <div class="header__cart__price">item:
-                <span>${{ Session::get('cart')->totalPrice }}</span>
-            </div>
+                <div class="header__cart__price">item:
+                    <span>${{ Session::get('cart')->totalPrice }}</span>
+                </div>
             @else
-            <div class="header__cart__price">item: <span>$0</span></div>
+                <div class="header__cart__price">item: <span>$0</span></div>
             @endif
         </div>
         <div class="humberger__menu__widget">
@@ -79,22 +80,23 @@
             </div>
             <div class="header__top__right__auth">
                 @if (Auth::guest())
-                <a href="{{ route('login') }}"><i class="fa fa-user"></i>
-                    {{ __('Login') }}</a>
+                    <a href="{{ route('login') }}"><i class="fa fa-user"></i>
+                        {{ __('Login') }}</a>
                 @else
-                <i class="fa fa-user-o"></i>
-                <a style="display: inline" href="{{ route('view-account')}}">
-                    {{ Auth::user()->name }} <span class="caret"></span>
-                </a>
-                <a style="display: inline; padding-left: 5px;" href="{{ route('logout') }}">
-                    <i class="fa fa-btn fa-sign-out"></i>
-                </a>
+                    <i class="fa fa-user-o"></i>
+                    <a style="display: inline" href="{{ route('view-account') }}">
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+                    <a style="display: inline; padding-left: 5px;" href="{{ route('logout') }}">
+                        <i class="fa fa-btn fa-sign-out"></i>
+                    </a>
                 @endif
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li <?php if ($nameURL == "index.php") { ?> class="active" <?php } ?>><a href="{{ url('/') }}">Home</a>
+                <li <?php if ($nameURL == "index.php") { ?> class="active" <?php } ?>><a
+                        href="{{ url('/') }}">Home</a>
                 </li>
                 <li <?php if ($nameURL == "shop-grid") { ?> class="active" <?php } ?>><a
                         href="{{ url('/shop-grid') }}">Shop</a></li>
@@ -140,16 +142,16 @@
                             </div>
                             <div class="header__top__right__auth">
                                 @if (Auth::guest())
-                                <a href="{{ route('login') }}"><i class="fa fa-user"></i>
-                                    {{ __('Login') }}</a>
+                                    <a href="{{ route('login') }}"><i class="fa fa-user"></i>
+                                        {{ __('Login') }}</a>
                                 @else
-                                <i class="fa fa-user-o"></i>
-                                <a style="display: inline" href="{{ route('view-account')}}">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-                                <a style="display: inline; padding-left: 5px;" href="{{ route('logout') }}">
-                                    <i class="fa fa-btn fa-sign-out"></i>
-                                </a>
+                                    <i class="fa fa-user-o"></i>
+                                    <a style="display: inline" href="{{ route('view-account') }}">
+                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                    </a>
+                                    <a style="display: inline; padding-left: 5px;" href="{{ route('logout') }}">
+                                        <i class="fa fa-btn fa-sign-out"></i>
+                                    </a>
                                 @endif
                             </div>
                         </div>
@@ -183,29 +185,29 @@
                     <div class="header__cart">
                         <ul>
                             @if (Auth::guest())
-                            <li><a onclick="alert('To view transaction history, please login to your account')"
-                                    href="{{ url('/login') }}"><i class="fa fa-history"></i>
-                            </li>
+                                <li><a onclick="alert('To view transaction history, please login to your account')"
+                                        href="{{ url('/login') }}"><i class="fa fa-history"></i>
+                                </li>
                             @else
-                            <li><a href="{{ route('transactionHistory') }}"><i class="fa fa-history"></i></a>
-                            </li>
+                                <li><a href="{{ route('transactionHistory') }}"><i class="fa fa-history"></i></a>
+                                </li>
                             @endif
 
                             <li><a href="{{ route('shoppingCart') }}"><i class="fa fa-shopping-bag"></i>
                                     @if (Session::has('cart'))
-                                    <span>{{ Session::get('cart')->totalQty }}</span>
+                                        <span>{{ Session::get('cart')->totalQty }}</span>
                                     @else
-                                    <span>0</span>
+                                        <span>0</span>
                                     @endif
                                 </a>
                             </li>
                         </ul>
                         @if (Session::has('cart'))
-                        <div class="header__cart__price">item:
-                            <span>${{ Session::get('cart')->totalPrice }}</span>
-                        </div>
+                            <div class="header__cart__price">item:
+                                <span>${{ Session::get('cart')->totalPrice }}</span>
+                            </div>
                         @else
-                        <div class="header__cart__price">item: <span>$0</span></div>
+                            <div class="header__cart__price">item: <span>$0</span></div>
                         @endif
                     </div>
                 </div>
@@ -232,9 +234,9 @@
                         <ul>
                             <li><a href="{{ url('shop-grid') }}">All Categories</a></li>
                             @foreach ($getProtypes as $value)
-                            <?php $urlID = 'shop-grid/' . $value['id']; ?>
-                            <li><a href="{{ url($urlID) }}"><?php echo $value['name']; ?></a>
-                            </li>
+                                <?php $urlID = 'shop-grid/' . $value['id']; ?>
+                                <li><a href="{{ url($urlID) }}"><?php echo $value['name']; ?></a>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
@@ -264,7 +266,7 @@
                             <span>FRUIT FRESH</span>
                             <h2>Vegetable <br />100% Organic</h2>
                             <p>Free Pickup and Delivery Available</p>
-                            <a href="{{ url('shop-grid')}}" class="primary-btn">SHOP NOW</a>
+                            <a href="{{ url('shop-grid') }}" class="primary-btn">SHOP NOW</a>
                         </div>
                     </div>
                     <?php
@@ -301,7 +303,7 @@
                         <ul>
                             <li><a href="{{ url('/about-us') }}">About Us</a></li>
                             <li><a href="{{ url('/contact') }}">Contact</a></li>
-                            <li><a href="{{ route('view-account')}}">My Account</a></li>
+                            <li><a href="{{ route('view-account') }}">My Account</a></li>
                         </ul>
                         <ul>
                             <li><a href="{{ route('shoppingCart') }}">Shopping Cart</a></li>
@@ -329,20 +331,23 @@
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;
                                 <script>
-                                document.write(new Date().getFullYear());
-                                </script> All rights reserved | This template is made with <i class="fa fa-heart"
-                                    aria-hidden="true"></i> by <a href="https://colorlib.com"
+                                    document.write(new Date().getFullYear());
+                                </script> All rights reserved | This template is made with <i
+                                    class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
                                     target="_blank">Colorlib</a>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
-                        <div class="footer__copyright__payment"><img src="{{ asset('/img/payment-item.png') }}" alt="">
+                        <div class="footer__copyright__payment"><img src="{{ asset('/img/payment-item.png') }}"
+                                alt="">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="zalo-chat-widget d-none d-md-block" data-oaid="3373087579354014952"
+
             data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="310" data-height="310">
         </div>
     </footer>
