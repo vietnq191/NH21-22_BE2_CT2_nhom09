@@ -131,11 +131,11 @@
                             "1" => array(
                               "name" => "Products",
                               "icon" => "fas fa-shopping-bag",
-                              "path_view" => "admin.listuser",
-                              "path_add" => "admin.addprotype",
-                              "selected_view" => "",
-                              "selected_add" => "",
-                              "selected_edit" => "",
+                              "path_view" => "admin.listproduct",
+                              "path_add" => "admin.addproduct",
+                              "selected_view" => "product",
+                              "selected_add" => "add",
+                              "selected_edit" => "product/edit",
                             ),
                             "2" => array(
                               "name" => "Protypes",

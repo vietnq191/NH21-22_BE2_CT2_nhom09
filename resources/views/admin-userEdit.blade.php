@@ -32,15 +32,15 @@
           <div class="card card-primary">
             <div class="card-body">
               <div class="form-group">
-              <input type="hidden" id="inputID" class="form-control" value="<?php echo $user[0]['id'] ?>" name="id" require>
+              <input type="hidden" id="inputID" class="form-control" value="<?php echo $user[0]['id'] ?>" name="id" required>
                 <label for="inputName">Name</label>
-                <input type="text" id="inputName" class="form-control" value="<?php echo $user[0]['name'] ?>" name="name" require>
+                <input type="text" id="inputName" class="form-control" value="<?php echo $user[0]['name'] ?>" name="name" required>
                 <label for="inputPassword">Password</label>
                 <input type="password" id="inputPassWord" class="form-control" value="" name="password">
                 <label for="inputPhone">Phone</label>
-                <input type="number" id="phone" class="form-control" value="<?php echo $user[0]['phone']?>" name="phone" require> 
+                <input type="number" id="phone" class="form-control" value="<?php echo $user[0]['phone']?>" name="phone" required> 
                 <label for="inputEmail">Email</label>
-                <input type="email" disabled id="email" class="form-control" value="<?php echo $user[0]['email']?>" name="email" require> 
+                <input type="email" disabled id="email" class="form-control" value="<?php echo $user[0]['email']?>" name="email" required> 
               </div>
             </div>
             <!-- /.card-body -->
