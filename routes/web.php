@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -72,6 +73,24 @@ Route::get('/dashboard/user/edit/{id}',[AdminUser::class,'edit'])->name('admin.e
 
 //update user
 Route::put('/dashboard/protype/update',[AdminUser::class,'update'])->name('admin.updateuser');
+
+//get from list product
+Route::get('/dashboard/product', [AdminProductController::class,'product'])->name('admin.listproduct');
+
+//get from add product
+Route::get('/dashboard/product/add', [AdminProductController::class,'add'])->name('admin.addproduct');
+
+// add product
+Route::post('/dashboard/product/add', [AdminProductController::class,'addproduct'])->name('product.add');
+
+//get from edit product
+Route::get('/dashboard/product/edit/{id}',[AdminProductController::class,'edit'])->name('admin.editproduct');
+
+//get update product
+Route::put('/dashboard/product/edit',[AdminProductController::class,'update'])->name('product.update');
+
+//Delete user
+Route::delete('/dashboard/product/{product}', [AdminProductController::class,'destroy'])->name('delete.product');
 
 //Get product by type_ID
 Route::get('/shop-grid/{typeid?}', [ProductController::class, 'drid']);

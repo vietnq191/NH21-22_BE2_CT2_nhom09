@@ -28,23 +28,40 @@
             <div class="row">
                 <div class="col-lg-3 col-md-5">
                     <div class="sidebar">
-                        <div class="sidebar__item">
+                    <form action="{{ route('search') }}" method="get">
+                    <div class="sidebar__item">
                             <h4>Price</h4>
                             <div class="price-range-wrap">
-                                <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                    data-min="10" data-max="540">
-                                    <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                </div>
-                                <div class="range-slider">
-                                    <div class="price-input">
-                                        <input type="text" id="minamount">
-                                        <input type="text" id="maxamount">
-                                    </div>
-                                </div>
+                                <li data-min-type="data-min" id="MinProduct" class="hide"><?php if(isset($_GET['Min'])){
+                                echo $_GET['Min'];
+                            } else{
+                               echo 0;
+                            }?></li>
+                                <li data-max-type="data-max" id="MaxProduct" class="hide"><?php if(isset($_GET['Max'])){
+                                echo $_GET['Max'];
+                            } else{
+                               echo $maxproduct;
+                            }?></li>
+                                <li data-min-type="data-minn" id="minProducts" class="hide"><?php echo $minproduct ?>
+                                </li>
+                                <li data-min-type="data-maxx" id="maxProducts" class="hide"><?php echo $maxproduct ?>
+                                </li>
+                                <input type="hidden" name="key" id="key" value="<?php echo $key ?>">
+                                <input type="hidden" name="Min" id="min" value="<?php echo 0 ?>">
+                                <input type="hidden" name="Max" id="max" value="<?php echo $maxproduct ?>">
+                                <input type="hidden" name="field" id="field" value="<?php echo $field ?>">
+                                <input type="hidden" name="sort" id="sort" value="<?php echo $sort ?>">
+                                <div id="price_range"></div>
                             </div>
+                            <p class="price_show" id="price_show"><?php if(isset($_GET['Min'])&& isset($_GET['Max'])){
+
+                            echo "$".$_GET['Min']." - $".$_GET['Max'];
+                            }else{
+                               echo "$".$minproduct." - $".$maxproduct;
+                            }?></p>
+                            <input class="btn-filter" type="submit" value="Filter" name="">
                         </div>
+<<<<<<< Updated upstream
                         <div class="sidebar__item sidebar__item__color--option">
                             <h4>Colors</h4>
                             <div class="sidebar__item__color sidebar__item__color--white">
@@ -111,6 +128,10 @@
                                 </label>
                             </div>
                         </div>
+=======
+                    </form>
+                    </div>
+>>>>>>> Stashed changes
                         <div class="sidebar__item">
                             <div class="latest-product__text">
                                 <h4>Latest Products</h4>
@@ -210,7 +231,6 @@
                     </div>
                 </div>
             </div>
-        </div>
 
         <div class="col-lg-9 col-md-7">
             <div class="product__discount">
@@ -263,37 +283,63 @@
             </div>
             @if (count($productsearch) == '0')
                 <div style="padding-left: 180px;font-size: 20px">
-                    <span>Sorry, OGANI did not find any results matching your keywords
+                    <span>Sorry, OGANI did not find any results matching your keywords or price
                         <strong>{{ $request->key }}</strong>
                     </span>
                     <ul>
                         <li>Check the spelling of the entered keyword</li>
-                        <li>Try again with another keyword</li>
-                        <li>Try again with shorter keywords</li>
+                        <li>Try again with another keyword or price</li>
+                        <li>Try again with shorter keywords or price</li>
                     </ul>
                 </div>
             @else
                 <div class="filter__item">
                     <div class="row">
                         <div class="col-lg-4 col-md-5">
-                            <div class="filter__sort">
+                        <div class="filter__sort text-center">
+                            <form>
+                                @csrf
                                 <span>Sort By</span>
-                                <select>
-                                    <option value="0">Default</option>
-                                    <option value="0">Default</option>
+                                <select id="sort" name="sort"
+                                    onchange="this.options[this.selectedIndex].value && (window.location=this.options[this.selectedIndex].value);">
+                                    <option value="{{Request::url()}}?<?php if(isset($_GET['key'])){echo 'key='.$_GET['key'].'&';} 
+                                if(isset($_GET['Min'])&&isset($_GET['Max'])){
+                                echo "Min=".$_GET['Min']."&Max=".$_GET['Max']."&" ; 
+                                }else{
+                                }?>field=price&sort=desc" <?php if(isset($_GET['field'])&&isset($_GET['sort'])){
+                                    if($_GET['field']==="price"&&$_GET['sort']==="desc"){
+                                    echo ' selected';}}?>>Price ⬇</option>
+                                    <option value="{{Request::url()}}?<?php if(isset($_GET['key'])){echo 'key='.$_GET['key'].'&';} 
+                                if(isset($_GET['Min'])&&isset($_GET['Max'])){
+                                    echo "Min=".$_GET['Min']."&Max=".$_GET['Max']."&" ; 
+                                    }else{}?>field=price&sort=asc" <?php if(isset($_GET['field'])&&isset($_GET['sort'])){
+                                    if($_GET['field']==="price"&&$_GET['sort']==="asc"){
+                                    echo ' selected';}}?>>Price ⬆</option>
+                                    <option value="{{Request::url()}}?<?php if(isset($_GET['key'])){echo 'key='.$_GET['key'].'&';} 
+                                if(isset($_GET['Min'])&&isset($_GET['Max'])){
+                                    echo "Min=".$_GET['Min']."&Max=".$_GET['Max']."&" ; 
+                                    }else{
+                                    }?>field=products.name&sort=desc" <?php if(isset($_GET['field'])&&isset($_GET['sort'])){
+                                        if($_GET['field']==="products.name"&&$_GET['sort']==="desc"){
+                                        echo ' selected';}}?>>Name ⬇</option>
+                                    <option value="{{Request::url()}}?<?php if(isset($_GET['key'])){echo 'key='.$_GET['key'].'&';} 
+                               if(isset($_GET['Min'])&&isset($_GET['Max'])){
+                                echo "Min=".$_GET['Min']."&Max=".$_GET['Max']."&" ; 
+                                }else{
+                                }?>field=products.name&sort=asc" <?php if(isset($_GET['field'])&&isset($_GET['sort'])){
+                                    if($_GET['field']==="products.name"&&$_GET['sort']==="asc"){
+                                    echo ' selected';}}?>>Name ⬆</option>
                                 </select>
-                            </div>
+                                <div style="clear:both;"></div>
+                            </form>
+                        </div>
                         </div>
                         <div class="col-lg-4 col-md-4">
-                            <div class="filter__found">
-                                <h6><span>{{ count($countAllProduct) }}</span> Products found</h6>
-                            </div>
                         </div>
 
                         <div class="col-lg-4 col-md-3">
-                            <div class="filter__option">
-                                <span class="icon_grid-2x2"></span>
-                                <span class="icon_ul"></span>
+                        <div class="filter__found">
+                                <h6><span>{{ count($countAllProduct) }}</span> Products found</h6>
                             </div>
                         </div>
                     </div>
@@ -329,7 +375,7 @@
                                         <?php if ($value->sales > 0) :
                                         $moneySales = $value['price'] * $value['sales'] / 100;
                                         $moneySales = $value['price'] - $moneySales;
-                                    ?>
+                                        ?>
                                         $<?php echo number_format($moneySales, 2, '.', ''); ?><span>$<?php echo number_format($value['price'], 2, '.', ''); ?></span>
                                         <?php else : ?>
                                         $<?php echo number_format($value['price'], 2, '.', ''); ?>
@@ -344,7 +390,8 @@
                 {{$productsearch->onEachSide(1)->appends(request()->all())->links('vendor.pagination.my-paginate')}}
             </div>
             @endif
-    </div>
+            
+        </div>
 </div>
 </section>
 <!-- Product Section End -->

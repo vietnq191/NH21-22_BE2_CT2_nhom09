@@ -9,7 +9,7 @@
                     <div class="breadcrumb__option">
                         <a href="/">Home</a>
                         <?php if(stripos($_SERVER['REQUEST_URI'], 'shop-grid/')) :?>
-                        <span>{{$getProducts[0]->name}}</span>
+                        <span><?php if(count($getProducts)!="0"){ $getProducts[0]->name;}?></span>
                         <?php else : ?>
                         <span>All Categories</span>
                         <?php endif ?>
@@ -46,6 +46,8 @@
                                 </li>
                                 <input type="hidden" name="Min" id="min" value="<?php echo 0 ?>">
                                 <input type="hidden" name="Max" id="max" value="<?php echo $maxproduct ?>">
+                                <input type="hidden" name="field" id="field" value="<?php echo $field ?>">
+                                <input type="hidden" name="sort" id="sort" value="<?php echo $sort ?>">
                                 <div id="price_range"></div>
                             </div>
                             <p class="price_show" id="price_show"><?php if(isset($_GET['Min'])&& isset($_GET['Max'])){
@@ -57,7 +59,6 @@
                             <input class="btn-filter" type="submit" value="Filter" name="">
                         </div>
                     </form>
-                    
                 </div>
                 <div class="sidebar__item d-none d-md-block">
                     <div class="latest-product__text">
@@ -192,6 +193,19 @@
                         </div>
                     </div>
                 </div>
+                @if (count($getProducts) == '0')
+                <div style="padding-left: 180px;font-size: 20px">
+                    <span>Sorry, OGANI did not find any results matching your price
+                        <strong>{{ $min }}-{{$max }}</strong>
+                    </span>
+                    <ul>
+                        <li>Check the spelling of the entered price</li>
+                        <li>Try again with another price</li>
+                        <li>Try again with shorter price</li>
+                    </ul>
+                </div>
+            @else
+                <div class="filter__item">
                 <div class="row">
                     <div class="col-lg-4 col-md-5">
                         <div class="filter__sort text-center">
@@ -244,6 +258,7 @@
                             </div>
                         </div>
                     </div>
+                    </div>
                     <div class="row pric">
                     @foreach ($getProducts as $value)
                     <?php
@@ -285,6 +300,7 @@
                 <hr>
                 {{$getProducts->onEachSide(1)->appends(request()->all())->links('vendor.pagination.my-paginate')}}
                 </div>
+                @endif
             </div>
         </div>
     </div>

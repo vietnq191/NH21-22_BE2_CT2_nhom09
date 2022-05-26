@@ -240,8 +240,16 @@
                             "1" => array(
                               "name" => "Products",
                               "icon" => "fas fa-shopping-bag",
+<<<<<<< Updated upstream
                               "path_view" => "admin.listuser",
                               "path_add" => "admin.addprotype",
+=======
+                              "path_view" => "admin.listproduct",
+                              "path_add" => "admin.addproduct",
+                              "selected_view" => "product",
+                              "selected_add" => "add",
+                              "selected_edit" => "product/edit",
+>>>>>>> Stashed changes
                             ),
                             "2" => array(
                               "name" => "Protypes",

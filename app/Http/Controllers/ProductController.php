@@ -167,6 +167,10 @@ class ProductController extends Controller
                 'type' => $type,
                 'minproduct' => $minProduct,
                 'maxproduct' => $maxProduct,
+                'min'=>$min,
+                'max'=>$max,
+                'field'=>$orderprice,
+                'sort'=>$ordersort,
             ]
         );
     }
@@ -196,6 +200,7 @@ class ProductController extends Controller
         } else {
             $product = Product::orderBy('id', 'desc')->paginate(6);
         }
+<<<<<<< Updated upstream
 
         $productsearch = Product::select('*', 'products.name AS product_name', 'products.id AS product_id')
         ->join('protypes', 'protypes.id', '=', 'products.type_id')
@@ -204,6 +209,23 @@ class ProductController extends Controller
         ->orWhere('protypes.name', 'like', '%' . $request->key . '%')
         ->paginate(9);
 
+=======
+        if ($orderprice == "price") {
+        $productsearch = Product::select('*', 'products.name AS product_name', 'products.id AS product_id',DB::raw('price - price*sales/100 AS price_discount'))
+            ->join('protypes', 'protypes.id', '=', 'products.type_id')
+            ->orderBy('price_discount', $ordersort)
+            ->where('products.name', 'like', '%' . $request->key . '%')
+            ->whereBetween('price', [$min, $max])
+            ->paginate(9);
+        }else{
+            $productsearch = Product::select('*', 'products.name AS product_name', 'products.id AS product_id',DB::raw('price - price*sales/100 AS price_discount'))
+            ->join('protypes', 'protypes.id', '=', 'products.type_id')
+            ->orderBy($orderprice, $ordersort)
+            ->where('products.name', 'like', '%' . $request->key . '%')
+            ->whereBetween('price', [$min, $max])
+            ->paginate(9);
+        }
+>>>>>>> Stashed changes
         //Count product
         $count = Product::orderBy($orderprice, $ordersort)
             ->where('products.name', 'like', '%' . $request->key . '%')
@@ -216,12 +238,21 @@ class ProductController extends Controller
 
         //Get sale off
         $saleOff = Product::select('*', 'products.name AS product_name', 'products.id AS product_id')
+<<<<<<< Updated upstream
         ->leftJoin('protypes', 'protypes.id', '=', 'products.type_id')
         ->where('sales','>','0')
         ->orderBy('sales','desc')
         ->take(9)
         ->get();
 
+=======
+            ->leftJoin('protypes', 'protypes.id', '=', 'products.type_id')
+            ->where('sales', '>', '0')
+            ->orderBy('sales', 'desc')
+            ->take(9)
+            ->get();
+        $key=$request->key;
+>>>>>>> Stashed changes
         return view(
             'search',
             [
@@ -232,9 +263,17 @@ class ProductController extends Controller
                 'productsearch' => $productsearch,
                 'request' => $request,
                 'saleOff' => $saleOff,
+<<<<<<< Updated upstream
                 'minproduct'=>$minProduct,
                 'maxproduct'=>$maxProduct,
 
+=======
+                'minproduct' => $minProduct,
+                'maxproduct' => $maxProduct,
+                'key'=>$key,
+                'field'=>$orderprice,
+                'sort'=>$ordersort,
+>>>>>>> Stashed changes
             ]
         );
     }
