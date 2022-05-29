@@ -171,10 +171,10 @@ class ProductController extends Controller
                 'type' => $type,
                 'minproduct' => $minProduct,
                 'maxproduct' => $maxProduct,
-                'min'=>$min,
-                'max'=>$max,
-                'field'=>$orderprice,
-                'sort'=>$ordersort,
+                'min' => $min,
+                'max' => $max,
+                'field' => $orderprice,
+                'sort' => $ordersort,
             ]
         );
     }
@@ -206,19 +206,19 @@ class ProductController extends Controller
         }
 
         if ($orderprice == "price") {
-        $productsearch = Product::select('*', 'products.name AS product_name', 'products.id AS product_id',DB::raw('price - price*sales/100 AS price_discount'))
-            ->join('protypes', 'protypes.id', '=', 'products.type_id')
-            ->orderBy('price_discount', $ordersort)
-            ->where('products.name', 'like', '%' . $request->key . '%')
-            ->whereBetween('price', [$min, $max])
-            ->paginate(9);
-        }else{
-            $productsearch = Product::select('*', 'products.name AS product_name', 'products.id AS product_id',DB::raw('price - price*sales/100 AS price_discount'))
-            ->join('protypes', 'protypes.id', '=', 'products.type_id')
-            ->orderBy($orderprice, $ordersort)
-            ->where('products.name', 'like', '%' . $request->key . '%')
-            ->whereBetween('price', [$min, $max])
-            ->paginate(9);
+            $productsearch = Product::select('*', 'products.name AS product_name', 'products.id AS product_id', DB::raw('price - price*sales/100 AS price_discount'))
+                ->join('protypes', 'protypes.id', '=', 'products.type_id')
+                ->orderBy('price_discount', $ordersort)
+                ->where('products.name', 'like', '%' . $request->key . '%')
+                ->whereBetween('price', [$min, $max])
+                ->paginate(9);
+        } else {
+            $productsearch = Product::select('*', 'products.name AS product_name', 'products.id AS product_id', DB::raw('price - price*sales/100 AS price_discount'))
+                ->join('protypes', 'protypes.id', '=', 'products.type_id')
+                ->orderBy($orderprice, $ordersort)
+                ->where('products.name', 'like', '%' . $request->key . '%')
+                ->whereBetween('price', [$min, $max])
+                ->paginate(9);
         }
 
         //Count product
@@ -238,8 +238,8 @@ class ProductController extends Controller
             ->orderBy('sales', 'desc')
             ->take(9)
             ->get();
-        $key=$request->key;
-      
+        $key = $request->key;
+
         return view(
             'search',
             [
@@ -252,32 +252,14 @@ class ProductController extends Controller
                 'saleOff' => $saleOff,
                 'minproduct' => $minProduct,
                 'maxproduct' => $maxProduct,
-                'key'=>$key,
-                'field'=>$orderprice,
-                'sort'=>$ordersort,
-            ]);
+                'key' => $key,
+                'field' => $orderprice,
+                'sort' => $ordersort,
+            ]
+        );
     }
     public function getAddToCart(Request $request, $id)
     {
-        $protypes = Protype::all();
-        $products = Product::select('*', 'products.name AS product_name', 'products.id AS product_id')
-            ->leftJoin('protypes', 'protypes.id', '=', 'products.type_id')
-            ->where('featured', '=', '1')
-            ->orderBy('products.name', 'desc')
-            ->take(20)
-            ->get();
-
-        //Get 10 new products
-        $get10Products = Product::orderBy('created_at', 'desc')->take(10)->get();
-
-        //Get latest products
-        $latestProduts = Product::orderBy('created_at', 'asc')->take(6)->get();
-
-        //Get low price produts
-        $lowPriceProducts = Product::orderBy('price', 'asc')->take(6)->get();
-
-        //Get high price produts
-        $highPriceProducts = Product::orderBy('price', 'desc')->take(6)->get();
         $product = Product::find($id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
@@ -338,6 +320,7 @@ class ProductController extends Controller
 
     public function saveCheckOut(Request $request)
     {
+        $auth = auth()->user()->name;
         $data = array();
         $data['user_id'] = auth()->user()->id;
         $data['email'] = $request->email;
@@ -362,7 +345,6 @@ class ProductController extends Controller
             $data['price'] = $product['price'];
             DB::table('orders_list')->insertGetId($data);
         }
-
         $request->session()->forget('cart');
 
         return redirect('/transaction-history')->with('alert-success', 'Thank you for your purchase');;
@@ -392,4 +374,25 @@ class ProductController extends Controller
         ]);
     }
 
+    public function addToCartDetailGrid(Request $request, $detailGrid, $id)
+    {
+        $product = Product::find($id);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->add($product, $product->id);
+        $request->session()->put('cart', $cart);
+
+        return view('cart');
+    }
+
+    public function addToCartMul(Request $request, $mul, $id, $quantity)
+    {
+        $product = Product::find($id);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->addToCartMulti($product, $product->id, $quantity);
+        $request->session()->put('cart', $cart);
+
+        return view('cart');
+    }
 }

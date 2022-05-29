@@ -52,4 +52,34 @@ class Cart
         $this->totalQty += $this->items[$id]['qty'];
         $this->totalPrice += $this->items[$id]['price'];
     }
+
+    public function addToCartMulti($item, $id, $qty)
+    {
+        // Mac dinh gio hang rong (so luong = 0)
+        $newProduct = ['qty' => 0, 'price' => $item->price, 'item' => $item];
+        if ($this->items) {
+            if (array_key_exists($id, $this->items)) {
+                $newProduct = $this->items[$id];
+            }
+        }
+
+        // //
+        // $newProduct['qty'] +=  $qty;
+        // $newProduct['price'] = $item->price * $newProduct['qty'];
+        // $this->items[$id] = $newProduct;
+
+        // $this->totalQty += $newProduct['qty'];
+        // $this->totalPrice += $newProduct['price'] - ($newProduct['price'] * $item->sales / 100);
+        // //
+
+
+        $newQty = $newProduct['qty'] + $qty;
+        $newProduct['price'] = $item->price * $newQty;
+
+        $this->items[$id] = $newProduct;
+
+        //Tong so luong va tong tien cua tat ca san pham
+        $this->totalQty += $newQty;
+        $this->totalPrice += $newProduct['price'] - ($newProduct['price'] * $item->sales / 100);
+    }
 }

@@ -1,15 +1,15 @@
 @extends('master')
 @section('content')
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="{{ asset('img/breadcrumb.jpg')}}">
+    <section class="breadcrumb-section set-bg" data-setbg="{{ asset('img/breadcrumb.jpg') }}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
                         <h2>Oder details</h2>
                         <div class="breadcrumb__option">
-                            <a href="{{ url('/')}}">Home</a>
-                            <a href="{{ route('transactionHistory')}}">Order History</a>
+                            <a href="{{ url('/') }}">Home</a>
+                            <a href="{{ route('transactionHistory') }}">Order History</a>
                             <span>Oder details</span>
                         </div>
                     </div>
@@ -57,9 +57,9 @@
                                                 ${{ $totalMoney = $product->quantity * $product->price }}
 
                                             </td>
-                                            <td class="shoping__cart__item__close">
-                                                <a
-                                                    href="{{ route('shop.details', [$product->product_id]) }}"><span>Review</span></a>
+                                            <td class="shoping__cart__quantity">
+                                                <a href="{{ route('shop.details', [$product->product_id]) }}"><span
+                                                        class="text-success" style="font-size:20px">Review</span></a>
                                             </td>
                                         </tr>
                                 @endforeach
@@ -68,16 +68,11 @@
                     </div>
                 </div>
             </div>
-            <?php $totalMoney = null; ?>
+
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
                         <a href="{{ url('/') }}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-
-                        <a href="javascript:" class="primary-btn cart-btn cart-btn-right edit-all"><span
-                                class="icon_loading"></span>
-                        </a>
-
                     </div>
                 </div>
             </div>

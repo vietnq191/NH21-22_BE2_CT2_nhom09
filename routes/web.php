@@ -77,22 +77,22 @@ Route::get('/dashboard/user/edit/{id}', [AdminUser::class, 'edit'])->name('admin
 Route::put('/dashboard/protype/update', [AdminUser::class, 'update'])->name('admin.updateuser');
 
 //get from list product
-Route::get('/dashboard/product', [AdminProductController::class,'product'])->name('admin.listproduct');
+Route::get('/dashboard/product', [AdminProductController::class, 'product'])->name('admin.listproduct');
 
 //get from add product
-Route::get('/dashboard/product/add', [AdminProductController::class,'add'])->name('admin.addproduct');
+Route::get('/dashboard/product/add', [AdminProductController::class, 'add'])->name('admin.addproduct');
 
 // add product
-Route::post('/dashboard/product/add', [AdminProductController::class,'addproduct'])->name('product.add');
+Route::post('/dashboard/product/add', [AdminProductController::class, 'addproduct'])->name('product.add');
 
 //get from edit product
-Route::get('/dashboard/product/edit/{id}',[AdminProductController::class,'edit'])->name('admin.editproduct');
+Route::get('/dashboard/product/edit/{id}', [AdminProductController::class, 'edit'])->name('admin.editproduct');
 
 //get update product
-Route::put('/dashboard/product/edit',[AdminProductController::class,'update'])->name('product.update');
+Route::put('/dashboard/product/edit', [AdminProductController::class, 'update'])->name('product.update');
 
 //Delete user
-Route::delete('/dashboard/product/{product}', [AdminProductController::class,'destroy'])->name('delete.product');
+Route::delete('/dashboard/product/{product}', [AdminProductController::class, 'destroy'])->name('delete.product');
 
 //Get product by type_ID
 Route::get('/shop-grid/{typeid?}', [ProductController::class, 'drid']);
@@ -118,11 +118,11 @@ Route::get('/contact', [PageController::class, 'contact']);
 //About us
 Route::get('/about-us', [PageController::class, 'about_us']);
 
-// Them san pham vao gio hang
+// Add to cart
 Route::get('add-to-cart/{id}', [ProductController::class, 'getAddToCart'])->name('product.addToCart');
 Route::get('shopping-cart', [ProductController::class, 'getCart'])->name('shoppingCart');
 
-// Xoa san pham ra gio hang
+// Delete product form cart
 Route::get('delete-to-cart/{id}', [ProductController::class, 'deleteItemCart']);
 
 //Verify Email
@@ -143,7 +143,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 
-//Cap nhat tat ca san pham
+//Update all products
 Route::post('save-all', [ProductController::class, 'saveAllItemCart']);
 
 //Checkout
@@ -169,15 +169,15 @@ Route::group(['middleware' => 'auth'], function () {
 //Rating
 Route::post('add-rating', [ProductDetailsController::class, 'addRating']);
 
-Route::post('/send',[SendEmailController::class,'send'])->name('send.email');
+Route::post('/send', [SendEmailController::class, 'send'])->name('send.email');
 
-Route::post('/receive-email',[SendEmailController::class,'receiveEmail'])->name('receiveEmail.email');
+Route::post('/receive-email', [SendEmailController::class, 'receiveEmail'])->name('receiveEmail.email');
 
-//get list email newsletter 
+//get list email newsletter
 Route::get('/dashboard/email-newsletter', [EmailController::class, 'getAllEmails'])->name('admin.email-letter');
 
 //Delete email newsletter
-Route::delete('/dashboard/email-newsletter/{email}', [EmailController::class,'destroy'])->name('admin.delete-email-letter');
+Route::delete('/dashboard/email-newsletter/{email}', [EmailController::class, 'destroy'])->name('admin.delete-email-letter');
 
 //View form send all email
 Route::get('/dashboard/email-newsletter/send-all-email', function () {
@@ -185,16 +185,21 @@ Route::get('/dashboard/email-newsletter/send-all-email', function () {
 })->name('form-send-all-emails');
 
 //Send all emails
-Route::post('/dashboard/sendAllMails',[SendEmailController::class,'send_all'])->name('admin-send-all-email');
+Route::post('/dashboard/sendAllMails', [SendEmailController::class, 'send_all'])->name('admin-send-all-email');
 
 //View form send 1 email
-Route::get('/dashboard/email-newsletter/send-email/{email}', [EmailController::class,'find'])->name('form-send-emails');
+Route::get('/dashboard/email-newsletter/send-email/{email}', [EmailController::class, 'find'])->name('form-send-emails');
 
 //Send 1 email
-Route::post('/dashboard/sendMail',[SendEmailController::class,'send'])->name('admin-send-email');
+Route::post('/dashboard/sendMail', [SendEmailController::class, 'send'])->name('admin-send-email');
 
 //View all orders of Admin
 Route::get('/dashboard/orders', [OrdersController::class, 'index'])->name('admin-view-orders');
 
 //View details orders of admin
 Route::get('/dashboard/orders/{id}', [OrdersController::class, 'find'])->name('admin-view-details-order');
+
+// Add to cart form page ShopDetails and ShopGrid
+Route::get('{detailGrid?}/add-to-cart/{id}', [ProductController::class, 'addToCartDetailGrid'])->name('product.addToCart');
+
+Route::get('{mul?}/add-to-cart-mul/{id}/{quantity}', [ProductController::class, 'addToCartMul']);

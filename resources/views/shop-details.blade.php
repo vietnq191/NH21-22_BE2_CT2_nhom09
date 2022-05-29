@@ -75,11 +75,12 @@
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input type="text" value="1">
+                                    <input id="quantity-item-{{ $productDetail->id }}" type="text" value="1">
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="primary-btn">ADD TO CARD</a>
+                        <a onclick="AddCartMul({{ $productDetail->id }})" id="add-cart-item-{{ $productDetail->id }}"
+                            href="javascript:" class="primary-btn">ADD TO CARD</a>
                         <ul>
                             <li><b>Availability</b> <span>In Stock</span></li>
                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
@@ -193,12 +194,7 @@
                                                             name="star" />
                                                         <label class="star star-1" for="star-1"></label>
                                                     </div>
-                                                    @if (session('rated'))
-                                                        <div class="form-group"
-                                                            style="background-color:#f8d7da; color:#751f5a; padding:20px 0">
-                                                            {{ session('rated') }}
-                                                        </div>
-                                                    @endif
+
                                                     <div>
                                                         <div class="form-group">
                                                             <textarea class="form-control" name="review" placeholder="Enter your review" required maxlength="200"></textarea>
@@ -277,8 +273,7 @@
     <!-- Related Product Section End -->
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('/js/jquery.nice-select.min.js') }}"></script>
     <script src="{{ asset('/js/jquery-ui.min.js') }}"></script>
@@ -286,6 +281,21 @@
     <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('/js/mixitup.min.js') }}"></script>
     <script src="{{ asset('/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('/js/main.js') }}"></script>
     <script src="{{ asset('js/ajax.js') }}"></script>
+
+    @if (Session::has('failed'))
+        <script>
+            swal("You have already rated this product !", "{!! session('alert-success') !!}", "warning", {
+                button: "OK"
+            });
+        </script>
+    @endif
+
+    @if (Session::has('successful'))
+        <script>
+            swal("Rating successful !", "{!! session('alert-success') !!}", "success", {
+                button: "OK"
+            });
+        </script>
+    @endif
 @endsection
