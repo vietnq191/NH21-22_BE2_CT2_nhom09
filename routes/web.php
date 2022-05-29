@@ -29,7 +29,6 @@ use App\Http\Controllers\AdminRatingController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', [ProductController::class, 'index'])->name('index');
 
 Route::get('/shop-details/{id}', [ProductController::class, 'product_detail']);
@@ -210,3 +209,8 @@ Route::group(['middleware'=>['isAdmin']], function(){
     //View new order
     Route::get('/dashboard/new-orders', [DashboardController::class, 'newOder'])->name('admin-view-new-order');
 });
+
+// Add to cart form page ShopDetails and ShopGrid
+Route::get('{detailGrid?}/add-to-cart/{id}', [ProductController::class, 'addToCartDetailGrid'])->name('product.addToCart');
+
+Route::get('{mul?}/add-to-cart-mul/{id}/{quantity}', [ProductController::class, 'addToCartMul']);

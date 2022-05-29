@@ -30,6 +30,7 @@
                                     <tr>
                                         <th class="shoping__product">ID</th>
                                         <th>Phone</th>
+                                        <th>Address</th>
                                         <th>Order date</th>
                                         <th>Total</th>
                                     </tr>
@@ -38,27 +39,28 @@
                                 @foreach ($items as $product)
                                     <tbody>
                                         <tr>
-                                            <td class="shoping__cart__item">
-                                                {{-- <img style="width: 100px"
-                                                    src="{{ asset('img/product/' . $product['item']->image1) }} " alt=""> --}}
+                                            <td class="">
                                                 <h5>{{ $product->id }}</h5>
                                             </td>
-                                            <td class="shoping__cart__price">
+                                            <td class="shoping__cart__quantity">
                                                 {{ $product->phone }}
+                                            </td>
+                                            <td class="shoping__cart__quantity">
+                                                {{ $product->address }}
                                             </td>
                                             <td class="shoping__cart__quantity">
                                                 <div class="quantity">
                                                     {{ $product->order_date }}
                                                 </div>
                                             </td>
-                                            <td class="shoping__cart__total">
+                                            <td class="shoping__cart__quantity">
 
                                                 ${{ $product->total_money }}
 
                                             </td>
-                                            <td class="shoping__cart__item__close">
+                                            <td class="shoping__cart__quantity">
                                                 <a href="{{ route('transactionDetail', $product->id) }}">
-                                                    <span>Detail</span></a>
+                                                    <span class="text-success" style="font-size:20px">Detail</span></a>
                                             </td>
                                         </tr>
                                 @endforeach
@@ -67,15 +69,10 @@
                     </div>
                 </div>
             </div>
-            <?php $totalMoney = null; ?>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
                         <a href="{{ url('/') }}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-
-                        <a href="javascript:" class="primary-btn cart-btn cart-btn-right edit-all"><span
-                                class="icon_loading"></span>
-                        </a>
 
                     </div>
                 </div>

@@ -1,7 +1,6 @@
 <div class="header__cart">
     <ul>
-        <li><a href="#"><i class="fa fa-heart"></i>
-                <span>0</span></a>
+        <li><a href="#"><i class="fa fa-history"></i>
         </li>
         <li><a href="{{ route('shoppingCart') }}"><i class="fa fa-shopping-bag"></i>
                 @if (Session::has('cart'))

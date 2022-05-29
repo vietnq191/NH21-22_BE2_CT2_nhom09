@@ -9,6 +9,7 @@ use Share;
 use App\Models\Rating;
 use Illuminate\Support\Facades\DB;
 use Auth;
+use Illuminate\Contracts\Session\Session;
 
 class ProductDetailsController extends Controller
 {
@@ -100,7 +101,7 @@ class ProductDetailsController extends Controller
         // dd(DB::getQueryLog());
 
         if ($rated > 0) {
-            return redirect()->back()->with('rated', 'You have already rated this');
+            return redirect()->back()->with('failed', '');
         } else {
             $data['product_id'] = $request->product_id;
             $data['user_id'] = auth()->user()->id;
@@ -108,7 +109,7 @@ class ProductDetailsController extends Controller
             $data['comment'] = $request->review;
 
             DB::table('ratings')->insertGetId($data);
-            return redirect()->back();
+            return redirect()->back()->with('successful', '');
         }
     }
 }
