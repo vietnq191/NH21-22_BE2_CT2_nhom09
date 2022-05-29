@@ -1,21 +1,18 @@
 @extends('master')
 @section('content')
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="{{ URL::asset('img/breadcrumb.jpg') }}">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <div class="breadcrumb__option">
-                            <a href="/">Home</a>
-                            <?php if(stripos($_SERVER['REQUEST_URI'], 'shop-grid/')) :?>
-                            <span><?php if (count($getProducts) != '0') {
-                                $getProducts[0]->name;
-                            } ?></span>
-                            <?php else : ?>
-                            <span>All Categories</span>
-                            <?php endif ?>
-                        </div>
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="{{ URL::asset('img/breadcrumb.jpg') }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <div class="breadcrumb__option">
+                        <a href="/">Home</a>
+                        <?php if(stripos($_SERVER['REQUEST_URI'], 'shop-grid/')) :?>
+                        <span><?php if(count($getProducts)!="0"){ echo $getProducts[0]->name;}?></span>
+                        <?php else : ?>
+                        <span>All Categories</span>
+                        <?php endif ?>
                     </div>
                 </div>
             </div>

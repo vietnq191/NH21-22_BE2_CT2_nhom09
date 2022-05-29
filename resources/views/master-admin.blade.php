@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
+    <link rel="icon" href="{{ asset('/img/link-logo.png') }}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -106,7 +107,7 @@
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                        <div class="d-block text-light">{{ Auth::user()->name }}</div>
                     </div>
                 </div>
 
@@ -118,7 +119,7 @@
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
                             <a href="{{ url('/dashboard') }}"
-                                class="nav-link <?php if($nameURL == "dashboard") echo "active" ?>">
+                                class="nav-link <?php if($nameURL == "dashboard" || $nameURL == "new-orders") echo "active" ?>">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
@@ -194,7 +195,15 @@
                             <a href="{{ route('admin-view-orders')}}" class="nav-link <?php if($nameURL == "orders" || $nameURL == "") echo "active" ?>">
                                 <i class="nav-icon fa fa-shopping-basket"></i>
                                 <p>
-                                    Order
+                                    Orders
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin-view-rating')}}" class="nav-link <?php if($nameURL == "rating") echo "active" ?>">
+                                <i class="nav-icon fa fa-star"></i>
+                                <p>
+                                    Rating
                                 </p>
                             </a>
                         </li>

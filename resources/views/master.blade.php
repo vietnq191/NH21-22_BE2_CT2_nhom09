@@ -245,7 +245,7 @@
                     <div class="hero__search">
                         <div class="hero__search__form">
                             <form action="{{ route('search') }}" method="get">
-                                <input type="text" placeholder="What do you need?" name="key">
+                                <input type="text" placeholder="What do you need?" name="key" value="@if(isset($_GET['key'])) {{$_GET['key']}}@endif">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>
                         </div>
