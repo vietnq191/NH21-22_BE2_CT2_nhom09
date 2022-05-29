@@ -13,8 +13,10 @@ class AdminProtype extends Controller
 {
     //
     function protype(){
-        $protype=Protype::paginate(10);
+        $allProtypes = Protype::all();
+        $protype=Protype::orderBy('id', 'desc')->paginate(10);
         return view('admin-protype',[
+            'allProtypes'=>$allProtypes,
             'protype'=>$protype,
         ]);
     }

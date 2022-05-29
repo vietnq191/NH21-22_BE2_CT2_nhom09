@@ -33,7 +33,7 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Users</h3>
+        <h3 class="card-title">Total users: {{ count($user)}}</h3>
 
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -41,7 +41,7 @@
           </button>
         </div>
       </div>
-      <div class="card-body p-0">
+      <div class="card-body p-0" style="overflow-x: auto;">
         <table class="table table-striped projects modify-table">
           <thead>
             <tr>

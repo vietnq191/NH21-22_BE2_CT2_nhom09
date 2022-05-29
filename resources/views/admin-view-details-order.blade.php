@@ -10,7 +10,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{route('admin-view-orders')}}">Orders</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url()->previous() }}">Orders</a></li>
                     <li class="breadcrumb-item active">Order Details</li>
                 </ol>
             </div>
@@ -81,7 +81,7 @@
         <!-- /.card-body -->
         <tr>
             <td>
-                <a href="{{route('admin-view-orders')}}" class="btn btn-secondary">Cancel</a>
+                <a href="{{ url()->previous() }}" class="btn btn-secondary">Cancel</a>
             </td>
         </tr>
     </div>

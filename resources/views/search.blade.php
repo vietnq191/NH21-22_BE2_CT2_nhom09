@@ -61,6 +61,7 @@
                             }?></p>
                             <input class="btn-filter" type="submit" value="Filter" name="">
                         </div>
+                        </form>
                         
                         <div class="sidebar__item">
                             <div class="latest-product__text">
@@ -161,6 +162,7 @@
                     </div>
                 </div>
             </div>
+                                        </div>
 
         <div class="col-lg-9 col-md-7">
             <div class="product__discount">

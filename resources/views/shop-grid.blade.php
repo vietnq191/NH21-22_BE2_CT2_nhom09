@@ -9,7 +9,7 @@
                     <div class="breadcrumb__option">
                         <a href="/">Home</a>
                         <?php if(stripos($_SERVER['REQUEST_URI'], 'shop-grid/')) :?>
-                        <span><?php if(count($getProducts)!="0"){ $getProducts[0]->name;}?></span>
+                        <span><?php if(count($getProducts)!="0"){ echo $getProducts[0]->name;}?></span>
                         <?php else : ?>
                         <span>All Categories</span>
                         <?php endif ?>

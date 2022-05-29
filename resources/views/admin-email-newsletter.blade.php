@@ -40,7 +40,7 @@
           </button>
         </div>
       </div>
-      <div class="card-body p-0">
+      <div class="card-body p-0" style="overflow-x: auto;">
         <table class="table table-striped projects modify-table">
           <thead>
             <tr>

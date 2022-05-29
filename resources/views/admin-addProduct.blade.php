@@ -135,9 +135,5 @@
     }
   }
 </script>
-<style>
-img {
-  border: 5px solid #555;
-}
-</style>
+
 @endsection
