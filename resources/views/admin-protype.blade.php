@@ -33,7 +33,7 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Protype</h3>
+        <h3 class="card-title">Total Protypes: {{ count($allProtypes)}}</h3>
 
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">

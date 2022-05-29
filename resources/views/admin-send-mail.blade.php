@@ -45,6 +45,9 @@
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
+                                <p>Send to: {{ $mail[0]->email}}</p>
+                            </div>
+                            <div class="form-group">
                                 <input type="hidden" id="email" class="form-control" value="{{ $mail[0]->email}}" name="email" required>
                             </div>
                             <div class="form-group">

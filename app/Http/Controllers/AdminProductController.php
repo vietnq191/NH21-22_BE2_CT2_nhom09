@@ -12,11 +12,15 @@ class AdminProductController extends Controller
     //
     function product()
     {
-        $product = $product = Product::select('*','protypes.name AS protype_name', 'products.name AS product_name', 'products.id AS product_id', DB::raw('price - price*sales/100 AS price_discount'))
+        $product = Product::select('*','protypes.name AS protype_name', 'products.name AS product_name', 'products.id AS product_id', DB::raw('price - price*sales/100 AS price_discount'))
         ->leftJoin('protypes', 'protypes.id', '=', 'products.type_id')
+        ->orderBy('products.id', 'desc')
         ->paginate(5);
+
+        $getAllProducts = Product::all();
         return view('admin-product', [
             'product' => $product,
+            'getAllProducts' => $getAllProducts,
         ]);
     }
     function add()
