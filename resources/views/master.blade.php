@@ -131,15 +131,6 @@
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__right">
-                            <div class="header__top__right__language">
-                                <img src="{{ asset('/img/language.png') }}" alt="">
-                                <div>English</div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Spanis</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul>
-                            </div>
                             <div class="header__top__right__auth">
                                 @if (Auth::guest())
                                     <a href="{{ route('login') }}"><i class="fa fa-user"></i>

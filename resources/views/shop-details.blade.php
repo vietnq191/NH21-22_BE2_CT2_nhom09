@@ -75,10 +75,17 @@
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input id="quantity-item-{{ $productDetail->id }}" type="text" value="1">
+                                    <input id="quantity-item-{{ $productDetail->id }}" type="number" min="1" oninput="validity.valid||(value='1');" onfocusout="myFunction(this)" value="1">
                                 </div>
                             </div>
                         </div>
+                        <script>
+                            function myFunction(outHover) {
+                                if(outHover.value == "") {
+                                    outHover.value = "1";
+                                }
+                            }
+                        </script>
                         <a onclick="AddCartMul({{ $productDetail->id }})" id="add-cart-item-{{ $productDetail->id }}"
                             href="javascript:" class="primary-btn">ADD TO CARD</a>
                         <ul>
@@ -135,9 +142,6 @@
                                     <!-- Review -->
 
                                     <div class="flex-w flex-t p-b-68">
-                                        <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-                                            <img src="{{ asset('img/logo.png') }}" alt="avatar">
-                                        </div>
                                         @foreach ($getRating as $infoRating)
                                             <div class="size-207" style="background: #eff7f9">
                                                 <div class="flex-w flex-sb-m p-b-17">

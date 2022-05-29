@@ -69,7 +69,7 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Email<span>*</span></p>
-                                    <input id="email" name="email" type="email" required>
+                                    <input id="email" name="email" type="email" value="{{Auth::user()->email}}" required>
                                 </div>
                             </div>
                         </div>

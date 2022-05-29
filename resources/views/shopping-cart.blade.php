@@ -88,7 +88,6 @@
                         <div class="shoping__checkout">
                             <h5>Cart Total</h5>
                             <ul>
-                                <li>Subtotal <span></span></li>
                                 <li>Total <span>${{ Session::get('cart')->totalPrice }}</span></li>
                             </ul>
                             @if (Auth::guest())
@@ -119,7 +118,6 @@
                         <div class="shoping__cart__btns">
                             <a href="{{ url('/') }}" class="primary-btn cart-btn">SHOPPING
                                 NOW</a>
-
                         </div>
                     </div>
                     <div class="col-lg-6">

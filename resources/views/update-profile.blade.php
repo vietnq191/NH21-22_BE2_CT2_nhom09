@@ -37,7 +37,7 @@
                 </div>
                 <div class="form-group">
                     <label for="inputdata">Your Phone Number</label>
-                    <input type="number" name="phone" class="form-control" placeholder="Enter Phone"
+                    <input type="number" name="phone" class="form-control" min="0" placeholder="Enter Phone"
                         value="{{ $getUser->phone}}">
                 </div>
                 <div class="form-group">

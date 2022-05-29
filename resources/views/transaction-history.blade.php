@@ -8,7 +8,7 @@
                     <div class="breadcrumb__text">
                         <h2>Order History</h2>
                         <div class="breadcrumb__option">
-                            <a href="url('/')">Home</a>
+                            <a href="{{url('/')}}">Home</a>
                             <span>Order History</span>
                         </div>
                     </div>

@@ -44,13 +44,13 @@ class Cart
     public function updateAllCart($id, $qty)
     {
         $this->totalQty -= $this->items[$id]['qty'];
-        $this->totalPrice -= $this->items[$id]['price'];
+        $this->totalPrice -= ($this->items[$id]['price'] -  $this->items[$id]['price'] *  $this->items[$id]['item']->sales / 100);
 
         $this->items[$id]['qty'] = $qty;
         $this->items[$id]['price'] = $qty * $this->items[$id]['item']->price;
 
         $this->totalQty += $this->items[$id]['qty'];
-        $this->totalPrice += $this->items[$id]['price'];
+        $this->totalPrice += ($this->items[$id]['price'] -  $this->items[$id]['price'] *  $this->items[$id]['item']->sales / 100);
     }
 
     public function addToCartMulti($item, $id, $qty)
@@ -63,23 +63,14 @@ class Cart
             }
         }
 
-        // //
-        // $newProduct['qty'] +=  $qty;
-        // $newProduct['price'] = $item->price * $newProduct['qty'];
-        // $this->items[$id] = $newProduct;
-
-        // $this->totalQty += $newProduct['qty'];
-        // $this->totalPrice += $newProduct['price'] - ($newProduct['price'] * $item->sales / 100);
-        // //
-
-
-        $newQty = $newProduct['qty'] + $qty;
-        $newProduct['price'] = $item->price * $newQty;
-
+        //
+        $oldQty = $newProduct['qty'];
+        $newProduct['qty'] +=  $qty;
+        $newProduct['price'] = $item->price * ($newProduct['qty']);
         $this->items[$id] = $newProduct;
 
-        //Tong so luong va tong tien cua tat ca san pham
-        $this->totalQty += $newQty;
-        $this->totalPrice += $newProduct['price'] - ($newProduct['price'] * $item->sales / 100);
+        $this->totalQty += $newProduct['qty'] - $oldQty;
+        // $this->totalPrice += ($newProduct['price'] - ($newProduct['price'] * $item->sales / 100)) - ($item->price - ($newProduct['price'] * $item->sales / 100)) * $oldQty;
+        $this->totalPrice += ($newProduct['price'] - ($newProduct['price'] * $item->sales / 100)) - ($item->price * $oldQty);
     }
 }
