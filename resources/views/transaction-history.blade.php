@@ -29,6 +29,7 @@
                                 <thead>
                                     <tr>
                                         <th class="shoping__product">ID</th>
+                                        <th>Name</th>
                                         <th>Phone</th>
                                         <th>Address</th>
                                         <th>Order date</th>
@@ -42,6 +43,7 @@
                                             <td class="">
                                                 <h5>{{ $product->id }}</h5>
                                             </td>
+                                            <td class="shoping__cart__quantity">{{$product->username}}</td>
                                             <td class="shoping__cart__quantity">
                                                 {{ $product->phone }}
                                             </td>

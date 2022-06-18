@@ -66,6 +66,7 @@
             @endforeach
           </tbody>
         </table>
+        {{$orders->onEachSide(1)->appends(request()->all())->links('vendor.pagination.my-paginate')}}
       </div>
       <!-- /.card-body -->
     </div>
