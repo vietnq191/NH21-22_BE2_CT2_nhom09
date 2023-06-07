@@ -39,18 +39,14 @@ class SendEmailController extends Controller
                     'subject'=>$request->subject,
                     'body'=>$request->message
                 ];
-        
                 \Mail::send('email-template', $mail_data, function($message) use ($mail_data){
                     $message->to($mail_data['recipient'])
                     ->from($mail_data['fromEmail'],$mail_data['fromName'])
                     ->subject($mail_data['subject']);
                 });
             }
-
-            //Back the page
             return redirect()->back()->with('success', 'Email sent');
         }
-        
         return redirect()->back()->with('unsuccess', 'Send Email Error');
     }
 
@@ -76,9 +72,9 @@ class SendEmailController extends Controller
                 ->from($mail_data['fromEmail'],$mail_data['fromName'])
                 ->subject($mail_data['subject']);
             });
-    
+
             DB::Table('email_newsletter')->insert(['email'=>$request->email]);
-    
+
             return redirect()->back()->with('receiveEmailSuccess', 'Sign up for newsletter successfully');
         }
 
